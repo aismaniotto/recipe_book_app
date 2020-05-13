@@ -8,6 +8,6 @@ class GetAllRecipes {
 
   Future<List<Recipe>> call() async { 
     //TODO: maybe, order by name;
-    return this.repostitory.getAllRecipes();
+    return await this.repostitory.getAllRecipes();
   }
 }

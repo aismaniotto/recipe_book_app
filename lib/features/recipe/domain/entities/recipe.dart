@@ -1,8 +1,7 @@
 import 'package:recipe_book_app/features/recipe/domain/entities/ingredient.dart';
-import 'package:uuid/uuid.dart';
 
 class Recipe {
-  final String id = Uuid().v4(); 
+  int id; 
   String name;
   String description;
   String type;//TODO:enum or new class. Ex.: breakfast, lunch, supper, or snack;

@@ -9,6 +9,6 @@ class CreateRecipe {
   Future<Recipe> call(Recipe recipe) async {
     // TODO: check if already exist
     // TODO: check if name alredy been used
-    return this.repostitory.addRecipe(recipe);
+    return await this.repostitory.addRecipe(recipe);
   }
 }
