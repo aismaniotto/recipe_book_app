@@ -5,7 +5,7 @@ import 'package:sembast/sembast.dart';
 
 abstract class RecipeDataSource {
   Future<Recipe> addRecipe(Recipe recipe);
-  Future<Recipe> editRecipe(Recipe recipe);
+  Future<Recipe> updateRecipe(Recipe recipe);
   Future<void> deleteRecipe(int id);
   Future<Recipe> getRecipeById(int id);
   Future<List<Recipe>> getAllRecipes();
@@ -34,7 +34,7 @@ class RecipeDataSourceImpl extends RecipeDataSource {
   }
 
   @override
-  Future<Recipe> editRecipe(Recipe recipe) async {
+  Future<Recipe> updateRecipe(Recipe recipe) async {
     final finder = Finder(filter: Filter.byKey(recipe.id));
     await _recipesFolder.update(await _db, recipeAdapter.toMap(recipe),finder: finder);
     

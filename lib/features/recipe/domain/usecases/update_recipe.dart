@@ -1,14 +1,12 @@
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 import 'package:recipe_book_app/features/recipe/domain/repositories/recipe_repository.dart';
 
-class CreateRecipe {
+class UpdateRecipe {
   final RecipeRepository repostitory;
 
-  CreateRecipe(this.repostitory);
+  UpdateRecipe(this.repostitory);
 
   Future<Recipe> call(Recipe recipe) async {
-    // TODO: check if already exist
-    // TODO: check if name alredy been used
-    return await this.repostitory.addRecipe(recipe);
+    return await this.repostitory.updateRecipe(recipe);
   }
 }

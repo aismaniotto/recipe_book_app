@@ -18,8 +18,8 @@ class RecipeRepositoryImpl extends RecipeRepository {
   }
 
   @override
-  Future<Recipe> editRecipe(Recipe recipe) async {
-    return await recipeDataSource.editRecipe(recipe);
+  Future<Recipe> updateRecipe(Recipe recipe) async {
+    return await recipeDataSource.updateRecipe(recipe);
   }
 
   @override

@@ -9,17 +9,12 @@ class RecipeAdapter extends Adapter<Recipe> {
 
   @override
   Recipe fromMap(Map<String, dynamic> map) {
-    Recipe recipe = Recipe(
+    return Recipe(
+      map['id'], 
       map['name'], 
       map['description'], 
-      map['type'],
-      map['quantityPeopleServide'], 
       (map['ingredientList'] as List).map((map) => ingredientAdapter.fromMap(map)), 
       map['steps']);
-    
-    recipe.id = map['id'];
-    
-    return recipe;
   }
 
   @override
@@ -28,8 +23,6 @@ class RecipeAdapter extends Adapter<Recipe> {
       'id': recipe.id,
       'name': recipe.name,
       'description': recipe.description,
-      'type': recipe.type,
-      'quantityPeopleServide': recipe.quantityPeopleServide,
       'ingredientList': recipe.ingredientList.map((ingredient) => ingredientAdapter.toMap(ingredient)),
       'steps': recipe.steps
     };
