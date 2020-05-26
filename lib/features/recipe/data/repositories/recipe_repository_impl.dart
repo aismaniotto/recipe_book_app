@@ -24,7 +24,12 @@ class RecipeRepositoryImpl extends RecipeRepository {
 
   @override
   Future<List<Recipe>> getAllRecipes() async {
-    return await recipeDataSource.getAllRecipes();
+    var allRecipes = await recipeDataSource.getAllRecipes();
+    if (allRecipes == null){
+      allRecipes = List<Recipe>();
+    }
+
+    return allRecipes;
   }
 
   @override

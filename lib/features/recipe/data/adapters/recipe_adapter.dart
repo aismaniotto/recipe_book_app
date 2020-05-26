@@ -1,6 +1,7 @@
 import 'package:recipe_book_app/core/adapters/adapter.dart';
 import 'package:recipe_book_app/features/recipe/data/adapters/ingredient_adapter.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
+import 'package:sembast/utils/value_utils.dart';
 
 class RecipeAdapter extends Adapter<Recipe> {
   final IngredientAdapter ingredientAdapter;
@@ -13,8 +14,8 @@ class RecipeAdapter extends Adapter<Recipe> {
       map['id'], 
       map['name'], 
       map['description'], 
-      (map['ingredientList'] as List).map((map) => ingredientAdapter.fromMap(map)), 
-      map['steps']);
+      (map['ingredientList'] as List).map((ingredientMap) => ingredientAdapter.fromMap(ingredientMap)).toList(), 
+      map['steps'].cast<String>());
   }
 
   @override
@@ -23,7 +24,7 @@ class RecipeAdapter extends Adapter<Recipe> {
       'id': recipe.id,
       'name': recipe.name,
       'description': recipe.description,
-      'ingredientList': recipe.ingredientList.map((ingredient) => ingredientAdapter.toMap(ingredient)),
+      'ingredientList': recipe.ingredientList.map((ingredient) => ingredientAdapter.toMap(ingredient)).toList(),
       'steps': recipe.steps
     };
   }
