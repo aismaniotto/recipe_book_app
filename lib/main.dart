@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_book_app/core/IoC/ioc.dart' as ioc;
+import 'package:recipe_book_app/features/recipe/presentation/pages/list_recipes_page.dart';
 
-import 'features/recipe/presentation/pages/home_page.dart';
 
 void main() async {
   await ioc.init();
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepOrange,
       ),
-      home: HomePage(),
+      home: ListRecipesPage(),
     );
   }
 }

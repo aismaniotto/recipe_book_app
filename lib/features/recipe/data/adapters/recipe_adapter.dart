@@ -1,7 +1,6 @@
 import 'package:recipe_book_app/core/adapters/adapter.dart';
 import 'package:recipe_book_app/features/recipe/data/adapters/ingredient_adapter.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
-import 'package:sembast/utils/value_utils.dart';
 
 class RecipeAdapter extends Adapter<Recipe> {
   final IngredientAdapter ingredientAdapter;
@@ -14,6 +13,9 @@ class RecipeAdapter extends Adapter<Recipe> {
       map['id'], 
       map['name'], 
       map['description'], 
+      Type.values.firstWhere((e) => e.toString() == map['type']), 
+      map['quantityPeopleServide'], 
+      Difficulty.values.firstWhere((e) => e.toString() == map['difficulty']), 
       (map['ingredientList'] as List).map((ingredientMap) => ingredientAdapter.fromMap(ingredientMap)).toList(), 
       map['steps'].cast<String>());
   }
@@ -24,6 +26,9 @@ class RecipeAdapter extends Adapter<Recipe> {
       'id': recipe.id,
       'name': recipe.name,
       'description': recipe.description,
+      'type': recipe.type.toString(),
+      'quantityPeopleServide': recipe.quantityPeopleServide,
+      'difficulty': recipe.difficulty.toString(),
       'ingredientList': recipe.ingredientList.map((ingredient) => ingredientAdapter.toMap(ingredient)).toList(),
       'steps': recipe.steps
     };

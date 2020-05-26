@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:recipe_book_app/core/IoC/ioc.dart';
-import 'package:recipe_book_app/features/recipe/domain/entities/ingredient.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 import 'package:recipe_book_app/features/recipe/presentation/stores/filtered_recipes_store.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/empty_list_widget.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/loading_widget.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/recipe_tile_widget.dart';
 
-class HomePage extends StatelessWidget {
+class ListRecipesPage extends StatelessWidget {
   final _store = ioc<FilteredRecipesStore>();
 
   @override
@@ -32,7 +31,8 @@ class HomePage extends StatelessWidget {
               itemCount: _store.filteredRecipes.length,
               itemBuilder: (_, index) {
                 Recipe recipe = _store.filteredRecipes[index];
-                return RecipeTileWidget(recipe, () => {/* TODO: navigate to recipe page */});
+                return RecipeTileWidget(
+                    recipe, () => {/* TODO: navigate to recipe page */});
               },
             );
           },

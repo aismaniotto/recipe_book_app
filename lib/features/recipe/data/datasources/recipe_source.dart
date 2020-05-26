@@ -6,14 +6,14 @@ import 'package:sembast/sembast.dart';
 abstract class RecipeDataSource {
   Future<Recipe> addRecipe(Recipe recipe);
   Future<Recipe> updateRecipe(Recipe recipe);
-  Future<void> deleteRecipe(int id);
-  Future<Recipe> getRecipeById(int id);
+  Future<void> deleteRecipe(String id);
+  Future<Recipe> getRecipeById(String id);
   Future<List<Recipe>> getAllRecipes();
 }
 
 class RecipeDataSourceImpl extends RecipeDataSource {
   static const String folderName = "Recipes";
-  final _recipesFolder = intMapStoreFactory.store(folderName);
+  final _recipesFolder = stringMapStoreFactory.store(folderName);
 
   Future<Database> get  _db  async => await AppDatabase.instance.database;
   
@@ -28,7 +28,7 @@ class RecipeDataSourceImpl extends RecipeDataSource {
   }
 
   @override
-  Future<void> deleteRecipe(int id) async {
+  Future<void> deleteRecipe(String id) async {
     final finder = Finder(filter: Filter.byKey(id));
     await _recipesFolder.delete(await _db, finder: finder);
   }
@@ -50,7 +50,7 @@ class RecipeDataSourceImpl extends RecipeDataSource {
   }
 
   @override
-  Future<Recipe> getRecipeById(int id) async {
+  Future<Recipe> getRecipeById(String id) async {
     final recipe = await _recipesFolder.record(id).get(await _db);
     return recipeAdapter.fromMap(recipe);
   }

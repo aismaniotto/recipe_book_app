@@ -13,7 +13,7 @@ class RecipeRepositoryImpl extends RecipeRepository {
   }
 
   @override
-  Future<void> deleteRecipe(int id) async {
+  Future<void> deleteRecipe(String id) async {
     await recipeDataSource.deleteRecipe(id);
   }
 
@@ -33,7 +33,7 @@ class RecipeRepositoryImpl extends RecipeRepository {
   }
 
   @override
-  Future<Recipe> getRecipeById(int id) async {
+  Future<Recipe> getRecipeById(String id) async {
     return await recipeDataSource.getRecipeById(id);
   }
 }
