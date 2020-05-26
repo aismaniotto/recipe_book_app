@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_book_app/core/IoC/ioc.dart' as ioc;
 
-void main() => runApp(MyApp());
+import 'features/recipe/presentation/pages/home_page.dart';
+
+void main() async {
+  await ioc.init();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -8,40 +14,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Recipe Book',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepOrange,
       ),
-      home: MyHomePage(title: 'Recipe Book'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'My recipes',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
-        ),
-      ),
+      home: HomePage(),
     );
   }
 }
