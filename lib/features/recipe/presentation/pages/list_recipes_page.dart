@@ -7,6 +7,8 @@ import 'package:recipe_book_app/features/recipe/presentation/widgets/empty_list_
 import 'package:recipe_book_app/features/recipe/presentation/widgets/loading_widget.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/recipe_tile_widget.dart';
 
+import 'show_recipe_page.dart';
+
 class ListRecipesPage extends StatelessWidget {
   final _store = ioc<FilteredRecipesStore>();
 
@@ -32,7 +34,17 @@ class ListRecipesPage extends StatelessWidget {
               itemBuilder: (_, index) {
                 Recipe recipe = _store.filteredRecipes[index];
                 return RecipeTileWidget(
-                    recipe, () => {/* TODO: navigate to recipe page */});
+                    recipe,
+                    () => {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ShowRecipePage(
+                                      key: this.key,
+                                      recipe: recipe,
+                                    )),
+                          )
+                        });
               },
             );
           },

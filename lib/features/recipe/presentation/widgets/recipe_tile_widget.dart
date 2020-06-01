@@ -12,17 +12,18 @@ class RecipeTileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
         child: ListTile(
-            leading: getIconType(recipe.type),
-            title: Text(recipe.name),
-            subtitle: Text(recipe.description),
-            trailing: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Text('x${recipe.quantityPeopleServide}'),
-                getIconDifficulty(recipe.difficulty)
-              ],
-            )));
+      leading: getIconType(recipe.type),
+      title: Text(recipe.name),
+      subtitle: Text(recipe.description),
+      trailing: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Text('x${recipe.quantityPeopleServide}'),
+            getIconDifficulty(recipe.difficulty)
+          ]),
+      onTap: onTap,
+    ));
   }
 
   Icon getIconType(Type recipeType) {
