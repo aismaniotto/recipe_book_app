@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
 import 'package:recipe_book_app/core/utils/enum_to_string.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 
@@ -40,9 +42,9 @@ class RecipeHeaderWidget extends StatelessWidget {
             style: DefaultTextStyle.of(context).style,
             children: <TextSpan>[
               TextSpan(
-                  text: 'Type: ',
+                  text: LocaleKeys.type_.tr(),
                   style: TextStyle(fontWeight: FontWeight.bold)),
-              TextSpan(text: EnumToString.RecipeTypeToString(type)),
+              TextSpan(text: EnumToString.recipeTypeToString(type)),
             ],
           ),
         ),
@@ -53,9 +55,16 @@ class RecipeHeaderWidget extends StatelessWidget {
             style: DefaultTextStyle.of(context).style,
             children: <TextSpan>[
               TextSpan(
-                  text: 'Serve: ',
+                  text: LocaleKeys.serve_.tr(),
                   style: TextStyle(fontWeight: FontWeight.bold)),
-              TextSpan(text: '$qtdPeopleServide people'),
+              // TextSpan(text: '$qtdPeopleServide people'),
+              (qtdPeopleServide > 1)
+                  ? TextSpan(
+                      text:
+                          '$qtdPeopleServide ' + LocaleKeys.person_people.tr())
+                  : TextSpan(
+                      text:
+                          '$qtdPeopleServide ' + LocaleKeys.person_person.tr())
             ],
           ),
         ),
@@ -66,9 +75,9 @@ class RecipeHeaderWidget extends StatelessWidget {
             style: DefaultTextStyle.of(context).style,
             children: <TextSpan>[
               TextSpan(
-                  text: 'Difficulty: ',
+                  text: LocaleKeys.difficulty_.tr(),
                   style: TextStyle(fontWeight: FontWeight.bold)),
-              TextSpan(text: EnumToString.DifficultyToString(difficulty)),
+              TextSpan(text: EnumToString.difficultyToString(difficulty)),
             ],
           ),
         ),
@@ -79,7 +88,7 @@ class RecipeHeaderWidget extends StatelessWidget {
             style: DefaultTextStyle.of(context).style,
             children: <TextSpan>[
               TextSpan(
-                  text: 'Description: ',
+                  text: LocaleKeys.description_.tr(),
                   style: TextStyle(fontWeight: FontWeight.bold)),
               TextSpan(text: description),
             ],

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:recipe_book_app/core/IoC/ioc.dart';
@@ -6,6 +7,7 @@ import 'package:recipe_book_app/features/recipe/presentation/stores/filtered_rec
 import 'package:recipe_book_app/features/recipe/presentation/widgets/empty_list_widget.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/loading_widget.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/recipe_tile_widget.dart';
+import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
 
 import 'show_recipe_page.dart';
 
@@ -16,7 +18,7 @@ class ListRecipesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('My recipe app'),
+          title: Text(LocaleKeys.my_recipe_book.tr()),
         ),
         body: Observer(
           builder: (_) {
@@ -53,7 +55,7 @@ class ListRecipesPage extends StatelessWidget {
           onPressed: () {
             //TODO:new recipe page
           },
-          tooltip: 'Increment Counter',
+          tooltip: LocaleKeys.add_new_recipe.tr(),
           child: Icon(Icons.add),
         ));
   }

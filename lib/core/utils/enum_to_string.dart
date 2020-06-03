@@ -1,48 +1,50 @@
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
 
 class EnumToString {
-  static String DifficultyToString(Difficulty difficulty) {
+  static String difficultyToString(Difficulty difficulty) {
     switch (difficulty) {
       case Difficulty.easy:
-        return 'Easy';
+        return LocaleKeys.difficulty_easy.tr();
         break;
       case Difficulty.medium:
-        return 'Medium';
+        return LocaleKeys.difficulty_medium.tr();
         break;
       case Difficulty.hard:
-        return 'Hard';
+        return LocaleKeys.difficulty_hard.tr();
         break;
       default:
-        return 'Unknow';
+        return LocaleKeys.unknow.tr();
     }
   }
 
-  static String RecipeTypeToString(Type type) {
+  static String recipeTypeToString(Type type) {
     switch (type) {
       case Type.breakfast:
-        return 'Breakfast';
+        return LocaleKeys.recipe_type_breakfast.tr();
         break;
       case Type.meal:
-        return 'Meal';
+        return LocaleKeys.recipe_type_meal.tr();
         break;
       case Type.side:
-        return 'Side';
+        return LocaleKeys.recipe_type_side.tr();
         break;
       case Type.snack:
-        return 'Snack';
+        return LocaleKeys.recipe_type_snack.tr();
         break;
       case Type.drink:
-        return 'Drink';
+        return LocaleKeys.recipe_type_drink.tr();
         break;
       case Type.dessert:
-        return 'Dessert';
+        return LocaleKeys.recipe_type_dessert.tr();
         break;
       case Type.other:
-        return 'Other';
+        return LocaleKeys.recipe_type_some_other.tr();
         break;
 
       default:
-        return 'Other';
+        return LocaleKeys.recipe_type_some_other.tr();
     }
   }
 }

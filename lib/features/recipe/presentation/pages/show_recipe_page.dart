@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/ingredient.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/item_list_widget.dart';
@@ -21,9 +23,9 @@ class ShowRecipePage extends StatelessWidget {
       qtdPeopleServide: recipe.quantityPeopleServide,
       difficulty: recipe.difficulty,
     ));
-    columnWidgets.add(TitleListWidget('Ingredients'));
+    columnWidgets.add(TitleListWidget(LocaleKeys.ingredients.tr()));
     columnWidgets.addAll(prepareList<Ingredient>(recipe.ingredientList));
-    columnWidgets.add(TitleListWidget('Steps'));
+    columnWidgets.add(TitleListWidget(LocaleKeys.steps.tr()));
     columnWidgets.addAll(prepareList<String>(recipe.steps));
 
     return Scaffold(
@@ -32,6 +34,7 @@ class ShowRecipePage extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.edit),
+            tooltip: LocaleKeys.edit.tr(),
             onPressed: () {
               //TODO: add action to edit.
               print('edit');
@@ -39,6 +42,7 @@ class ShowRecipePage extends StatelessWidget {
           ),
           IconButton(
             icon: Icon(Icons.delete),
+            tooltip: LocaleKeys.delete.tr(),
             onPressed: () {
               //TODO: add action to delete.
               print('delete');
@@ -46,11 +50,13 @@ class ShowRecipePage extends StatelessWidget {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Wrap(
-          runSpacing: 5,
-          children: columnWidgets,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Wrap(
+            runSpacing: 5,
+            children: columnWidgets,
+          ),
         ),
       ),
     );

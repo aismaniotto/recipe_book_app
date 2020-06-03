@@ -20,7 +20,6 @@ class ItemListWidget extends StatelessWidget {
         Flexible(
           child: Text(
             data,
-            // style: TextStyle(fontSize: 16),
           ),
         ),
       ],

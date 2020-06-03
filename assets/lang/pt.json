@@ -1,0 +1,38 @@
+{
+  "my_recipe_book": "Meu livro de receitas",
+  "recipe_book": "Livro de receitas",
+  "recipe": "Receita",
+  "ingredients": "Ingredientes",
+  "ingredient": {
+    "full": "{quantity} {measure} de {name}",
+    "partial": "{quantity} {fraction} {measure} de {name}"
+  },
+  "steps": "Modo de preparo",
+  "add_new_recipe": "Adicionar nova receita",
+  "no_recipe_add_yet": "Nenhuma receita adiciona ainda...",
+  "type_": "Tipo: ",
+  "serve_": "Serve: ",
+  "difficulty_": "Dificuldade: ",
+  "description_": "Descrição: ",
+  "person": {
+    "person": "pessoa",
+    "people": "pessoas"
+  },
+  "edit": "Editar",
+  "delete": "Deletar",
+  "difficulty": {
+    "easy": "fácil",
+    "medium": "média",
+    "hard": "difícil"
+  },
+  "recipe_type": {
+    "breakfast": "café da manhã",
+    "meal": "refeição",
+    "side": "acompanhamento",
+    "snack": "lanche",
+    "drink": "bebida",
+    "dessert": "sobremesa",
+    "some_other": "outro"
+  },
+  "unknow": "desconhecido"
+}
