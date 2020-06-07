@@ -10,26 +10,31 @@ class RecipeAdapter extends Adapter<Recipe> {
   @override
   Recipe fromMap(Map<String, dynamic> map) {
     return Recipe(
-      map['id'], 
-      map['name'], 
-      map['description'], 
-      Type.values.firstWhere((e) => e.toString() == map['type']), 
-      map['quantityPeopleServide'], 
-      Difficulty.values.firstWhere((e) => e.toString() == map['difficulty']), 
-      (map['ingredientList'] as List).map((ingredientMap) => ingredientAdapter.fromMap(ingredientMap)).toList(), 
-      map['steps'].cast<String>());
+        id: map['id'],
+        title: map['title'],
+        description: map['description'],
+        type: Type.values.firstWhere((e) => e.toString() == map['type']),
+        quantityPeopleServide: map['quantityPeopleServide'],
+        difficulty: Difficulty.values
+            .firstWhere((e) => e.toString() == map['difficulty']),
+        ingredientList: (map['ingredientList'] as List)
+            .map((ingredientMap) => ingredientAdapter.fromMap(ingredientMap))
+            .toList(),
+        steps: map['steps'].cast<String>());
   }
 
   @override
-  Map<String, dynamic> toMap(Recipe recipe){
+  Map<String, dynamic> toMap(Recipe recipe) {
     return {
       'id': recipe.id,
-      'name': recipe.name,
+      'title': recipe.title,
       'description': recipe.description,
       'type': recipe.type.toString(),
       'quantityPeopleServide': recipe.quantityPeopleServide,
       'difficulty': recipe.difficulty.toString(),
-      'ingredientList': recipe.ingredientList.map((ingredient) => ingredientAdapter.toMap(ingredient)).toList(),
+      'ingredientList': recipe.ingredientList
+          .map((ingredient) => ingredientAdapter.toMap(ingredient))
+          .toList(),
       'steps': recipe.steps
     };
   }

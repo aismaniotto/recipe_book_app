@@ -13,13 +13,19 @@ class RecipeTileWidget extends StatelessWidget {
     return Card(
         child: ListTile(
       leading: getIconType(recipe.type),
-      title: Text(recipe.name),
-      subtitle: Text(recipe.description),
+      title: Text(recipe.title),
+      subtitle: Text(
+        recipe?.description,
+        maxLines: 3,
+        overflow: TextOverflow.fade,
+      ),
       trailing: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Text('x${recipe.quantityPeopleServide}'),
+            recipe.quantityPeopleServide != null
+                ? Text('x${recipe.quantityPeopleServide}')
+                : Text(''),
             getIconDifficulty(recipe.difficulty)
           ]),
       onTap: onTap,

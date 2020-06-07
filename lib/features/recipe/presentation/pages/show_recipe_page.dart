@@ -17,7 +17,7 @@ class ShowRecipePage extends StatelessWidget {
     var columnWidgets = List<Widget>();
 
     columnWidgets.add(RecipeHeaderWidget(
-      name: recipe.name,
+      name: recipe.title,
       description: recipe.description,
       type: recipe.type,
       qtdPeopleServide: recipe.quantityPeopleServide,
@@ -30,7 +30,7 @@ class ShowRecipePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(recipe.name),
+        title: Text(recipe.title),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.edit),

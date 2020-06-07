@@ -6,8 +6,7 @@ part 'filtered_recipes_store.g.dart';
 
 class FilteredRecipesStore extends _FilteredRecipesStore
     with _$FilteredRecipesStore {
-  FilteredRecipesStore(GetAllRecipes getAllRecipes)
-      : super(getAllRecipes);
+  FilteredRecipesStore(GetAllRecipes getAllRecipes) : super(getAllRecipes);
 }
 
 abstract class _FilteredRecipesStore with Store {

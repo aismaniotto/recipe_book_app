@@ -9,12 +9,14 @@ import 'package:recipe_book_app/features/recipe/domain/usecases/delete_recipe.da
 import 'package:recipe_book_app/features/recipe/domain/usecases/get_all_recipes.dart';
 import 'package:recipe_book_app/features/recipe/domain/usecases/update_recipe.dart';
 import 'package:recipe_book_app/features/recipe/presentation/stores/filtered_recipes_store.dart';
+import 'package:recipe_book_app/features/recipe/presentation/stores/recipe_store.dart';
 
 final ioc = GetIt.instance;
 
 Future<void> init() async {
   // Store
   ioc.registerLazySingleton(() => FilteredRecipesStore(ioc()));
+  ioc.registerFactory(() => RecipeStore(ioc()));
 
   // Use cases
   ioc.registerLazySingleton(() => AddRecipe(ioc()));

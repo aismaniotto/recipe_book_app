@@ -17,7 +17,11 @@ A new recipe book Flutter project, architected with clean architecture.
 
 ## day to day commands
 
-### regenarate localizations files
+### generate or re-generate stores files (\*.g.dart)
+
+`flutter packages pub run build_runner build`
+
+### generate or re-generate localizations files from json files (assests/lang/[locale].json)
 
 `flutter pub run easy_localization:generate --source-dir=assets/lang --output-dir=lib/core/localization_generated`
 `flutter pub run easy_localization:generate --source-dir=assets/lang --output-dir=lib/core/localization_generated -f keys -o locale_keys.g.dart`

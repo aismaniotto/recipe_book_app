@@ -9,6 +9,7 @@ import 'package:recipe_book_app/features/recipe/presentation/widgets/loading_wid
 import 'package:recipe_book_app/features/recipe/presentation/widgets/recipe_tile_widget.dart';
 import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
 
+import 'new_recipe_page.dart';
 import 'show_recipe_page.dart';
 
 class ListRecipesPage extends StatelessWidget {
@@ -53,7 +54,8 @@ class ListRecipesPage extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            //TODO:new recipe page
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => NewRecipePage()));
           },
           tooltip: LocaleKeys.add_new_recipe.tr(),
           child: Icon(Icons.add),

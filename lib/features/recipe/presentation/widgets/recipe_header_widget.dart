@@ -42,7 +42,7 @@ class RecipeHeaderWidget extends StatelessWidget {
             style: DefaultTextStyle.of(context).style,
             children: <TextSpan>[
               TextSpan(
-                  text: LocaleKeys.type_.tr(),
+                  text: LocaleKeys.type.tr() + ": ",
                   style: TextStyle(fontWeight: FontWeight.bold)),
               TextSpan(text: EnumToString.recipeTypeToString(type)),
             ],
@@ -55,7 +55,7 @@ class RecipeHeaderWidget extends StatelessWidget {
             style: DefaultTextStyle.of(context).style,
             children: <TextSpan>[
               TextSpan(
-                  text: LocaleKeys.serve_.tr(),
+                  text: LocaleKeys.serve.tr() + ": ",
                   style: TextStyle(fontWeight: FontWeight.bold)),
               // TextSpan(text: '$qtdPeopleServide people'),
               (qtdPeopleServide > 1)
@@ -75,7 +75,7 @@ class RecipeHeaderWidget extends StatelessWidget {
             style: DefaultTextStyle.of(context).style,
             children: <TextSpan>[
               TextSpan(
-                  text: LocaleKeys.difficulty_.tr(),
+                  text: LocaleKeys.difficulty_level.tr() + ": ",
                   style: TextStyle(fontWeight: FontWeight.bold)),
               TextSpan(text: EnumToString.difficultyToString(difficulty)),
             ],
@@ -88,7 +88,7 @@ class RecipeHeaderWidget extends StatelessWidget {
             style: DefaultTextStyle.of(context).style,
             children: <TextSpan>[
               TextSpan(
-                  text: LocaleKeys.description_.tr(),
+                  text: LocaleKeys.description.tr() + ": ",
                   style: TextStyle(fontWeight: FontWeight.bold)),
               TextSpan(text: description),
             ],

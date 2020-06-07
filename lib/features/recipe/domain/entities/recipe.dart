@@ -5,7 +5,7 @@ enum Difficulty { easy, medium, hard }
 
 class Recipe {
   final String id;
-  final String name;
+  final String title;
   final String description;
   final Type type;
   final int quantityPeopleServide;
@@ -15,12 +15,12 @@ class Recipe {
   //TODO:String picturePath;
 
   Recipe(
-      this.id,
-      this.name,
+      {this.id,
+      this.title,
       this.description,
       this.type,
       this.quantityPeopleServide,
       this.difficulty,
       this.ingredientList,
-      this.steps);
+      this.steps});
 }
