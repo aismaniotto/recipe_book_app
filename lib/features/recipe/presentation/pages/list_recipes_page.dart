@@ -1,16 +1,16 @@
+import 'dart:isolate';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:recipe_book_app/core/IoC/ioc.dart';
+import 'package:recipe_book_app/core/services/navigation_service.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 import 'package:recipe_book_app/features/recipe/presentation/stores/filtered_recipes_store.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/empty_list_widget.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/loading_widget.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/recipe_tile_widget.dart';
 import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
-
-import 'new_recipe_page.dart';
-import 'show_recipe_page.dart';
 
 class ListRecipesPage extends StatelessWidget {
   final _store = ioc<FilteredRecipesStore>();
@@ -39,14 +39,8 @@ class ListRecipesPage extends StatelessWidget {
                 return RecipeTileWidget(
                     recipe,
                     () => {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ShowRecipePage(
-                                      key: this.key,
-                                      recipe: recipe,
-                                    )),
-                          )
+                          ioc<NavigationService>()
+                              .navigateTo('/show_recipe', arguments: recipe),
                         });
               },
             );
@@ -54,8 +48,7 @@ class ListRecipesPage extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => NewRecipePage()));
+            ioc<NavigationService>().navigateTo('/new_recipe');
           },
           tooltip: LocaleKeys.add_new_recipe.tr(),
           child: Icon(Icons.add),

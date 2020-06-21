@@ -21,7 +21,6 @@ class NewRecipePage extends StatelessWidget {
               textColor: Colors.white,
               onPressed: () async {
                 await _store.saveRecipe();
-                Navigator.of(context).pop();
               },
               child: Text(LocaleKeys.save.tr()),
               shape: CircleBorder(side: BorderSide(color: Colors.transparent)),

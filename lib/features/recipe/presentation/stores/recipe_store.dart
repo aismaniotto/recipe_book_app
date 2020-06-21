@@ -1,4 +1,6 @@
 import 'package:mobx/mobx.dart';
+import 'package:recipe_book_app/core/IoC/ioc.dart';
+import 'package:recipe_book_app/core/services/navigation_service.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/identificable_text.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 import 'package:recipe_book_app/features/recipe/domain/usecases/add_recipe.dart';
@@ -105,5 +107,6 @@ abstract class _RecipeStore with Store {
         difficulty: difficulty,
         ingredientList: ingredientList,
         steps: steps);
+    ioc<NavigationService>().goBack();
   }
 }
