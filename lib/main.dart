@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: LocaleKeys.recipe_book,
       theme: ThemeData(
-          primarySwatch: Colors.deepOrange,
+          primarySwatch: Colors.red,
           scaffoldBackgroundColor: const Color(0xFFEFEFEF),
           textTheme: TextTheme(bodyText2: TextStyle(fontSize: 16.0))),
       localizationsDelegates: context.localizationDelegates,

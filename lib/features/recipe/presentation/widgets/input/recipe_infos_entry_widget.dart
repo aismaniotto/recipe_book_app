@@ -6,18 +6,28 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
 
 class RecipeInfosEntryWidget extends StatelessWidget {
+  final String title;
   final ValueChanged<String> onTitleChanged;
+  final String description;
   final ValueChanged<String> onDescriptionChanged;
+  final Type type;
   final ValueChanged<Type> onTypeChanged;
+  final int quantityPeopleServide;
   final ValueChanged<int> onQuantityPeopleServideChanged;
+  final Difficulty difficulty;
   final ValueChanged<Difficulty> onDifficultyChanged;
 
   const RecipeInfosEntryWidget(
       {Key key,
+      @required this.title,
       @required this.onTitleChanged,
+      @required this.description,
       @required this.onDescriptionChanged,
+      @required this.type,
       @required this.onTypeChanged,
+      @required this.quantityPeopleServide,
       @required this.onQuantityPeopleServideChanged,
+      @required this.difficulty,
       @required this.onDifficultyChanged})
       : super(key: key);
 
@@ -28,18 +38,21 @@ class RecipeInfosEntryWidget extends StatelessWidget {
         TextFormField(
             decoration:
                 InputDecoration(labelText: LocaleKeys.recipe_title.tr()),
+            initialValue: title,
             onChanged: onTitleChanged,
             autovalidate: true,
             validator: (value) =>
                 value.isEmpty ? LocaleKeys.title_required.tr() : null),
         TextFormField(
           decoration: InputDecoration(labelText: LocaleKeys.description.tr()),
+          initialValue: description,
           keyboardType: TextInputType.multiline,
           maxLines: null,
           onChanged: onDescriptionChanged,
         ),
         DropdownButtonFormField(
             decoration: InputDecoration(labelText: LocaleKeys.type.tr()),
+            value: type,
             onChanged: onTypeChanged,
             autovalidate: true,
             validator: (value) =>
@@ -60,10 +73,11 @@ class RecipeInfosEntryWidget extends StatelessWidget {
             }).toList(),
             onTap: () => {FocusScope.of(context).unfocus()}),
         TextFormField(
-            onChanged: (String value) =>
-                onQuantityPeopleServideChanged(int.parse(value)),
             decoration:
                 InputDecoration(labelText: LocaleKeys.peoples_serves.tr()),
+            initialValue: quantityPeopleServide?.toString(),
+            onChanged: (String value) =>
+                onQuantityPeopleServideChanged(int.parse(value)),
             keyboardType: TextInputType.number,
             inputFormatters: <TextInputFormatter>[
               WhitelistingTextInputFormatter.digitsOnly
@@ -71,6 +85,7 @@ class RecipeInfosEntryWidget extends StatelessWidget {
         DropdownButtonFormField(
             decoration:
                 InputDecoration(labelText: LocaleKeys.difficulty_level.tr()),
+            value: difficulty,
             onChanged: onDifficultyChanged,
             autovalidate: true,
             validator: (value) =>

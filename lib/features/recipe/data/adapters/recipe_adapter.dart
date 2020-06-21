@@ -1,11 +1,11 @@
 import 'package:recipe_book_app/core/adapters/adapter.dart';
-import 'package:recipe_book_app/features/recipe/data/adapters/ingredient_adapter.dart';
+import 'package:recipe_book_app/features/recipe/data/adapters/identificable_text_adapater.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 
 class RecipeAdapter extends Adapter<Recipe> {
-  final IngredientAdapter ingredientAdapter;
+  final IdentificableTextAdapter identificableTextAdapter;
 
-  RecipeAdapter(this.ingredientAdapter);
+  RecipeAdapter(this.identificableTextAdapter);
 
   @override
   Recipe fromMap(Map<String, dynamic> map) {
@@ -18,9 +18,12 @@ class RecipeAdapter extends Adapter<Recipe> {
         difficulty: Difficulty.values
             .firstWhere((e) => e.toString() == map['difficulty']),
         ingredientList: (map['ingredientList'] as List)
-            .map((ingredientMap) => ingredientAdapter.fromMap(ingredientMap))
+            .map((ingredientMap) =>
+                identificableTextAdapter.fromMap(ingredientMap))
             .toList(),
-        steps: map['steps'].cast<String>());
+        steps: (map['steps'] as List)
+            .map((stepMap) => identificableTextAdapter.fromMap(stepMap))
+            .toList());
   }
 
   @override
@@ -33,9 +36,11 @@ class RecipeAdapter extends Adapter<Recipe> {
       'quantityPeopleServide': recipe.quantityPeopleServide,
       'difficulty': recipe.difficulty.toString(),
       'ingredientList': recipe.ingredientList
-          .map((ingredient) => ingredientAdapter.toMap(ingredient))
+          .map((ingredient) => identificableTextAdapter.toMap(ingredient))
           .toList(),
       'steps': recipe.steps
+          .map((step) => identificableTextAdapter.toMap(step))
+          .toList(),
     };
   }
 }

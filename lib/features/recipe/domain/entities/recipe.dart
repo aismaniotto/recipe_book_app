@@ -1,4 +1,4 @@
-import 'package:recipe_book_app/features/recipe/domain/entities/ingredient.dart';
+import 'package:recipe_book_app/features/recipe/domain/entities/identificable_text.dart';
 
 enum Type { breakfast, meal, side, snack, drink, dessert, other }
 enum Difficulty { easy, medium, hard }
@@ -10,8 +10,8 @@ class Recipe {
   final Type type;
   final int quantityPeopleServide;
   final Difficulty difficulty;
-  final List<Ingredient> ingredientList;
-  final List<String> steps;
+  final List<IdentificableText> ingredientList;
+  final List<IdentificableText> steps;
   //TODO:String picturePath;
 
   Recipe(

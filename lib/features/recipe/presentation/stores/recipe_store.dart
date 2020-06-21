@@ -1,5 +1,5 @@
 import 'package:mobx/mobx.dart';
-import 'package:recipe_book_app/features/recipe/domain/entities/ingredient.dart';
+import 'package:recipe_book_app/features/recipe/domain/entities/identificable_text.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 import 'package:recipe_book_app/features/recipe/domain/usecases/add_recipe.dart';
 
@@ -11,6 +11,8 @@ class RecipeStore extends _RecipeStore with _$RecipeStore {
 
 abstract class _RecipeStore with Store {
   final AddRecipe _addRecipe;
+
+  _RecipeStore(this._addRecipe);
 
   @observable
   String title = '';
@@ -38,12 +40,59 @@ abstract class _RecipeStore with Store {
   changeDifficulty(Difficulty newDifficulty) => difficulty = newDifficulty;
 
   @observable
-  List<Ingredient> ingredientList = List<Ingredient>();
+  List<IdentificableText> ingredientList =
+      [IdentificableText('')].asObservable();
+
+  @action
+  addNewIngredient() {
+    ingredientList.add(IdentificableText(''));
+  }
+
+  @action
+  deleteIngredient(int index) {
+    ingredientList.removeAt(index);
+  }
+
+  @action
+  changeIngredient(String newIngredient, int index) {
+    ingredientList[index].text = newIngredient;
+  }
+
+  @action
+  reorderIngredient(int oldIndex, int newIndex) {
+    if (newIndex > oldIndex) {
+      newIndex -= 1;
+    }
+    IdentificableText ingredient = ingredientList.removeAt(oldIndex);
+    ingredientList.insert(newIndex, ingredient);
+  }
 
   @observable
-  List<String> steps = List<String>();
+  ObservableList<IdentificableText> steps =
+      [IdentificableText('')].asObservable();
+  @action
+  addNewStep() {
+    steps.add(IdentificableText(''));
+  }
 
-  _RecipeStore(this._addRecipe);
+  @action
+  deleteStep(int index) {
+    steps.removeAt(index);
+  }
+
+  @action
+  changeStep(String newStep, int index) {
+    steps[index].text = newStep;
+  }
+
+  @action
+  reorderStep(int oldIndex, int newIndex) {
+    if (newIndex > oldIndex) {
+      newIndex -= 1;
+    }
+    IdentificableText step = steps.removeAt(oldIndex);
+    steps.insert(newIndex, step);
+  }
 
   @action
   saveRecipe() async {

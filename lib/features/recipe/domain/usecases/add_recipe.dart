@@ -1,4 +1,4 @@
-import 'package:recipe_book_app/features/recipe/domain/entities/ingredient.dart';
+import 'package:recipe_book_app/features/recipe/domain/entities/identificable_text.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 import 'package:recipe_book_app/features/recipe/domain/repositories/recipe_repository.dart';
 import 'package:uuid/uuid.dart';
@@ -15,8 +15,8 @@ class AddRecipe {
       @required Type type,
       @required int quantityPeopleServide,
       @required Difficulty difficulty,
-      @required List<Ingredient> ingredientList,
-      @required List<String> steps}) async {
+      @required List<IdentificableText> ingredientList,
+      @required List<IdentificableText> steps}) async {
     // TODO: check if already exist
     return await this.repostitory.addRecipe(Recipe(
         id: Uuid().v4(),

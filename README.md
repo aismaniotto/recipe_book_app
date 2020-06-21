@@ -24,4 +24,13 @@ A new recipe book Flutter project, architected with clean architecture.
 ### generate or re-generate localizations files from json files (assests/lang/[locale].json)
 
 `flutter pub run easy_localization:generate --source-dir=assets/lang --output-dir=lib/core/localization_generated`
+
 `flutter pub run easy_localization:generate --source-dir=assets/lang --output-dir=lib/core/localization_generated -f keys -o locale_keys.g.dart`
+
+### generate release apk
+
+`flutter build apk`
+
+#### installing the generated apk
+
+`flutter install`

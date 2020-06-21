@@ -16,6 +16,7 @@
   "add_ingredient": "Adicionar ingrediente",
   "delete_ingredient": "Excluir ingrediente",
   "move_ingredient": "Mover ingrediente",
+  "ingredient_hint": "ex.: 100g de açúcar",
   "___comment3": "PASSOS",
   "steps": "Modo de preparo",
   "add_step": "Adicionar passo",
@@ -50,6 +51,8 @@
   },
   "___comment0": "GERAIS",
   "unknow": "desconhecido",
+  "not_informed": "não informado",
+  "undefined": "indefinido",
   "save": "Salvar",
   "edit": "Editar",
   "delete": "Deletar"

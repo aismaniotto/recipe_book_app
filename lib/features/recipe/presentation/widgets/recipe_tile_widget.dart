@@ -15,7 +15,7 @@ class RecipeTileWidget extends StatelessWidget {
       leading: getIconType(recipe.type),
       title: Text(recipe.title),
       subtitle: Text(
-        recipe?.description,
+        recipe.description ?? '',
         maxLines: 3,
         overflow: TextOverflow.fade,
       ),

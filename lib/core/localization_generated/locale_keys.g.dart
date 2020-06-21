@@ -17,6 +17,7 @@ abstract class  LocaleKeys {
   static const add_ingredient = 'add_ingredient';
   static const delete_ingredient = 'delete_ingredient';
   static const move_ingredient = 'move_ingredient';
+  static const ingredient_hint = 'ingredient_hint';
   static const ___comment3 = '___comment3';
   static const steps = 'steps';
   static const add_step = 'add_step';
@@ -48,6 +49,8 @@ abstract class  LocaleKeys {
   static const recipe_type = 'recipe_type';
   static const ___comment0 = '___comment0';
   static const unknow = 'unknow';
+  static const not_informed = 'not_informed';
+  static const undefined = 'undefined';
   static const save = 'save';
   static const edit = 'edit';
   static const delete = 'delete';

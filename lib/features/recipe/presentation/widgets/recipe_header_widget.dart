@@ -58,13 +58,15 @@ class RecipeHeaderWidget extends StatelessWidget {
                   text: LocaleKeys.serve.tr() + ": ",
                   style: TextStyle(fontWeight: FontWeight.bold)),
               // TextSpan(text: '$qtdPeopleServide people'),
-              (qtdPeopleServide > 1)
-                  ? TextSpan(
-                      text:
-                          '$qtdPeopleServide ' + LocaleKeys.person_people.tr())
-                  : TextSpan(
-                      text:
-                          '$qtdPeopleServide ' + LocaleKeys.person_person.tr())
+              (qtdPeopleServide == null)
+                  ? TextSpan(text: LocaleKeys.not_informed.tr())
+                  : (qtdPeopleServide > 1)
+                      ? TextSpan(
+                          text: '$qtdPeopleServide ' +
+                              LocaleKeys.person_people.tr())
+                      : TextSpan(
+                          text: '$qtdPeopleServide ' +
+                              LocaleKeys.person_person.tr())
             ],
           ),
         ),
@@ -90,7 +92,10 @@ class RecipeHeaderWidget extends StatelessWidget {
               TextSpan(
                   text: LocaleKeys.description.tr() + ": ",
                   style: TextStyle(fontWeight: FontWeight.bold)),
-              TextSpan(text: description),
+              TextSpan(
+                  text: description == null
+                      ? LocaleKeys.not_informed.tr()
+                      : description),
             ],
           ),
         ),

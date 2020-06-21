@@ -16,6 +16,7 @@
   "add_ingredient": "Add ingredient",
   "delete_ingredient": "Delete ingredient",
   "move_ingredient": "Move ingredient",
+  "ingredient_hint": "e.g.: 100g sugar",
   "___comment3": "STEPS",
   "steps": "Steps",
   "add_step": "Add step",
@@ -50,6 +51,8 @@
   },
   "___comment0": "GENERALS",
   "unknow": "unknow",
+  "not_informed": "not informed",
+  "undefined": "undefined",
   "save": "Save",
   "edit": "Edit",
   "delete": "Delete"

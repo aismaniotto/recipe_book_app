@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:recipe_book_app/features/recipe/data/adapters/ingredient_adapter.dart';
+import 'package:recipe_book_app/features/recipe/data/adapters/identificable_text_adapater.dart';
 import 'package:recipe_book_app/features/recipe/data/adapters/recipe_adapter.dart';
 import 'package:recipe_book_app/features/recipe/data/datasources/recipe_source.dart';
 import 'package:recipe_book_app/features/recipe/data/repositories/recipe_repository_impl.dart';
@@ -26,7 +26,7 @@ Future<void> init() async {
 
   // Adapters
   ioc.registerLazySingleton(() => RecipeAdapter(ioc()));
-  ioc.registerLazySingleton(() => IngredientAdapter());
+  ioc.registerLazySingleton(() => IdentificableTextAdapter());
 
   // Repository
   ioc.registerLazySingleton<RecipeRepository>(

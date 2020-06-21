@@ -89,13 +89,13 @@ mixin _$RecipeStore on _RecipeStore, Store {
   final _$ingredientListAtom = Atom(name: '_RecipeStore.ingredientList');
 
   @override
-  List<Ingredient> get ingredientList {
+  List<IdentificableText> get ingredientList {
     _$ingredientListAtom.reportRead();
     return super.ingredientList;
   }
 
   @override
-  set ingredientList(List<Ingredient> value) {
+  set ingredientList(List<IdentificableText> value) {
     _$ingredientListAtom.reportWrite(value, super.ingredientList, () {
       super.ingredientList = value;
     });
@@ -104,13 +104,13 @@ mixin _$RecipeStore on _RecipeStore, Store {
   final _$stepsAtom = Atom(name: '_RecipeStore.steps');
 
   @override
-  List<String> get steps {
+  ObservableList<IdentificableText> get steps {
     _$stepsAtom.reportRead();
     return super.steps;
   }
 
   @override
-  set steps(List<String> value) {
+  set steps(ObservableList<IdentificableText> value) {
     _$stepsAtom.reportWrite(value, super.steps, () {
       super.steps = value;
     });
@@ -164,6 +164,50 @@ mixin _$RecipeStore on _RecipeStore, Store {
         name: '_RecipeStore.changeQuantityPeopleServide');
     try {
       return super.changeQuantityPeopleServide(newQuantityPeopleServide);
+    } finally {
+      _$_RecipeStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic addNewStep() {
+    final _$actionInfo = _$_RecipeStoreActionController.startAction(
+        name: '_RecipeStore.addNewStep');
+    try {
+      return super.addNewStep();
+    } finally {
+      _$_RecipeStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic deleteStep(int index) {
+    final _$actionInfo = _$_RecipeStoreActionController.startAction(
+        name: '_RecipeStore.deleteStep');
+    try {
+      return super.deleteStep(index);
+    } finally {
+      _$_RecipeStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic changeStep(String newStep, int index) {
+    final _$actionInfo = _$_RecipeStoreActionController.startAction(
+        name: '_RecipeStore.changeStep');
+    try {
+      return super.changeStep(newStep, index);
+    } finally {
+      _$_RecipeStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic reorderStep(int oldIndex, int newIndex) {
+    final _$actionInfo = _$_RecipeStoreActionController.startAction(
+        name: '_RecipeStore.reorderStep');
+    try {
+      return super.reorderStep(oldIndex, newIndex);
     } finally {
       _$_RecipeStoreActionController.endAction(_$actionInfo);
     }
