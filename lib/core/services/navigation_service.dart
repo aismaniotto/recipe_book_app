@@ -11,4 +11,8 @@ class NavigationService {
   void goBack() {
     return navigatorKey.currentState.pop();
   }
+
+  void pop(bool pop) {
+    return navigatorKey.currentState.pop(pop);
+  }
 }

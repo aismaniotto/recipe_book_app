@@ -1,16 +1,25 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
+import 'package:recipe_book_app/core/services/navigation_service.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/identificable_text.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
+import 'package:recipe_book_app/features/recipe/domain/usecases/delete_recipe.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/item_list_widget.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/recipe_header_widget.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/title_list_widget.dart';
 
 class ShowRecipePage extends StatelessWidget {
   final Recipe recipe;
+  final DeleteRecipe deleteRecipe;
+  final NavigationService navigationService;
 
-  ShowRecipePage({Key key, @required this.recipe}) : super(key: key);
+  ShowRecipePage(
+      {Key key,
+      @required this.recipe,
+      @required this.deleteRecipe,
+      @required this.navigationService})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +37,34 @@ class ShowRecipePage extends StatelessWidget {
     columnWidgets.add(TitleListWidget(LocaleKeys.steps.tr()));
     columnWidgets.addAll(prepareList<IdentificableText>(recipe.steps));
 
+    void _showDialog() {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(LocaleKeys.attention.tr()),
+            content: Text(LocaleKeys.sure_delete.tr()),
+            actions: <Widget>[
+              FlatButton(
+                child: Text(LocaleKeys.yes.tr()),
+                onPressed: () async {
+                  await deleteRecipe(recipe);
+                  navigationService.pop(false);
+                  navigationService.goBack();
+                },
+              ),
+              FlatButton(
+                child: Text(LocaleKeys.no.tr()),
+                onPressed: () {
+                  navigationService.pop(false);
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(recipe.title),
@@ -44,8 +81,7 @@ class ShowRecipePage extends StatelessWidget {
             icon: Icon(Icons.delete),
             tooltip: LocaleKeys.delete.tr(),
             onPressed: () {
-              //TODO: add action to delete.
-              print('delete');
+              _showDialog();
             },
           ),
         ],

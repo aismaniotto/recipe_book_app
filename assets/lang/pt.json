@@ -50,6 +50,13 @@
     "some_other": "outro"
   },
   "___comment0": "GERAIS",
+  "attention": "Atenção",
+  "wish_leave": "Deseja sair sem salvar?",
+  "sure_delete": "Tem certeza que deseja apagar essa receita?",
+  "stay": "Ficar",
+  "exit": "Sair",
+  "yes": "Sim",
+  "no": "Não",
   "unknow": "desconhecido",
   "not_informed": "não informado",
   "undefined": "indefinido",

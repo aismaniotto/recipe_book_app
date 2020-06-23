@@ -1,9 +1,6 @@
-import 'dart:isolate';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:recipe_book_app/core/IoC/ioc.dart';
 import 'package:recipe_book_app/core/services/navigation_service.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 import 'package:recipe_book_app/features/recipe/presentation/stores/filtered_recipes_store.dart';
@@ -13,7 +10,12 @@ import 'package:recipe_book_app/features/recipe/presentation/widgets/recipe_tile
 import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
 
 class ListRecipesPage extends StatelessWidget {
-  final _store = ioc<FilteredRecipesStore>();
+  final FilteredRecipesStore store;
+  final NavigationService navigationService;
+
+  const ListRecipesPage(
+      {Key key, @required this.store, @required this.navigationService})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,24 +25,24 @@ class ListRecipesPage extends StatelessWidget {
         ),
         body: Observer(
           builder: (_) {
-            _store.getAllRecipes();
-            if (_store.filteredRecipes == null) {
+            store.getAllRecipes();
+            if (store.filteredRecipes == null) {
               return LoadingWidget();
             }
 
-            if (_store.filteredRecipes.isEmpty) {
+            if (store.filteredRecipes.isEmpty) {
               return EmptyListWidget();
             }
 
             return ListView.builder(
-              itemCount: _store.filteredRecipes.length,
+              itemCount: store.filteredRecipes.length,
               itemBuilder: (_, index) {
-                Recipe recipe = _store.filteredRecipes[index];
+                Recipe recipe = store.filteredRecipes[index];
                 return RecipeTileWidget(
                     recipe,
                     () => {
-                          ioc<NavigationService>()
-                              .navigateTo('/show_recipe', arguments: recipe),
+                          navigationService.navigateTo('/show_recipe',
+                              arguments: recipe),
                         });
               },
             );
@@ -48,7 +50,7 @@ class ListRecipesPage extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            ioc<NavigationService>().navigateTo('/new_recipe');
+            navigationService.navigateTo('/new_recipe');
           },
           tooltip: LocaleKeys.add_new_recipe.tr(),
           child: Icon(Icons.add),
