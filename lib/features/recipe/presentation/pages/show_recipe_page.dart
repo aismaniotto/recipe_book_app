@@ -73,8 +73,8 @@ class ShowRecipePage extends StatelessWidget {
             icon: Icon(Icons.edit),
             tooltip: LocaleKeys.edit.tr(),
             onPressed: () {
-              //TODO: add action to edit.
-              print('edit');
+              navigationService.goBack();
+              navigationService.navigateTo('/update_recipe', arguments: recipe);
             },
           ),
           IconButton(

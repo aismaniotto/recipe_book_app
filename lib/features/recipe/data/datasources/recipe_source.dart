@@ -35,7 +35,7 @@ class RecipeDataSourceImpl extends RecipeDataSource {
 
   @override
   Future<Recipe> updateRecipe(Recipe recipe) async {
-    final finder = Finder(filter: Filter.byKey(recipe.id));
+    final finder = Finder(filter: Filter.equals('id', recipe.id));
     await _recipesFolder.update(await _db, recipeAdapter.toMap(recipe),
         finder: finder);
 

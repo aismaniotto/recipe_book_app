@@ -7,11 +7,11 @@ import 'package:recipe_book_app/features/recipe/presentation/widgets/input/recip
 import 'package:recipe_book_app/features/recipe/presentation/stores/recipe_store.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/input/custom_reordenable_listview.dart';
 
-class NewRecipePage extends StatelessWidget {
+class InputRecipePage extends StatelessWidget {
   final RecipeStore store;
   final NavigationService navigationService;
 
-  const NewRecipePage(
+  const InputRecipePage(
       {Key key, @required this.store, @required this.navigationService})
       : super(key: key);
   @override
@@ -24,12 +24,12 @@ class NewRecipePage extends StatelessWidget {
               content: Text(LocaleKeys.wish_leave.tr()),
               actions: <Widget>[
                 FlatButton(
-                  onPressed: () => navigationService.pop(false),
-                  child: Text(LocaleKeys.stay.tr()),
-                ),
-                FlatButton(
                   onPressed: () => navigationService.pop(true),
                   child: Text(LocaleKeys.exit.tr()),
+                ),
+                FlatButton(
+                  onPressed: () => navigationService.pop(false),
+                  child: Text(LocaleKeys.stay.tr()),
                 ),
               ],
             ),
@@ -43,7 +43,8 @@ class NewRecipePage extends StatelessWidget {
         length: 3,
         child: Scaffold(
           appBar: AppBar(
-            title: Text(LocaleKeys.new_recipe.tr()),
+            title: Text(
+                store.title.isEmpty ? LocaleKeys.new_recipe.tr() : store.title),
             actions: <Widget>[
               FlatButton(
                 textColor: Colors.white,

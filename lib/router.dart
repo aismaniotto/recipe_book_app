@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
-import 'package:recipe_book_app/features/recipe/presentation/pages/new_recipe_page.dart';
+import 'package:recipe_book_app/features/recipe/presentation/pages/input_recipe_page.dart';
 import 'package:recipe_book_app/features/recipe/presentation/pages/show_recipe_page.dart';
 
 import 'core/IoC/ioc.dart';
 import 'features/recipe/domain/usecases/delete_recipe.dart';
 import 'features/recipe/presentation/pages/list_recipes_page.dart';
 import 'features/recipe/presentation/stores/filtered_recipes_store.dart';
+import 'features/recipe/presentation/stores/recipe_store.dart';
 
 class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -28,10 +29,16 @@ class Router {
                 ));
       case '/new_recipe':
         return MaterialPageRoute(
-            builder: (_) => NewRecipePage(
+            builder: (_) => InputRecipePage(
                   store: ioc(),
                   navigationService: ioc(),
                 ));
+      case '/update_recipe':
+        var recipe = settings.arguments as Recipe;
+        return MaterialPageRoute(
+            builder: (_) => InputRecipePage(
+                store: ioc<RecipeStore>(param1: recipe),
+                navigationService: ioc()));
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(

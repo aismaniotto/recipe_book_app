@@ -4,60 +4,70 @@ import 'package:recipe_book_app/core/services/navigation_service.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/identificable_text.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 import 'package:recipe_book_app/features/recipe/domain/usecases/add_recipe.dart';
+import 'package:recipe_book_app/features/recipe/domain/usecases/update_recipe.dart';
 
 part 'recipe_store.g.dart';
 
 class RecipeStore extends _RecipeStore with _$RecipeStore {
-  RecipeStore(AddRecipe addRecipe) : super(addRecipe);
+  RecipeStore(AddRecipe addRecipe, UpdateRecipe updateRecipe, {Recipe recipe})
+      : super(addRecipe, updateRecipe, recipe: recipe);
 }
 
 abstract class _RecipeStore with Store {
   final AddRecipe _addRecipe;
+  final UpdateRecipe _updateRecipe;
+  bool isUpdate = false;
+  Recipe recipe;
 
-  _RecipeStore(this._addRecipe);
+  _RecipeStore(this._addRecipe, this._updateRecipe, {this.recipe}) {
+    if (recipe == null) {
+      recipe = Recipe(
+          ingredientList: [IdentificableText('')].asObservable(),
+          steps: [IdentificableText('')].asObservable());
+    } else {
+      isUpdate = true;
+      recipe.ingredientList = recipe.ingredientList.asObservable();
+      recipe.steps = recipe.steps.asObservable();
+    }
+  }
 
-  @observable
-  String title = '';
+  String get title => recipe.title ?? '';
   @action
-  changeTitle(String newTitle) => title = newTitle;
+  changeTitle(String newTitle) => recipe.title = newTitle;
 
-  @observable
-  String description;
+  String get description => recipe.description;
   @action
-  changeDescription(String newDescription) => description = newDescription;
+  changeDescription(String newDescription) =>
+      recipe.description = newDescription;
 
-  @observable
-  Type type;
+  Type get type => recipe.type;
   @action
-  changeType(Type newType) => type = newType;
+  changeType(Type newType) => recipe.type = newType;
 
-  @observable
-  int quantityPeopleServide;
+  int get quantityPeopleServide => recipe.quantityPeopleServide;
   @action
   changeQuantityPeopleServide(int newQuantityPeopleServide) =>
-      quantityPeopleServide = newQuantityPeopleServide;
+      recipe.quantityPeopleServide = newQuantityPeopleServide;
 
-  @observable
-  Difficulty difficulty;
-  changeDifficulty(Difficulty newDifficulty) => difficulty = newDifficulty;
+  Difficulty get difficulty => recipe.difficulty;
+  changeDifficulty(Difficulty newDifficulty) =>
+      recipe.difficulty = newDifficulty;
 
-  @observable
-  List<IdentificableText> ingredientList =
-      [IdentificableText('')].asObservable();
+  List<IdentificableText> get ingredientList => recipe.ingredientList;
 
   @action
   addNewIngredient() {
-    ingredientList.add(IdentificableText(''));
+    recipe.ingredientList.add(IdentificableText(''));
   }
 
   @action
   deleteIngredient(int index) {
-    ingredientList.removeAt(index);
+    recipe.ingredientList.removeAt(index);
   }
 
   @action
   changeIngredient(String newIngredient, int index) {
-    ingredientList[index].text = newIngredient;
+    recipe.ingredientList[index].text = newIngredient;
   }
 
   @action
@@ -65,26 +75,24 @@ abstract class _RecipeStore with Store {
     if (newIndex > oldIndex) {
       newIndex -= 1;
     }
-    IdentificableText ingredient = ingredientList.removeAt(oldIndex);
-    ingredientList.insert(newIndex, ingredient);
+    IdentificableText ingredient = recipe.ingredientList.removeAt(oldIndex);
+    recipe.ingredientList.insert(newIndex, ingredient);
   }
 
-  @observable
-  ObservableList<IdentificableText> steps =
-      [IdentificableText('')].asObservable();
+  List<IdentificableText> get steps => recipe.steps;
   @action
   addNewStep() {
-    steps.add(IdentificableText(''));
+    recipe.steps.add(IdentificableText(''));
   }
 
   @action
   deleteStep(int index) {
-    steps.removeAt(index);
+    recipe.steps.removeAt(index);
   }
 
   @action
   changeStep(String newStep, int index) {
-    steps[index].text = newStep;
+    recipe.steps[index].text = newStep;
   }
 
   @action
@@ -92,21 +100,14 @@ abstract class _RecipeStore with Store {
     if (newIndex > oldIndex) {
       newIndex -= 1;
     }
-    IdentificableText step = steps.removeAt(oldIndex);
-    steps.insert(newIndex, step);
+    IdentificableText step = recipe.steps.removeAt(oldIndex);
+    recipe.steps.insert(newIndex, step);
   }
 
   @action
-  saveRecipe() async {
+  Future saveRecipe() async {
     if (title.isEmpty || type == null || difficulty == null) return;
-    _addRecipe(
-        title: title,
-        description: description,
-        type: type,
-        quantityPeopleServide: quantityPeopleServide,
-        difficulty: difficulty,
-        ingredientList: ingredientList,
-        steps: steps);
+    isUpdate ? await _updateRecipe(recipe) : await _addRecipe(recipe);
     ioc<NavigationService>().goBack();
   }
 }
