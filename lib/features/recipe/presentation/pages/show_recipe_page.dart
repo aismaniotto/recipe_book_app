@@ -72,9 +72,10 @@ class ShowRecipePage extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.edit),
             tooltip: LocaleKeys.edit.tr(),
-            onPressed: () {
-              navigationService.goBack();
-              navigationService.navigateTo('/update_recipe', arguments: recipe);
+            onPressed: () => {
+              navigationService
+                  .navigateTo('/update_recipe', arguments: recipe)
+                  .whenComplete(() => navigationService.goBack())
             },
           ),
           IconButton(

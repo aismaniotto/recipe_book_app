@@ -19,13 +19,13 @@ class ListRecipesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    store.getAllRecipes();
     return Scaffold(
         appBar: AppBar(
           title: Text(LocaleKeys.my_recipe_book.tr()),
         ),
         body: Observer(
           builder: (_) {
-            store.getAllRecipes();
             if (store.filteredRecipes == null) {
               return LoadingWidget();
             }
@@ -41,16 +41,19 @@ class ListRecipesPage extends StatelessWidget {
                 return RecipeTileWidget(
                     recipe,
                     () => {
-                          navigationService.navigateTo('/show_recipe',
-                              arguments: recipe),
+                          navigationService
+                              .navigateTo('/show_recipe', arguments: recipe)
+                              .whenComplete(() => store.getAllRecipes())
                         });
               },
             );
           },
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            navigationService.navigateTo('/new_recipe');
+          onPressed: () => {
+            navigationService
+                .navigateTo('/new_recipe')
+                .whenComplete(() => store.getAllRecipes())
           },
           tooltip: LocaleKeys.add_new_recipe.tr(),
           child: Icon(Icons.add),
