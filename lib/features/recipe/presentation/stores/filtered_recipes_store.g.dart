@@ -55,6 +55,14 @@ mixin _$FilteredRecipesStore on _FilteredRecipesStore, Store {
     return _$getAllRecipesAsyncAction.run(() => super.getAllRecipes());
   }
 
+  final _$deleteRecipeAsyncAction =
+      AsyncAction('_FilteredRecipesStore.deleteRecipe');
+
+  @override
+  Future deleteRecipe(Recipe recipe) {
+    return _$deleteRecipeAsyncAction.run(() => super.deleteRecipe(recipe));
+  }
+
   @override
   String toString() {
     return '''

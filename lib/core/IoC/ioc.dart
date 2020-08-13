@@ -16,7 +16,7 @@ final ioc = GetIt.instance;
 
 Future<void> init() async {
   // Store
-  ioc.registerLazySingleton(() => FilteredRecipesStore(ioc()));
+  ioc.registerLazySingleton(() => FilteredRecipesStore(ioc(), ioc()));
   // ioc.registerFactory(() => RecipeStore(ioc(), ioc()));
   ioc.registerFactoryParam(
       (param1, param2) => RecipeStore(ioc(), ioc(), recipe: param1));

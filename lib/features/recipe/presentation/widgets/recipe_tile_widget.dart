@@ -5,8 +5,9 @@ import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 class RecipeTileWidget extends StatelessWidget {
   final Recipe recipe;
   final Function onTap;
+  final Function onLongPress;
 
-  const RecipeTileWidget(this.recipe, this.onTap);
+  const RecipeTileWidget(this.recipe, this.onTap, this.onLongPress);
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,7 @@ class RecipeTileWidget extends StatelessWidget {
             getIconDifficulty(recipe.difficulty)
           ]),
       onTap: onTap,
+      onLongPress: onLongPress,
     ));
   }
 

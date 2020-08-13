@@ -19,6 +19,60 @@ class ListRecipesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void _sureDeleteRecipe(Recipe recipe) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(LocaleKeys.attention.tr()),
+            content: Text(LocaleKeys.sure_delete.tr()),
+            actions: <Widget>[
+              FlatButton(
+                child: Text(LocaleKeys.yes.tr()),
+                onPressed: () async {
+                  await store.deleteRecipe(recipe);
+                  store.getAllRecipes();
+                  navigationService.pop(false);
+                },
+              ),
+              FlatButton(
+                child: Text(LocaleKeys.no.tr()),
+                onPressed: () {
+                  navigationService.pop(false);
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+
+    void _longPressActions(Recipe recipe) {
+      showDialog(
+        context: context,
+        builder: (context) => SimpleDialog(
+          children: <Widget>[
+            SimpleDialogOption(
+              onPressed: () {
+                navigationService
+                    .navigateTo('/update_recipe', arguments: recipe)
+                    .whenComplete(() => store.getAllRecipes());
+                navigationService.pop(false);
+              },
+              child: Text(LocaleKeys.edit.tr()),
+            ),
+            SimpleDialogOption(
+              onPressed: () {
+                navigationService.pop(false);
+                _sureDeleteRecipe(recipe);
+              },
+              child: Text(LocaleKeys.delete.tr()),
+            ),
+          ],
+        ),
+      );
+    }
+
     store.getAllRecipes();
     return Scaffold(
         appBar: AppBar(
@@ -44,7 +98,8 @@ class ListRecipesPage extends StatelessWidget {
                           navigationService
                               .navigateTo('/show_recipe', arguments: recipe)
                               .whenComplete(() => store.getAllRecipes())
-                        });
+                        },
+                    () => _longPressActions(recipe));
               },
             );
           },
