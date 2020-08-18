@@ -24,6 +24,10 @@ A new recipe book Flutter project, architected with clean architecture and state
 
 `flutter pub run easy_localization:generate --source-dir=assets/lang --output-dir=lib/core/localization_generated -f keys -o locale_keys.g.dart`
 
+### generate release .aab (application app bundle)
+
+`flutter build appbundle`
+
 ### generate release apk
 
 `flutter build apk`

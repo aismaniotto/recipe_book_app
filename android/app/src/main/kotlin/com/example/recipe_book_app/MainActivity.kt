@@ -1,4 +1,4 @@
-package com.example.recipe_book_app
+package br.com.aismaniotto.recipe_book
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
