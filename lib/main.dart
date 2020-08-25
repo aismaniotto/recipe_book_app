@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:recipe_book_app/core/IoC/ioc.dart' as ioc;
 import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
+import 'package:recipe_book_app/core/services/analytics_service.dart';
 import 'package:recipe_book_app/core/services/navigation_service.dart';
 import 'package:recipe_book_app/features/recipe/presentation/pages/list_recipes_page.dart';
 import 'package:recipe_book_app/core/localization_generated/codegen_loader.g.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorObservers: [ioc.ioc<AnalyticsService>().getAnalyticsObserver()],
       navigatorKey: ioc.ioc<NavigationService>().navigatorKey,
       onGenerateRoute: Router.generateRoute,
       title: LocaleKeys.recipe_book,

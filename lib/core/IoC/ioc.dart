@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:recipe_book_app/core/services/analytics_service.dart';
 import 'package:recipe_book_app/core/services/navigation_service.dart';
 import 'package:recipe_book_app/features/recipe/data/adapters/identificable_text_adapater.dart';
 import 'package:recipe_book_app/features/recipe/data/adapters/recipe_adapter.dart';
@@ -41,4 +42,5 @@ Future<void> init() async {
 
   // Services
   ioc.registerSingleton<NavigationService>(NavigationService());
+  ioc.registerLazySingleton<AnalyticsService>(() => AnalyticsService());
 }

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "109870306509",
+    "firebase_url": "https://recipe-book-42aea.firebaseio.com",
+    "project_id": "recipe-book-42aea",
+    "storage_bucket": "recipe-book-42aea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:000000000000:android:0000000000000000000000",
+        "android_client_info": {
+          "package_name": "br.com.aismaniotto.recipebook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "mock-mock.mock.mock.mock",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AAAAAAAAAAAAAAA-AAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "mock-mock.apps.mock.mock",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
