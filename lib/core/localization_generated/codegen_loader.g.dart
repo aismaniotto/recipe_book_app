@@ -1,4 +1,7 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
+
+// ignore_for_file: prefer_single_quotes
+
 import 'dart:ui';
 
 import 'package:easy_localization/easy_localization.dart' show AssetLoader;
@@ -11,7 +14,7 @@ class CodegenLoader extends AssetLoader{
     return Future.value(mapLocales[locale.toString()]);
   }
 
-    static const Map<String,dynamic> pt = {
+  static const Map<String,dynamic> pt = {
   "___comment1": "RECEITAS",
   "recipe": "Receita",
   "my_recipe_book": "Meu livro de receitas",
@@ -64,6 +67,8 @@ class CodegenLoader extends AssetLoader{
   },
   "___comment0": "GERAIS",
   "attention": "Atenção",
+  "about": "Sobre",
+  "backup": "Backup",
   "wish_leave": "Deseja sair sem salvar?",
   "sure_delete": "Tem certeza que deseja apagar essa receita?",
   "stay": "Ficar",
@@ -77,7 +82,7 @@ class CodegenLoader extends AssetLoader{
   "edit": "Editar",
   "delete": "Deletar"
 };
-  static const Map<String,dynamic> en = {
+static const Map<String,dynamic> en = {
   "___comment1": "RECIPES",
   "recipe": "Recipe",
   "my_recipe_book": "My recipe book",
@@ -130,6 +135,8 @@ class CodegenLoader extends AssetLoader{
   },
   "___comment0": "GENERALS",
   "attention": "Attention",
+  "about": "About",
+  "backup": "Backup",
   "wish_leave": "Wish leave withou save?",
   "sure_delete": "Are you sure you want to delete this recipe?",
   "stay": "Stay",
@@ -143,5 +150,5 @@ class CodegenLoader extends AssetLoader{
   "edit": "Edit",
   "delete": "Delete"
 };
-  static const Map<String, Map<String,dynamic>> mapLocales = {"pt": pt, "en": en};
+static const Map<String, Map<String,dynamic>> mapLocales = {"pt": pt, "en": en};
 }

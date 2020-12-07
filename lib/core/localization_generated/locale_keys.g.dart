@@ -49,6 +49,8 @@ abstract class  LocaleKeys {
   static const recipe_type = 'recipe_type';
   static const ___comment0 = '___comment0';
   static const attention = 'attention';
+  static const about = 'about';
+  static const backup = 'backup';
   static const wish_leave = 'wish_leave';
   static const sure_delete = 'sure_delete';
   static const stay = 'stay';

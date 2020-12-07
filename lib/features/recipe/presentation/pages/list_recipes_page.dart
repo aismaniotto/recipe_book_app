@@ -8,6 +8,7 @@ import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 import 'package:recipe_book_app/features/recipe/presentation/stores/filtered_recipes_store.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/empty_list_widget.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/loading_widget.dart';
+import 'package:recipe_book_app/features/recipe/presentation/widgets/nav_drawer.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/recipe_tile_widget.dart';
 import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
 
@@ -77,6 +78,7 @@ class ListRecipesPage extends StatelessWidget {
 
     store.getAllRecipes();
     return Scaffold(
+        drawer: NavDrawer(),
         appBar: AppBar(
           title: Text(LocaleKeys.my_recipe_book.tr()),
         ),
