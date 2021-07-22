@@ -16,29 +16,26 @@ abstract class _FilteredRecipesStore with Store {
   final DeleteRecipe _deleteRecipe;
 
   @observable
-  List<Recipe> _recipes;
+  List<Recipe> _recipes = List.empty();
 
   @observable
-  String filter;
+  String filter = '';
 
   _FilteredRecipesStore(this._getAllRecipes, this._deleteRecipe);
 
   @computed
   ObservableList<Recipe> get filteredRecipes {
     //TODO: apply filter by name
-    if (_recipes != null) {
-      return _recipes.asObservable();
-    }
-    return null;
+    return _recipes.asObservable();
   }
 
   @action
-  getAllRecipes() async {
+  Future getAllRecipes() async {
     _recipes = await _getAllRecipes();
   }
 
   @action
-  deleteRecipe(Recipe recipe) async {
+  Future deleteRecipe(Recipe recipe) async {
     await _deleteRecipe(recipe);
   }
 }

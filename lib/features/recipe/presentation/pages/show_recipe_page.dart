@@ -15,15 +15,15 @@ class ShowRecipePage extends StatelessWidget {
   final NavigationService navigationService;
 
   ShowRecipePage(
-      {Key key,
-      @required this.recipe,
-      @required this.deleteRecipe,
-      @required this.navigationService})
+      {Key? key,
+      required this.recipe,
+      required this.deleteRecipe,
+      required this.navigationService})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var columnWidgets = List<Widget>();
+    var columnWidgets = <Widget>[];
 
     columnWidgets.add(RecipeHeaderWidget(
       name: recipe.title,
@@ -45,7 +45,7 @@ class ShowRecipePage extends StatelessWidget {
             title: Text(LocaleKeys.attention.tr()),
             content: Text(LocaleKeys.sure_delete.tr()),
             actions: <Widget>[
-              FlatButton(
+              TextButton(
                 child: Text(LocaleKeys.yes.tr()),
                 onPressed: () async {
                   await deleteRecipe(recipe);
@@ -53,7 +53,7 @@ class ShowRecipePage extends StatelessWidget {
                   navigationService.goBack();
                 },
               ),
-              FlatButton(
+              TextButton(
                 child: Text(LocaleKeys.no.tr()),
                 onPressed: () {
                   navigationService.pop(false);
@@ -100,7 +100,7 @@ class ShowRecipePage extends StatelessWidget {
   }
 
   List<Widget> prepareList<T>(List<T> list) {
-    var widgetList = List<Widget>();
+    var widgetList = <Widget>[];
     list.forEach(
         (element) => widgetList.add(ItemListWidget(element.toString())));
 

@@ -4,7 +4,7 @@ import 'package:recipe_book_app/features/recipe/domain/repositories/recipe_repos
 class UpdateRecipe {
   final RecipeRepository repostitory;
 
-  UpdateRecipe(this.repostitory);
+  UpdateRecipe({required this.repostitory});
 
   Future<Recipe> call(Recipe recipe) async {
     return await this.repostitory.updateRecipe(recipe);

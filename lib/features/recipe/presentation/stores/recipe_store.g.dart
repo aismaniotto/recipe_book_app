@@ -6,7 +6,7 @@ part of 'recipe_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$RecipeStore on _RecipeStore, Store {
   final _$saveRecipeAsyncAction = AsyncAction('_RecipeStore.saveRecipe');
@@ -19,7 +19,7 @@ mixin _$RecipeStore on _RecipeStore, Store {
   final _$_RecipeStoreActionController = ActionController(name: '_RecipeStore');
 
   @override
-  dynamic changeTitle(String newTitle) {
+  void changeTitle(String newTitle) {
     final _$actionInfo = _$_RecipeStoreActionController.startAction(
         name: '_RecipeStore.changeTitle');
     try {
@@ -30,7 +30,7 @@ mixin _$RecipeStore on _RecipeStore, Store {
   }
 
   @override
-  dynamic changeDescription(String newDescription) {
+  void changeDescription(String newDescription) {
     final _$actionInfo = _$_RecipeStoreActionController.startAction(
         name: '_RecipeStore.changeDescription');
     try {
@@ -41,7 +41,7 @@ mixin _$RecipeStore on _RecipeStore, Store {
   }
 
   @override
-  dynamic changeType(Type newType) {
+  void changeType(Type? newType) {
     final _$actionInfo = _$_RecipeStoreActionController.startAction(
         name: '_RecipeStore.changeType');
     try {
@@ -52,7 +52,7 @@ mixin _$RecipeStore on _RecipeStore, Store {
   }
 
   @override
-  dynamic changeQuantityPeopleServide(int newQuantityPeopleServide) {
+  void changeQuantityPeopleServide(int newQuantityPeopleServide) {
     final _$actionInfo = _$_RecipeStoreActionController.startAction(
         name: '_RecipeStore.changeQuantityPeopleServide');
     try {
@@ -63,7 +63,7 @@ mixin _$RecipeStore on _RecipeStore, Store {
   }
 
   @override
-  dynamic addNewIngredient() {
+  void addNewIngredient() {
     final _$actionInfo = _$_RecipeStoreActionController.startAction(
         name: '_RecipeStore.addNewIngredient');
     try {
@@ -74,7 +74,7 @@ mixin _$RecipeStore on _RecipeStore, Store {
   }
 
   @override
-  dynamic deleteIngredient(int index) {
+  void deleteIngredient(int index) {
     final _$actionInfo = _$_RecipeStoreActionController.startAction(
         name: '_RecipeStore.deleteIngredient');
     try {
@@ -85,7 +85,7 @@ mixin _$RecipeStore on _RecipeStore, Store {
   }
 
   @override
-  dynamic changeIngredient(String newIngredient, int index) {
+  void changeIngredient(String newIngredient, int index) {
     final _$actionInfo = _$_RecipeStoreActionController.startAction(
         name: '_RecipeStore.changeIngredient');
     try {
@@ -96,7 +96,7 @@ mixin _$RecipeStore on _RecipeStore, Store {
   }
 
   @override
-  dynamic reorderIngredient(int oldIndex, int newIndex) {
+  void reorderIngredient(int oldIndex, int newIndex) {
     final _$actionInfo = _$_RecipeStoreActionController.startAction(
         name: '_RecipeStore.reorderIngredient');
     try {
@@ -107,7 +107,7 @@ mixin _$RecipeStore on _RecipeStore, Store {
   }
 
   @override
-  dynamic addNewStep() {
+  void addNewStep() {
     final _$actionInfo = _$_RecipeStoreActionController.startAction(
         name: '_RecipeStore.addNewStep');
     try {
@@ -118,7 +118,7 @@ mixin _$RecipeStore on _RecipeStore, Store {
   }
 
   @override
-  dynamic deleteStep(int index) {
+  void deleteStep(int index) {
     final _$actionInfo = _$_RecipeStoreActionController.startAction(
         name: '_RecipeStore.deleteStep');
     try {
@@ -129,7 +129,7 @@ mixin _$RecipeStore on _RecipeStore, Store {
   }
 
   @override
-  dynamic changeStep(String newStep, int index) {
+  void changeStep(String newStep, int index) {
     final _$actionInfo = _$_RecipeStoreActionController.startAction(
         name: '_RecipeStore.changeStep');
     try {
@@ -140,7 +140,7 @@ mixin _$RecipeStore on _RecipeStore, Store {
   }
 
   @override
-  dynamic reorderStep(int oldIndex, int newIndex) {
+  void reorderStep(int oldIndex, int newIndex) {
     final _$actionInfo = _$_RecipeStoreActionController.startAction(
         name: '_RecipeStore.reorderStep');
     try {

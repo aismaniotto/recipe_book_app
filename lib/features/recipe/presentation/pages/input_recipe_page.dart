@@ -12,29 +12,28 @@ class InputRecipePage extends StatelessWidget {
   final NavigationService navigationService;
 
   const InputRecipePage(
-      {Key key, @required this.store, @required this.navigationService})
+      {Key? key, required this.store, required this.navigationService})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
     Future<bool> _onBackPressed() {
       return showDialog(
-            context: context,
-            builder: (context) => AlertDialog(
-              title: Text(LocaleKeys.attention.tr()),
-              content: Text(LocaleKeys.wish_leave.tr()),
-              actions: <Widget>[
-                FlatButton(
-                  onPressed: () => navigationService.pop(true),
-                  child: Text(LocaleKeys.exit.tr()),
-                ),
-                FlatButton(
-                  onPressed: () => navigationService.pop(false),
-                  child: Text(LocaleKeys.stay.tr()),
-                ),
-              ],
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(LocaleKeys.attention.tr()),
+          content: Text(LocaleKeys.wish_leave.tr()),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => navigationService.pop(true),
+              child: Text(LocaleKeys.exit.tr()),
             ),
-          ) ??
-          false;
+            TextButton(
+              onPressed: () => navigationService.pop(false),
+              child: Text(LocaleKeys.stay.tr()),
+            ),
+          ],
+        ),
+      ).then((value) => value as bool);
     }
 
     return WillPopScope(
@@ -46,14 +45,18 @@ class InputRecipePage extends StatelessWidget {
             title: Text(
                 store.title.isEmpty ? LocaleKeys.new_recipe.tr() : store.title),
             actions: <Widget>[
-              FlatButton(
-                textColor: Colors.white,
+              TextButton(
+                style: TextButton.styleFrom(
+                  primary: Colors.white,
+                  shape: CircleBorder(
+                      side: BorderSide(
+                    color: Colors.transparent,
+                  )),
+                ),
                 onPressed: () async {
                   await store.saveRecipe();
                 },
                 child: Text(LocaleKeys.save.tr()),
-                shape:
-                    CircleBorder(side: BorderSide(color: Colors.transparent)),
               ),
             ],
             bottom: TabBar(

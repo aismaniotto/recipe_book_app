@@ -6,10 +6,10 @@ part of 'filtered_recipes_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$FilteredRecipesStore on _FilteredRecipesStore, Store {
-  Computed<ObservableList<Recipe>> _$filteredRecipesComputed;
+  Computed<ObservableList<Recipe>>? _$filteredRecipesComputed;
 
   @override
   ObservableList<Recipe> get filteredRecipes => (_$filteredRecipesComputed ??=
@@ -51,7 +51,7 @@ mixin _$FilteredRecipesStore on _FilteredRecipesStore, Store {
       AsyncAction('_FilteredRecipesStore.getAllRecipes');
 
   @override
-  Future getAllRecipes() {
+  Future<dynamic> getAllRecipes() {
     return _$getAllRecipesAsyncAction.run(() => super.getAllRecipes());
   }
 
@@ -59,7 +59,7 @@ mixin _$FilteredRecipesStore on _FilteredRecipesStore, Store {
       AsyncAction('_FilteredRecipesStore.deleteRecipe');
 
   @override
-  Future deleteRecipe(Recipe recipe) {
+  Future<dynamic> deleteRecipe(Recipe recipe) {
     return _$deleteRecipeAsyncAction.run(() => super.deleteRecipe(recipe));
   }
 

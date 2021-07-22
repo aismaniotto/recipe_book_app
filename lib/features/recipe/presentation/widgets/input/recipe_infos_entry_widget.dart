@@ -8,27 +8,27 @@ import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
 class RecipeInfosEntryWidget extends StatelessWidget {
   final String title;
   final ValueChanged<String> onTitleChanged;
-  final String description;
+  final String? description;
   final ValueChanged<String> onDescriptionChanged;
   final Type type;
-  final ValueChanged<Type> onTypeChanged;
-  final int quantityPeopleServide;
+  final ValueChanged<Type?> onTypeChanged;
+  final int? quantityPeopleServide;
   final ValueChanged<int> onQuantityPeopleServideChanged;
   final Difficulty difficulty;
-  final ValueChanged<Difficulty> onDifficultyChanged;
+  final ValueChanged<Difficulty?> onDifficultyChanged;
 
   const RecipeInfosEntryWidget(
-      {Key key,
-      @required this.title,
-      @required this.onTitleChanged,
-      @required this.description,
-      @required this.onDescriptionChanged,
-      @required this.type,
-      @required this.onTypeChanged,
-      @required this.quantityPeopleServide,
-      @required this.onQuantityPeopleServideChanged,
-      @required this.difficulty,
-      @required this.onDifficultyChanged})
+      {Key? key,
+      required this.title,
+      required this.onTitleChanged,
+      required this.description,
+      required this.onDescriptionChanged,
+      required this.type,
+      required this.onTypeChanged,
+      required this.quantityPeopleServide,
+      required this.onQuantityPeopleServideChanged,
+      required this.difficulty,
+      required this.onDifficultyChanged})
       : super(key: key);
 
   @override
@@ -36,13 +36,14 @@ class RecipeInfosEntryWidget extends StatelessWidget {
     return Wrap(
       children: <Widget>[
         TextFormField(
+            autovalidateMode: AutovalidateMode.always,
             decoration:
                 InputDecoration(labelText: LocaleKeys.recipe_title.tr()),
             initialValue: title,
             onChanged: onTitleChanged,
-            autovalidate: true,
-            validator: (value) =>
-                value.isEmpty ? LocaleKeys.title_required.tr() : null),
+            validator: (value) => value == null || value.isEmpty
+                ? LocaleKeys.title_required.tr()
+                : null),
         TextFormField(
           decoration: InputDecoration(labelText: LocaleKeys.description.tr()),
           initialValue: description,
@@ -51,11 +52,11 @@ class RecipeInfosEntryWidget extends StatelessWidget {
           onChanged: onDescriptionChanged,
         ),
         DropdownButtonFormField(
+            autovalidateMode: AutovalidateMode.always,
             decoration: InputDecoration(labelText: LocaleKeys.type.tr()),
             value: type,
             onChanged: onTypeChanged,
-            autovalidate: true,
-            validator: (value) =>
+            validator: (Type? value) =>
                 value == null ? LocaleKeys.type_required.tr() : null,
             items: <Type>[
               Type.breakfast,
@@ -80,15 +81,15 @@ class RecipeInfosEntryWidget extends StatelessWidget {
                 onQuantityPeopleServideChanged(int.parse(value)),
             keyboardType: TextInputType.number,
             inputFormatters: <TextInputFormatter>[
-              WhitelistingTextInputFormatter.digitsOnly
+              FilteringTextInputFormatter.digitsOnly
             ]),
         DropdownButtonFormField(
+            autovalidateMode: AutovalidateMode.always,
             decoration:
                 InputDecoration(labelText: LocaleKeys.difficulty_level.tr()),
             value: difficulty,
             onChanged: onDifficultyChanged,
-            autovalidate: true,
-            validator: (value) =>
+            validator: (Difficulty? value) =>
                 value == null ? LocaleKeys.difficulty_required.tr() : null,
             items: <Difficulty>[
               Difficulty.easy,

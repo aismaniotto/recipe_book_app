@@ -15,7 +15,6 @@ class CodegenLoader extends AssetLoader{
   }
 
   static const Map<String,dynamic> pt = {
-  "___comment1": "RECEITAS",
   "recipe": "Receita",
   "my_recipe_book": "Meu livro de receitas",
   "recipe_book": "Livro de receitas",
@@ -23,7 +22,6 @@ class CodegenLoader extends AssetLoader{
   "new_recipe": "Nova receita",
   "add_new_recipe": "Adicionar nova receita",
   "no_recipe_add_yet": "Nenhuma receita adiciona ainda...",
-  "___comment2": "INGREDIENTES",
   "ingredients": "Ingredientes",
   "ingredient": {
     "full": "{quantity} {measure} de {name}",
@@ -33,12 +31,10 @@ class CodegenLoader extends AssetLoader{
   "delete_ingredient": "Excluir ingrediente",
   "move_ingredient": "Mover ingrediente",
   "ingredient_hint": "ex.: 100g de açúcar",
-  "___comment3": "PASSOS",
   "steps": "Modo de preparo",
   "add_step": "Adicionar passo",
   "delete_step": "Excluir passo",
   "move_step": "Mover passo",
-  "___comment4": "OUTROS",
   "title_required": "Por favor, informe um título",
   "type": "Tipo",
   "type_required": "Por favor, selecione um tipo",
@@ -65,7 +61,6 @@ class CodegenLoader extends AssetLoader{
     "dessert": "sobremesa",
     "some_other": "outro"
   },
-  "___comment0": "GERAIS",
   "attention": "Atenção",
   "about": "Sobre",
   "backup": "Backup",
@@ -83,7 +78,6 @@ class CodegenLoader extends AssetLoader{
   "delete": "Deletar"
 };
 static const Map<String,dynamic> en = {
-  "___comment1": "RECIPES",
   "recipe": "Recipe",
   "my_recipe_book": "My recipe book",
   "recipe_book": "Recipe book",
@@ -91,7 +85,6 @@ static const Map<String,dynamic> en = {
   "new_recipe": "New recipe",
   "add_new_recipe": "Add new recipe",
   "no_recipe_add_yet": "No recipe add yet...",
-  "___comment2": "INGREDIENTS",
   "ingredients": "Ingredients",
   "ingredient": {
     "full": "{quantity} {measure} of {name}",
@@ -101,12 +94,10 @@ static const Map<String,dynamic> en = {
   "delete_ingredient": "Delete ingredient",
   "move_ingredient": "Move ingredient",
   "ingredient_hint": "e.g.: 100g sugar",
-  "___comment3": "STEPS",
   "steps": "Steps",
   "add_step": "Add step",
   "delete_step": "Delete step",
   "move_step": "Move step",
-  "___comment4": "OTHERS",
   "title_required": "Please, enter with some title",
   "type": "Type",
   "type_required": "Please, select a type",
@@ -133,7 +124,6 @@ static const Map<String,dynamic> en = {
     "dessert": "dessert",
     "some_other": "other"
   },
-  "___comment0": "GENERALS",
   "attention": "Attention",
   "about": "About",
   "backup": "Backup",

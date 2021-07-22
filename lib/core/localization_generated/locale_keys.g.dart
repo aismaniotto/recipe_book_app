@@ -1,7 +1,6 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
 abstract class  LocaleKeys {
-  static const ___comment1 = '___comment1';
   static const recipe = 'recipe';
   static const my_recipe_book = 'my_recipe_book';
   static const recipe_book = 'recipe_book';
@@ -9,7 +8,6 @@ abstract class  LocaleKeys {
   static const new_recipe = 'new_recipe';
   static const add_new_recipe = 'add_new_recipe';
   static const no_recipe_add_yet = 'no_recipe_add_yet';
-  static const ___comment2 = '___comment2';
   static const ingredients = 'ingredients';
   static const ingredient_full = 'ingredient.full';
   static const ingredient_partial = 'ingredient.partial';
@@ -18,12 +16,10 @@ abstract class  LocaleKeys {
   static const delete_ingredient = 'delete_ingredient';
   static const move_ingredient = 'move_ingredient';
   static const ingredient_hint = 'ingredient_hint';
-  static const ___comment3 = '___comment3';
   static const steps = 'steps';
   static const add_step = 'add_step';
   static const delete_step = 'delete_step';
   static const move_step = 'move_step';
-  static const ___comment4 = '___comment4';
   static const title_required = 'title_required';
   static const type = 'type';
   static const type_required = 'type_required';
@@ -47,7 +43,6 @@ abstract class  LocaleKeys {
   static const recipe_type_dessert = 'recipe_type.dessert';
   static const recipe_type_some_other = 'recipe_type.some_other';
   static const recipe_type = 'recipe_type';
-  static const ___comment0 = '___comment0';
   static const attention = 'attention';
   static const about = 'about';
   static const backup = 'backup';

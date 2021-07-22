@@ -4,9 +4,9 @@ import 'package:recipe_book_app/features/recipe/domain/repositories/recipe_repos
 class GetAllRecipes {
   final RecipeRepository repostitory;
 
-  GetAllRecipes(this.repostitory);
+  GetAllRecipes({required this.repostitory});
 
-  Future<List<Recipe>> call() async { 
+  Future<List<Recipe>> call() async {
     //TODO: maybe, order by name;
     return await this.repostitory.getAllRecipes();
   }

@@ -19,14 +19,14 @@ Future<void> init() async {
   // Store
   ioc.registerLazySingleton(() => FilteredRecipesStore(ioc(), ioc()));
   // ioc.registerFactory(() => RecipeStore(ioc(), ioc()));
-  ioc.registerFactoryParam(
-      (param1, param2) => RecipeStore(ioc(), ioc(), recipe: param1));
+  ioc.registerFactoryParam((dynamic param1, dynamic param2) =>
+      RecipeStore(ioc(), ioc(), recipe: param1));
 
   // Use cases
-  ioc.registerLazySingleton(() => AddRecipe(ioc()));
-  ioc.registerLazySingleton(() => UpdateRecipe(ioc()));
-  ioc.registerLazySingleton(() => DeleteRecipe(ioc()));
-  ioc.registerLazySingleton(() => GetAllRecipes(ioc()));
+  ioc.registerLazySingleton(() => AddRecipe(repostitory: ioc()));
+  ioc.registerLazySingleton(() => UpdateRecipe(repostitory: ioc()));
+  ioc.registerLazySingleton(() => DeleteRecipe(repostitory: ioc()));
+  ioc.registerLazySingleton(() => GetAllRecipes(repostitory: ioc()));
 
   // Adapters
   ioc.registerLazySingleton(() => RecipeAdapter(ioc()));
@@ -34,11 +34,11 @@ Future<void> init() async {
 
   // Repository
   ioc.registerLazySingleton<RecipeRepository>(
-      () => RecipeRepositoryImpl(ioc()));
+      () => RecipeRepositoryImpl(recipeDataSource: ioc()));
 
   // Data source
   ioc.registerLazySingleton<RecipeDataSource>(
-      () => RecipeDataSourceImpl(ioc()));
+      () => RecipeDataSourceImpl(recipeAdapter: ioc()));
 
   // Services
   ioc.registerSingleton<NavigationService>(NavigationService());

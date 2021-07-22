@@ -6,10 +6,12 @@ import 'package:recipe_book_app/core/services/analytics_service.dart';
 import 'package:recipe_book_app/core/services/navigation_service.dart';
 import 'package:recipe_book_app/features/recipe/presentation/pages/list_recipes_page.dart';
 import 'package:recipe_book_app/core/localization_generated/codegen_loader.g.dart';
-import 'package:recipe_book_app/router.dart';
+import 'package:recipe_book_app/router.dart' as R;
 
 void main() async {
   await ioc.init();
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
   runApp(
     EasyLocalization(
         supportedLocales: [Locale('en'), Locale('pt')],
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       navigatorObservers: [ioc.ioc<AnalyticsService>().getAnalyticsObserver()],
       navigatorKey: ioc.ioc<NavigationService>().navigatorKey,
-      onGenerateRoute: Router.generateRoute,
+      onGenerateRoute: R.Router.generateRoute,
       title: LocaleKeys.recipe_book,
       theme: ThemeData(
           primarySwatch: Colors.red,

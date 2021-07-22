@@ -5,7 +5,7 @@ import 'package:recipe_book_app/features/recipe/domain/repositories/recipe_repos
 class RecipeRepositoryImpl extends RecipeRepository {
   final RecipeDataSource recipeDataSource;
 
-  RecipeRepositoryImpl(this.recipeDataSource);
+  RecipeRepositoryImpl({required this.recipeDataSource});
 
   @override
   Future<Recipe> addRecipe(Recipe recipe) async {
@@ -24,12 +24,7 @@ class RecipeRepositoryImpl extends RecipeRepository {
 
   @override
   Future<List<Recipe>> getAllRecipes() async {
-    var allRecipes = await recipeDataSource.getAllRecipes();
-    if (allRecipes == null){
-      allRecipes = List<Recipe>();
-    }
-
-    return allRecipes;
+    return await recipeDataSource.getAllRecipes();
   }
 
   @override
