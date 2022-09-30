@@ -1,8 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:recipe_book_app/core/IoC/ioc.dart';
-import 'package:recipe_book_app/core/services/analytics_service.dart';
 import 'package:recipe_book_app/core/services/navigation_service.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 import 'package:recipe_book_app/features/recipe/presentation/stores/filtered_recipes_store.dart';
@@ -105,7 +103,6 @@ class ListRecipesPage extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            ioc<AnalyticsService>().createRecipe();
             navigationService
                 .navigateTo('/new_recipe')
                 .whenComplete(() => store.getAllRecipes());

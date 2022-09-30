@@ -47,7 +47,7 @@ class InputRecipePage extends StatelessWidget {
             actions: <Widget>[
               TextButton(
                 style: TextButton.styleFrom(
-                  primary: Colors.white,
+                  foregroundColor: Colors.white,
                   shape: CircleBorder(
                       side: BorderSide(
                     color: Colors.transparent,

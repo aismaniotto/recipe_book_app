@@ -1,132 +1,16 @@
 PODS:
-  - Firebase/Analytics (8.0.0):
-    - Firebase/Core
-  - Firebase/Core (8.0.0):
-    - Firebase/CoreOnly
-    - FirebaseAnalytics (~> 8.0.0)
-  - Firebase/CoreOnly (8.0.0):
-    - FirebaseCore (= 8.0.0)
-  - firebase_analytics (8.1.2):
-    - Firebase/Analytics (= 8.0.0)
-    - firebase_core
-    - Flutter
-  - firebase_core (1.3.0):
-    - Firebase/CoreOnly (= 8.0.0)
-    - Flutter
-  - FirebaseAnalytics (8.0.0):
-    - FirebaseAnalytics/AdIdSupport (= 8.0.0)
-    - FirebaseCore (~> 8.0)
-    - FirebaseInstallations (~> 8.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
-    - GoogleUtilities/MethodSwizzler (~> 7.4)
-    - GoogleUtilities/Network (~> 7.4)
-    - "GoogleUtilities/NSData+zlib (~> 7.4)"
-    - nanopb (~> 2.30908.0)
-  - FirebaseAnalytics/AdIdSupport (8.0.0):
-    - FirebaseAnalytics/Base (= 8.0.0)
-    - FirebaseCore (~> 8.0)
-    - FirebaseInstallations (~> 8.0)
-    - GoogleAppMeasurement (= 8.0.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
-    - GoogleUtilities/MethodSwizzler (~> 7.4)
-    - GoogleUtilities/Network (~> 7.4)
-    - "GoogleUtilities/NSData+zlib (~> 7.4)"
-    - nanopb (~> 2.30908.0)
-  - FirebaseAnalytics/Base (8.0.0):
-    - FirebaseCore (~> 8.0)
-    - FirebaseInstallations (~> 8.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
-    - GoogleUtilities/MethodSwizzler (~> 7.4)
-    - GoogleUtilities/Network (~> 7.4)
-    - "GoogleUtilities/NSData+zlib (~> 7.4)"
-    - nanopb (~> 2.30908.0)
-  - FirebaseCore (8.0.0):
-    - FirebaseCoreDiagnostics (~> 8.0)
-    - GoogleUtilities/Environment (~> 7.4)
-    - GoogleUtilities/Logger (~> 7.4)
-  - FirebaseCoreDiagnostics (8.1.0):
-    - GoogleDataTransport (~> 9.0)
-    - GoogleUtilities/Environment (~> 7.4)
-    - GoogleUtilities/Logger (~> 7.4)
-    - nanopb (~> 2.30908.0)
-  - FirebaseInstallations (8.1.0):
-    - FirebaseCore (~> 8.0)
-    - GoogleUtilities/Environment (~> 7.4)
-    - GoogleUtilities/UserDefaults (~> 7.4)
-    - PromisesObjC (~> 1.2)
   - Flutter (1.0.0)
-  - GoogleAppMeasurement (8.0.0):
-    - GoogleAppMeasurement/AdIdSupport (= 8.0.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
-    - GoogleUtilities/MethodSwizzler (~> 7.4)
-    - GoogleUtilities/Network (~> 7.4)
-    - "GoogleUtilities/NSData+zlib (~> 7.4)"
-    - nanopb (~> 2.30908.0)
-  - GoogleAppMeasurement/AdIdSupport (8.0.0):
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
-    - GoogleUtilities/MethodSwizzler (~> 7.4)
-    - GoogleUtilities/Network (~> 7.4)
-    - "GoogleUtilities/NSData+zlib (~> 7.4)"
-    - nanopb (~> 2.30908.0)
-  - GoogleDataTransport (9.0.1):
-    - GoogleUtilities/Environment (~> 7.2)
-    - nanopb (~> 2.30908.0)
-    - PromisesObjC (~> 1.2)
-  - GoogleUtilities/AppDelegateSwizzler (7.4.1):
-    - GoogleUtilities/Environment
-    - GoogleUtilities/Logger
-    - GoogleUtilities/Network
-  - GoogleUtilities/Environment (7.4.1):
-    - PromisesObjC (~> 1.2)
-  - GoogleUtilities/Logger (7.4.1):
-    - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (7.4.1):
-    - GoogleUtilities/Logger
-  - GoogleUtilities/Network (7.4.1):
-    - GoogleUtilities/Logger
-    - "GoogleUtilities/NSData+zlib"
-    - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (7.4.1)"
-  - GoogleUtilities/Reachability (7.4.1):
-    - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (7.4.1):
-    - GoogleUtilities/Logger
-  - nanopb (2.30908.0):
-    - nanopb/decode (= 2.30908.0)
-    - nanopb/encode (= 2.30908.0)
-  - nanopb/decode (2.30908.0)
-  - nanopb/encode (2.30908.0)
   - path_provider (0.0.1):
     - Flutter
-  - PromisesObjC (1.2.12)
   - shared_preferences (0.0.1):
     - Flutter
 
 DEPENDENCIES:
-  - firebase_analytics (from `.symlinks/plugins/firebase_analytics/ios`)
-  - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `Flutter`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
 
-SPEC REPOS:
-  trunk:
-    - Firebase
-    - FirebaseAnalytics
-    - FirebaseCore
-    - FirebaseCoreDiagnostics
-    - FirebaseInstallations
-    - GoogleAppMeasurement
-    - GoogleDataTransport
-    - GoogleUtilities
-    - nanopb
-    - PromisesObjC
-
 EXTERNAL SOURCES:
-  firebase_analytics:
-    :path: ".symlinks/plugins/firebase_analytics/ios"
-  firebase_core:
-    :path: ".symlinks/plugins/firebase_core/ios"
   Flutter:
     :path: Flutter
   path_provider:
@@ -135,20 +19,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/shared_preferences/ios"
 
 SPEC CHECKSUMS:
-  Firebase: 73c3e3b216ec1ecbc54d2ffdd4670c65c749edb1
-  firebase_analytics: 5e1820ff8ca6cc984fd4d1dedd2dd45965b91535
-  firebase_core: cda81ae37eda6df2bc2d16027fda527987c4bd33
-  FirebaseAnalytics: dcb92c7c9ef4fa7ffac276e8f87bd4fc8c97f1b8
-  FirebaseCore: 3f09591d51292843e2a46f18358d60bf4e996255
-  FirebaseCoreDiagnostics: 3e249cee3de5c5f9cfd6cc2a19997231286fec11
-  FirebaseInstallations: 7f31798a8198c354eadcb87176d2090b62edc187
-  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
-  GoogleAppMeasurement: c6bbc9753d046b5456dd4f940057fbad2c28419e
-  GoogleDataTransport: 04c3e9a480bbcaa2ec3f5d27f1cdeb6a92f20c8d
-  GoogleUtilities: f8a43108b38a68eebe8b3540e1f4f2d28843ce20
-  nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
-  PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
 
 PODFILE CHECKSUM: 4e8f8b2be68aeea4c0d5beb6ff1e79fface1d048

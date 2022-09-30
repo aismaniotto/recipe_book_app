@@ -32,7 +32,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 31
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -44,7 +44,7 @@ android {
 
     defaultConfig {
         applicationId "br.com.aismaniotto.recipebook"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
