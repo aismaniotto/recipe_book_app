@@ -45,7 +45,7 @@ android {
     defaultConfig {
         applicationId "br.com.aismaniotto.recipebook"
         minSdkVersion 19
-        targetSdkVersion 29
+        targetSdkVersion 31
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
