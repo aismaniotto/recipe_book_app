@@ -6,17 +6,19 @@ part of 'recipe_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$RecipeStore on _RecipeStore, Store {
-  final _$saveRecipeAsyncAction = AsyncAction('_RecipeStore.saveRecipe');
+  late final _$saveRecipeAsyncAction =
+      AsyncAction('_RecipeStore.saveRecipe', context: context);
 
   @override
   Future<dynamic> saveRecipe() {
     return _$saveRecipeAsyncAction.run(() => super.saveRecipe());
   }
 
-  final _$_RecipeStoreActionController = ActionController(name: '_RecipeStore');
+  late final _$_RecipeStoreActionController =
+      ActionController(name: '_RecipeStore', context: context);
 
   @override
   void changeTitle(String newTitle) {

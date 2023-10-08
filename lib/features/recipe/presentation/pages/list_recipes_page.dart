@@ -91,11 +91,9 @@ class ListRecipesPage extends StatelessWidget {
                 Recipe recipe = store.filteredRecipes[index];
                 return RecipeTileWidget(
                     recipe,
-                    () => {
-                          navigationService
-                              .navigateTo('/show_recipe', arguments: recipe)
-                              .whenComplete(() => store.getAllRecipes())
-                        },
+                    () => navigationService
+                        .navigateTo('/show_recipe', arguments: recipe)
+                        .whenComplete(() => store.getAllRecipes()),
                     () => _longPressActions(recipe));
               },
             );

@@ -16,7 +16,7 @@ A new recipe book Flutter project, architected with clean architecture and state
 
 ### generate or re-generate stores files (\*.g.dart)
 
-`flutter packages pub run build_runner build`
+`dart run build_runner build`
 
 ### generate or re-generate localizations files from json files (assests/lang/[locale].json)
 
