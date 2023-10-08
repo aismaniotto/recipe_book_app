@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.red,
           scaffoldBackgroundColor: const Color(0xFFEFEFEF),
-          textTheme: TextTheme(bodyText2: TextStyle(fontSize: 16.0))),
+          textTheme: TextTheme(bodyMedium: TextStyle(fontSize: 16.0))),
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
