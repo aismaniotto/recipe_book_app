@@ -4,7 +4,7 @@ import 'package:recipe_book_app/features/recipe/domain/repositories/recipe_repos
 class AddRecipe {
   final RecipeRepository repostitory;
 
-  AddRecipe(this.repostitory);
+  AddRecipe({required this.repostitory});
 
   Future<Recipe> call(Recipe recipe) async {
     // TODO: check if already exist

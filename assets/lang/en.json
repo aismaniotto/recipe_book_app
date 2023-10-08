@@ -1,5 +1,4 @@
 {
-  "___comment1": "RECIPES",
   "recipe": "Recipe",
   "my_recipe_book": "My recipe book",
   "recipe_book": "Recipe book",
@@ -7,7 +6,6 @@
   "new_recipe": "New recipe",
   "add_new_recipe": "Add new recipe",
   "no_recipe_add_yet": "No recipe add yet...",
-  "___comment2": "INGREDIENTS",
   "ingredients": "Ingredients",
   "ingredient": {
     "full": "{quantity} {measure} of {name}",
@@ -17,12 +15,10 @@
   "delete_ingredient": "Delete ingredient",
   "move_ingredient": "Move ingredient",
   "ingredient_hint": "e.g.: 100g sugar",
-  "___comment3": "STEPS",
   "steps": "Steps",
   "add_step": "Add step",
   "delete_step": "Delete step",
   "move_step": "Move step",
-  "___comment4": "OTHERS",
   "title_required": "Please, enter with some title",
   "type": "Type",
   "type_required": "Please, select a type",
@@ -49,8 +45,9 @@
     "dessert": "dessert",
     "some_other": "other"
   },
-  "___comment0": "GENERALS",
   "attention": "Attention",
+  "about": "About",
+  "backup": "Backup",
   "wish_leave": "Wish leave withou save?",
   "sure_delete": "Are you sure you want to delete this recipe?",
   "stay": "Stay",

@@ -1,13 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:recipe_book_app/core/IoC/ioc.dart';
-import 'package:recipe_book_app/core/services/analytics_service.dart';
 import 'package:recipe_book_app/core/services/navigation_service.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 import 'package:recipe_book_app/features/recipe/presentation/stores/filtered_recipes_store.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/empty_list_widget.dart';
-import 'package:recipe_book_app/features/recipe/presentation/widgets/loading_widget.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/recipe_tile_widget.dart';
 import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
 
@@ -16,7 +13,7 @@ class ListRecipesPage extends StatelessWidget {
   final NavigationService navigationService;
 
   const ListRecipesPage(
-      {Key key, @required this.store, @required this.navigationService})
+      {Key? key, required this.store, required this.navigationService})
       : super(key: key);
 
   @override
@@ -29,7 +26,7 @@ class ListRecipesPage extends StatelessWidget {
             title: Text(LocaleKeys.attention.tr()),
             content: Text(LocaleKeys.sure_delete.tr()),
             actions: <Widget>[
-              FlatButton(
+              TextButton(
                 child: Text(LocaleKeys.yes.tr()),
                 onPressed: () async {
                   await store.deleteRecipe(recipe);
@@ -37,7 +34,7 @@ class ListRecipesPage extends StatelessWidget {
                   navigationService.pop(false);
                 },
               ),
-              FlatButton(
+              TextButton(
                 child: Text(LocaleKeys.no.tr()),
                 onPressed: () {
                   navigationService.pop(false);
@@ -77,15 +74,12 @@ class ListRecipesPage extends StatelessWidget {
 
     store.getAllRecipes();
     return Scaffold(
+        // drawer: NavDrawer(),
         appBar: AppBar(
           title: Text(LocaleKeys.my_recipe_book.tr()),
         ),
         body: Observer(
           builder: (_) {
-            if (store.filteredRecipes == null) {
-              return LoadingWidget();
-            }
-
             if (store.filteredRecipes.isEmpty) {
               return EmptyListWidget();
             }
@@ -96,11 +90,9 @@ class ListRecipesPage extends StatelessWidget {
                 Recipe recipe = store.filteredRecipes[index];
                 return RecipeTileWidget(
                     recipe,
-                    () => {
-                          navigationService
-                              .navigateTo('/show_recipe', arguments: recipe)
-                              .whenComplete(() => store.getAllRecipes())
-                        },
+                    () => navigationService
+                        .navigateTo('/show_recipe', arguments: recipe)
+                        .whenComplete(() => store.getAllRecipes()),
                     () => _longPressActions(recipe));
               },
             );
@@ -108,7 +100,6 @@ class ListRecipesPage extends StatelessWidget {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            ioc<AnalyticsService>().createRecipe();
             navigationService
                 .navigateTo('/new_recipe')
                 .whenComplete(() => store.getAllRecipes());

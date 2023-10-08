@@ -5,27 +5,29 @@ enum Type { breakfast, meal, side, snack, drink, dessert, other }
 enum Difficulty { easy, medium, hard }
 
 class Recipe {
-  String id;
+  late String id;
   String title;
-  String description;
+  String? description;
   Type type;
-  int quantityPeopleServide;
+  int? quantityPeopleServide;
   Difficulty difficulty;
   List<IdentificableText> ingredientList;
   List<IdentificableText> steps;
   //TODO:String picturePath;
 
   Recipe(
-      {this.id,
-      this.title,
+      {id,
+      title,
       this.description,
-      this.type,
+      type,
       this.quantityPeopleServide,
-      this.difficulty,
-      this.ingredientList,
-      this.steps}) {
-    if (id == null) {
-      id = Uuid().v4();
-    }
-  }
+      difficulty,
+      ingredientList,
+      steps})
+      : id = id ?? Uuid().v4(),
+        title = title ?? '',
+        type = type ?? Type.other,
+        difficulty = difficulty ?? Difficulty.easy,
+        ingredientList = ingredientList ?? [],
+        steps = steps ?? [];
 }

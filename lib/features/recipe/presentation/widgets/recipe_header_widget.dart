@@ -6,18 +6,18 @@ import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 
 class RecipeHeaderWidget extends StatelessWidget {
   final String name;
-  final String description;
+  final String? description;
   final Type type;
-  final int qtdPeopleServide;
+  final int? qtdPeopleServide;
   final Difficulty difficulty;
 
   const RecipeHeaderWidget(
-      {Key key,
-      @required this.name,
-      @required this.description,
-      @required this.type,
-      @required this.qtdPeopleServide,
-      @required this.difficulty})
+      {Key? key,
+      required this.name,
+      required this.description,
+      required this.type,
+      required this.qtdPeopleServide,
+      required this.difficulty})
       : super(key: key);
 
   @override
@@ -60,7 +60,7 @@ class RecipeHeaderWidget extends StatelessWidget {
               // TextSpan(text: '$qtdPeopleServide people'),
               (qtdPeopleServide == null)
                   ? TextSpan(text: LocaleKeys.not_informed.tr())
-                  : (qtdPeopleServide > 1)
+                  : (qtdPeopleServide! > 1)
                       ? TextSpan(
                           text: '$qtdPeopleServide ' +
                               LocaleKeys.person_people.tr())

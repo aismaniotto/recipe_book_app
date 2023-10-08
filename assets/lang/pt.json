@@ -1,5 +1,4 @@
 {
-  "___comment1": "RECEITAS",
   "recipe": "Receita",
   "my_recipe_book": "Meu livro de receitas",
   "recipe_book": "Livro de receitas",
@@ -7,7 +6,6 @@
   "new_recipe": "Nova receita",
   "add_new_recipe": "Adicionar nova receita",
   "no_recipe_add_yet": "Nenhuma receita adiciona ainda...",
-  "___comment2": "INGREDIENTES",
   "ingredients": "Ingredientes",
   "ingredient": {
     "full": "{quantity} {measure} de {name}",
@@ -17,12 +15,10 @@
   "delete_ingredient": "Excluir ingrediente",
   "move_ingredient": "Mover ingrediente",
   "ingredient_hint": "ex.: 100g de açúcar",
-  "___comment3": "PASSOS",
   "steps": "Modo de preparo",
   "add_step": "Adicionar passo",
   "delete_step": "Excluir passo",
   "move_step": "Mover passo",
-  "___comment4": "OUTROS",
   "title_required": "Por favor, informe um título",
   "type": "Tipo",
   "type_required": "Por favor, selecione um tipo",
@@ -49,8 +45,9 @@
     "dessert": "sobremesa",
     "some_other": "outro"
   },
-  "___comment0": "GERAIS",
   "attention": "Atenção",
+  "about": "Sobre",
+  "backup": "Backup",
   "wish_leave": "Deseja sair sem salvar?",
   "sure_delete": "Tem certeza que deseja apagar essa receita?",
   "stay": "Ficar",

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:recipe_book_app/features/recipe/data/adapters/recipe_adapter.dart';
 import 'package:recipe_book_app/features/recipe/data/datasources/app_database.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
@@ -19,7 +21,7 @@ class RecipeDataSourceImpl extends RecipeDataSource {
 
   final RecipeAdapter recipeAdapter;
 
-  RecipeDataSourceImpl(this.recipeAdapter);
+  RecipeDataSourceImpl({required this.recipeAdapter});
 
   @override
   Future<Recipe> addRecipe(Recipe recipe) async {
@@ -52,7 +54,8 @@ class RecipeDataSourceImpl extends RecipeDataSource {
 
   @override
   Future<Recipe> getRecipeById(String id) async {
-    final recipe = await _recipesFolder.record(id).get(await _db);
+    final recipe = await (_recipesFolder.record(id).get(await _db)
+        as FutureOr<Map<String, Object?>>);
     return recipeAdapter.fromMap(recipe);
   }
 }

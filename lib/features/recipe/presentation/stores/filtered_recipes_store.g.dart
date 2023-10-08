@@ -6,10 +6,10 @@ part of 'filtered_recipes_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$FilteredRecipesStore on _FilteredRecipesStore, Store {
-  Computed<ObservableList<Recipe>> _$filteredRecipesComputed;
+  Computed<ObservableList<Recipe>>? _$filteredRecipesComputed;
 
   @override
   ObservableList<Recipe> get filteredRecipes => (_$filteredRecipesComputed ??=
@@ -17,7 +17,8 @@ mixin _$FilteredRecipesStore on _FilteredRecipesStore, Store {
               name: '_FilteredRecipesStore.filteredRecipes'))
       .value;
 
-  final _$_recipesAtom = Atom(name: '_FilteredRecipesStore._recipes');
+  late final _$_recipesAtom =
+      Atom(name: '_FilteredRecipesStore._recipes', context: context);
 
   @override
   List<Recipe> get _recipes {
@@ -32,7 +33,8 @@ mixin _$FilteredRecipesStore on _FilteredRecipesStore, Store {
     });
   }
 
-  final _$filterAtom = Atom(name: '_FilteredRecipesStore.filter');
+  late final _$filterAtom =
+      Atom(name: '_FilteredRecipesStore.filter', context: context);
 
   @override
   String get filter {
@@ -47,19 +49,19 @@ mixin _$FilteredRecipesStore on _FilteredRecipesStore, Store {
     });
   }
 
-  final _$getAllRecipesAsyncAction =
-      AsyncAction('_FilteredRecipesStore.getAllRecipes');
+  late final _$getAllRecipesAsyncAction =
+      AsyncAction('_FilteredRecipesStore.getAllRecipes', context: context);
 
   @override
-  Future getAllRecipes() {
+  Future<dynamic> getAllRecipes() {
     return _$getAllRecipesAsyncAction.run(() => super.getAllRecipes());
   }
 
-  final _$deleteRecipeAsyncAction =
-      AsyncAction('_FilteredRecipesStore.deleteRecipe');
+  late final _$deleteRecipeAsyncAction =
+      AsyncAction('_FilteredRecipesStore.deleteRecipe', context: context);
 
   @override
-  Future deleteRecipe(Recipe recipe) {
+  Future<dynamic> deleteRecipe(Recipe recipe) {
     return _$deleteRecipeAsyncAction.run(() => super.deleteRecipe(recipe));
   }
 

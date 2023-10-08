@@ -4,8 +4,8 @@ import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 
 class RecipeTileWidget extends StatelessWidget {
   final Recipe recipe;
-  final Function onTap;
-  final Function onLongPress;
+  final VoidCallback onTap;
+  final VoidCallback onLongPress;
 
   const RecipeTileWidget(this.recipe, this.onTap, this.onLongPress);
 
@@ -72,19 +72,16 @@ class RecipeTileWidget extends StatelessWidget {
           Icons.brightness_3,
           color: Colors.green,
         );
-        break;
       case Difficulty.medium:
         return Icon(
           Icons.brightness_2,
           color: Colors.yellow,
         );
-        break;
       case Difficulty.hard:
         return Icon(
           Icons.brightness_1,
           color: Colors.orange,
         );
-        break;
       default:
         return Icon(
           Icons.not_interested,

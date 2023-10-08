@@ -4,7 +4,7 @@ import 'package:recipe_book_app/features/recipe/domain/repositories/recipe_repos
 class DeleteRecipe {
   final RecipeRepository repostitory;
 
-  DeleteRecipe(this.repostitory);
+  DeleteRecipe({required this.repostitory});
 
   Future call(Recipe recipe) async {
     return await this.repostitory.deleteRecipe(recipe.id);

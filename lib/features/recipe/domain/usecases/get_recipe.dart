@@ -4,9 +4,9 @@ import 'package:recipe_book_app/features/recipe/domain/repositories/recipe_repos
 class GetRecipe {
   final RecipeRepository repostitory;
 
-  GetRecipe(this.repostitory);
+  GetRecipe({required this.repostitory});
 
-  Future<Recipe> call(String id) async { 
+  Future<Recipe> call(String id) async {
     return await this.repostitory.getRecipeById(id);
   }
 }

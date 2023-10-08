@@ -9,15 +9,15 @@ class CustomReordenableListView extends StatelessWidget {
   final Function(int) onItemDelete;
   final Function() onItemAdd;
   final Function(int, int) onItemReorder;
-  final String hintTextItem;
+  final String? hintTextItem;
 
   const CustomReordenableListView(
-      {Key key,
-      @required this.items,
-      @required this.onItemChange,
-      @required this.onItemDelete,
-      @required this.onItemAdd,
-      @required this.onItemReorder,
+      {Key? key,
+      required this.items,
+      required this.onItemChange,
+      required this.onItemDelete,
+      required this.onItemAdd,
+      required this.onItemReorder,
       this.hintTextItem})
       : super(key: key);
 
