@@ -9,8 +9,7 @@ import 'package:recipe_book_app/features/recipe/domain/usecases/update_recipe.da
 part 'recipe_store.g.dart';
 
 class RecipeStore extends _RecipeStore with _$RecipeStore {
-  RecipeStore(AddRecipe addRecipe, UpdateRecipe updateRecipe, {Recipe? recipe})
-      : super(addRecipe, updateRecipe, recipe: recipe);
+  RecipeStore(super.addRecipe, super.updateRecipe, {super.recipe});
 }
 
 abstract class _RecipeStore with Store {
@@ -80,9 +79,7 @@ abstract class _RecipeStore with Store {
 
   @action
   void reorderIngredient(int oldIndex, int newIndex) {
-    if (newIndex > oldIndex) {
-      newIndex -= 1;
-    }
+    // newIndex já vem ajustado pelo onReorderItem do ReorderableListView.
     IdentificableText ingredient = recipe.ingredientList.removeAt(oldIndex);
     recipe.ingredientList.insert(newIndex, ingredient);
   }
@@ -105,9 +102,7 @@ abstract class _RecipeStore with Store {
 
   @action
   void reorderStep(int oldIndex, int newIndex) {
-    if (newIndex > oldIndex) {
-      newIndex -= 1;
-    }
+    // newIndex já vem ajustado pelo onReorderItem do ReorderableListView.
     IdentificableText step = recipe.steps.removeAt(oldIndex);
     recipe.steps.insert(newIndex, step);
   }

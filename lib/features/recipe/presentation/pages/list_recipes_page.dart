@@ -13,12 +13,11 @@ class ListRecipesPage extends StatelessWidget {
   final NavigationService navigationService;
 
   const ListRecipesPage(
-      {Key? key, required this.store, required this.navigationService})
-      : super(key: key);
+      {super.key, required this.store, required this.navigationService});
 
   @override
   Widget build(BuildContext context) {
-    void _sureDeleteRecipe(Recipe recipe) {
+    void sureDeleteRecipe(Recipe recipe) {
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -46,7 +45,7 @@ class ListRecipesPage extends StatelessWidget {
       );
     }
 
-    void _longPressActions(Recipe recipe) {
+    void longPressActions(Recipe recipe) {
       showDialog(
         context: context,
         builder: (context) => SimpleDialog(
@@ -63,7 +62,7 @@ class ListRecipesPage extends StatelessWidget {
             SimpleDialogOption(
               onPressed: () {
                 navigationService.pop(false);
-                _sureDeleteRecipe(recipe);
+                sureDeleteRecipe(recipe);
               },
               child: Text(LocaleKeys.delete.tr()),
             ),
@@ -93,7 +92,7 @@ class ListRecipesPage extends StatelessWidget {
                     () => navigationService
                         .navigateTo('/show_recipe', arguments: recipe)
                         .whenComplete(() => store.getAllRecipes()),
-                    () => _longPressActions(recipe));
+                    () => longPressActions(recipe));
               },
             );
           },

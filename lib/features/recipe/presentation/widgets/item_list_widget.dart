@@ -6,7 +6,7 @@ class ItemListWidget extends StatelessWidget {
   final double iconSize;
 
   const ItemListWidget(this.data,
-      {this.iconData = Icons.lens, this.iconSize = 5});
+      {super.key, this.iconData = Icons.lens, this.iconSize = 5});
 
   @override
   Widget build(BuildContext context) {

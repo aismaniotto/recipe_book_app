@@ -3,6 +3,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
 
 class NavDrawer extends StatelessWidget {
+  const NavDrawer({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -10,12 +12,12 @@ class NavDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
+            decoration: BoxDecoration(
+              color: Colors.red,
+            ),
             child: Text(
               LocaleKeys.recipe_book.tr(),
               style: TextStyle(color: Colors.white, fontSize: 25),
-            ),
-            decoration: BoxDecoration(
-              color: Colors.red,
             ),
           ),
           ListTile(

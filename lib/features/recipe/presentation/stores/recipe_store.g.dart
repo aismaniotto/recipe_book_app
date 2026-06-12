@@ -9,21 +9,26 @@ part of 'recipe_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$RecipeStore on _RecipeStore, Store {
-  late final _$saveRecipeAsyncAction =
-      AsyncAction('_RecipeStore.saveRecipe', context: context);
+  late final _$saveRecipeAsyncAction = AsyncAction(
+    '_RecipeStore.saveRecipe',
+    context: context,
+  );
 
   @override
   Future<dynamic> saveRecipe() {
     return _$saveRecipeAsyncAction.run(() => super.saveRecipe());
   }
 
-  late final _$_RecipeStoreActionController =
-      ActionController(name: '_RecipeStore', context: context);
+  late final _$_RecipeStoreActionController = ActionController(
+    name: '_RecipeStore',
+    context: context,
+  );
 
   @override
   void changeTitle(String newTitle) {
     final _$actionInfo = _$_RecipeStoreActionController.startAction(
-        name: '_RecipeStore.changeTitle');
+      name: '_RecipeStore.changeTitle',
+    );
     try {
       return super.changeTitle(newTitle);
     } finally {
@@ -34,7 +39,8 @@ mixin _$RecipeStore on _RecipeStore, Store {
   @override
   void changeDescription(String newDescription) {
     final _$actionInfo = _$_RecipeStoreActionController.startAction(
-        name: '_RecipeStore.changeDescription');
+      name: '_RecipeStore.changeDescription',
+    );
     try {
       return super.changeDescription(newDescription);
     } finally {
@@ -45,7 +51,8 @@ mixin _$RecipeStore on _RecipeStore, Store {
   @override
   void changeType(Type? newType) {
     final _$actionInfo = _$_RecipeStoreActionController.startAction(
-        name: '_RecipeStore.changeType');
+      name: '_RecipeStore.changeType',
+    );
     try {
       return super.changeType(newType);
     } finally {
@@ -56,7 +63,8 @@ mixin _$RecipeStore on _RecipeStore, Store {
   @override
   void changeQuantityPeopleServide(int newQuantityPeopleServide) {
     final _$actionInfo = _$_RecipeStoreActionController.startAction(
-        name: '_RecipeStore.changeQuantityPeopleServide');
+      name: '_RecipeStore.changeQuantityPeopleServide',
+    );
     try {
       return super.changeQuantityPeopleServide(newQuantityPeopleServide);
     } finally {
@@ -67,7 +75,8 @@ mixin _$RecipeStore on _RecipeStore, Store {
   @override
   void addNewIngredient() {
     final _$actionInfo = _$_RecipeStoreActionController.startAction(
-        name: '_RecipeStore.addNewIngredient');
+      name: '_RecipeStore.addNewIngredient',
+    );
     try {
       return super.addNewIngredient();
     } finally {
@@ -78,7 +87,8 @@ mixin _$RecipeStore on _RecipeStore, Store {
   @override
   void deleteIngredient(int index) {
     final _$actionInfo = _$_RecipeStoreActionController.startAction(
-        name: '_RecipeStore.deleteIngredient');
+      name: '_RecipeStore.deleteIngredient',
+    );
     try {
       return super.deleteIngredient(index);
     } finally {
@@ -89,7 +99,8 @@ mixin _$RecipeStore on _RecipeStore, Store {
   @override
   void changeIngredient(String newIngredient, int index) {
     final _$actionInfo = _$_RecipeStoreActionController.startAction(
-        name: '_RecipeStore.changeIngredient');
+      name: '_RecipeStore.changeIngredient',
+    );
     try {
       return super.changeIngredient(newIngredient, index);
     } finally {
@@ -100,7 +111,8 @@ mixin _$RecipeStore on _RecipeStore, Store {
   @override
   void reorderIngredient(int oldIndex, int newIndex) {
     final _$actionInfo = _$_RecipeStoreActionController.startAction(
-        name: '_RecipeStore.reorderIngredient');
+      name: '_RecipeStore.reorderIngredient',
+    );
     try {
       return super.reorderIngredient(oldIndex, newIndex);
     } finally {
@@ -111,7 +123,8 @@ mixin _$RecipeStore on _RecipeStore, Store {
   @override
   void addNewStep() {
     final _$actionInfo = _$_RecipeStoreActionController.startAction(
-        name: '_RecipeStore.addNewStep');
+      name: '_RecipeStore.addNewStep',
+    );
     try {
       return super.addNewStep();
     } finally {
@@ -122,7 +135,8 @@ mixin _$RecipeStore on _RecipeStore, Store {
   @override
   void deleteStep(int index) {
     final _$actionInfo = _$_RecipeStoreActionController.startAction(
-        name: '_RecipeStore.deleteStep');
+      name: '_RecipeStore.deleteStep',
+    );
     try {
       return super.deleteStep(index);
     } finally {
@@ -133,7 +147,8 @@ mixin _$RecipeStore on _RecipeStore, Store {
   @override
   void changeStep(String newStep, int index) {
     final _$actionInfo = _$_RecipeStoreActionController.startAction(
-        name: '_RecipeStore.changeStep');
+      name: '_RecipeStore.changeStep',
+    );
     try {
       return super.changeStep(newStep, index);
     } finally {
@@ -144,7 +159,8 @@ mixin _$RecipeStore on _RecipeStore, Store {
   @override
   void reorderStep(int oldIndex, int newIndex) {
     final _$actionInfo = _$_RecipeStoreActionController.startAction(
-        name: '_RecipeStore.reorderStep');
+      name: '_RecipeStore.reorderStep',
+    );
     try {
       return super.reorderStep(oldIndex, newIndex);
     } finally {

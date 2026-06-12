@@ -5,7 +5,7 @@ import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
 import 'package:recipe_book_app/core/services/navigation_service.dart';
 import 'package:recipe_book_app/features/recipe/presentation/pages/list_recipes_page.dart';
 import 'package:recipe_book_app/core/localization_generated/codegen_loader.g.dart';
-import 'package:recipe_book_app/router.dart' as R;
+import 'package:recipe_book_app/router.dart' as app_router;
 
 void main() async {
   await ioc.init();
@@ -22,12 +22,14 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       // navigatorObservers: [ioc.ioc<AnalyticsService>().getAnalyticsObserver()],
       navigatorKey: ioc.ioc<NavigationService>().navigatorKey,
-      onGenerateRoute: R.Router.generateRoute,
+      onGenerateRoute: app_router.Router.generateRoute,
       title: LocaleKeys.recipe_book,
       theme: ThemeData(
           primarySwatch: Colors.red,

@@ -1,6 +1,6 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
-// ignore_for_file: prefer_single_quotes
+// ignore_for_file: prefer_single_quotes, avoid_renaming_method_parameters, constant_identifier_names
 
 import 'dart:ui';
 
@@ -10,11 +10,11 @@ class CodegenLoader extends AssetLoader{
   const CodegenLoader();
 
   @override
-  Future<Map<String, dynamic>> load(String fullPath, Locale locale ) {
+  Future<Map<String, dynamic>?> load(String path, Locale locale) {
     return Future.value(mapLocales[locale.toString()]);
   }
 
-  static const Map<String,dynamic> pt = {
+  static const Map<String,dynamic> _pt = {
   "recipe": "Receita",
   "my_recipe_book": "Meu livro de receitas",
   "recipe_book": "Livro de receitas",
@@ -77,7 +77,7 @@ class CodegenLoader extends AssetLoader{
   "edit": "Editar",
   "delete": "Deletar"
 };
-static const Map<String,dynamic> en = {
+static const Map<String,dynamic> _en = {
   "recipe": "Recipe",
   "my_recipe_book": "My recipe book",
   "recipe_book": "Recipe book",
@@ -140,5 +140,5 @@ static const Map<String,dynamic> en = {
   "edit": "Edit",
   "delete": "Delete"
 };
-static const Map<String, Map<String,dynamic>> mapLocales = {"pt": pt, "en": en};
+static const Map<String, Map<String,dynamic>> mapLocales = {"pt": _pt, "en": _en};
 }

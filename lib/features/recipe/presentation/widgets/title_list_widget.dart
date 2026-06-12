@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class TitleListWidget extends StatelessWidget {
   final String title;
 
-  const TitleListWidget(this.title);
+  const TitleListWidget(this.title, {super.key});
 
   @override
   Widget build(BuildContext context) {

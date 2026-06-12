@@ -12,21 +12,20 @@ class CustomReordenableListView extends StatelessWidget {
   final String? hintTextItem;
 
   const CustomReordenableListView(
-      {Key? key,
+      {super.key,
       required this.items,
       required this.onItemChange,
       required this.onItemDelete,
       required this.onItemAdd,
       required this.onItemReorder,
-      this.hintTextItem})
-      : super(key: key);
+      this.hintTextItem});
 
   @override
   Widget build(BuildContext context) {
     return Observer(
       builder: (_) {
         return ReorderableListView(
-            onReorder: onItemReorder,
+            onReorderItem: onItemReorder,
             children: items.map((step) {
               int index = items.indexOf(step);
               return Row(

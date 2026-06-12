@@ -7,6 +7,6 @@ class GetRecipe {
   GetRecipe({required this.repostitory});
 
   Future<Recipe> call(String id) async {
-    return await this.repostitory.getRecipeById(id);
+    return await repostitory.getRecipeById(id);
   }
 }

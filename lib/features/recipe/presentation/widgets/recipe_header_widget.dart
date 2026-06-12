@@ -12,13 +12,12 @@ class RecipeHeaderWidget extends StatelessWidget {
   final Difficulty difficulty;
 
   const RecipeHeaderWidget(
-      {Key? key,
+      {super.key,
       required this.name,
       required this.description,
       required this.type,
       required this.qtdPeopleServide,
-      required this.difficulty})
-      : super(key: key);
+      required this.difficulty});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +41,7 @@ class RecipeHeaderWidget extends StatelessWidget {
             style: DefaultTextStyle.of(context).style,
             children: <TextSpan>[
               TextSpan(
-                  text: LocaleKeys.type.tr() + ": ",
+                  text: "${LocaleKeys.type.tr()}: ",
                   style: TextStyle(fontWeight: FontWeight.bold)),
               TextSpan(text: EnumToString.recipeTypeToString(type)),
             ],
@@ -55,18 +54,16 @@ class RecipeHeaderWidget extends StatelessWidget {
             style: DefaultTextStyle.of(context).style,
             children: <TextSpan>[
               TextSpan(
-                  text: LocaleKeys.serve.tr() + ": ",
+                  text: "${LocaleKeys.serve.tr()}: ",
                   style: TextStyle(fontWeight: FontWeight.bold)),
               // TextSpan(text: '$qtdPeopleServide people'),
               (qtdPeopleServide == null)
                   ? TextSpan(text: LocaleKeys.not_informed.tr())
                   : (qtdPeopleServide! > 1)
                       ? TextSpan(
-                          text: '$qtdPeopleServide ' +
-                              LocaleKeys.person_people.tr())
+                          text: '$qtdPeopleServide ${LocaleKeys.person_people.tr()}')
                       : TextSpan(
-                          text: '$qtdPeopleServide ' +
-                              LocaleKeys.person_person.tr())
+                          text: '$qtdPeopleServide ${LocaleKeys.person_person.tr()}')
             ],
           ),
         ),
@@ -77,7 +74,7 @@ class RecipeHeaderWidget extends StatelessWidget {
             style: DefaultTextStyle.of(context).style,
             children: <TextSpan>[
               TextSpan(
-                  text: LocaleKeys.difficulty_level.tr() + ": ",
+                  text: "${LocaleKeys.difficulty_level.tr()}: ",
                   style: TextStyle(fontWeight: FontWeight.bold)),
               TextSpan(text: EnumToString.difficultyToString(difficulty)),
             ],
@@ -90,12 +87,10 @@ class RecipeHeaderWidget extends StatelessWidget {
             style: DefaultTextStyle.of(context).style,
             children: <TextSpan>[
               TextSpan(
-                  text: LocaleKeys.description.tr() + ": ",
+                  text: "${LocaleKeys.description.tr()}: ",
                   style: TextStyle(fontWeight: FontWeight.bold)),
               TextSpan(
-                  text: description == null
-                      ? LocaleKeys.not_informed.tr()
-                      : description),
+                  text: description ?? LocaleKeys.not_informed.tr()),
             ],
           ),
         ),

@@ -12,11 +12,10 @@ class InputRecipePage extends StatelessWidget {
   final NavigationService navigationService;
 
   const InputRecipePage(
-      {Key? key, required this.store, required this.navigationService})
-      : super(key: key);
+      {super.key, required this.store, required this.navigationService});
   @override
   Widget build(BuildContext context) {
-    Future<bool> _onBackPressed() {
+    Future<bool> onBackPressed() {
       return showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -36,8 +35,15 @@ class InputRecipePage extends StatelessWidget {
       ).then((value) => value as bool);
     }
 
-    return WillPopScope(
-      onWillPop: _onBackPressed,
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (bool didPop, Object? result) async {
+        if (didPop) return;
+        final bool shouldPop = await onBackPressed();
+        if (shouldPop) {
+          navigationService.goBack();
+        }
+      },
       child: DefaultTabController(
         length: 3,
         child: Scaffold(
