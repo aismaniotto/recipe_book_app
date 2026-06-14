@@ -32,7 +32,7 @@ class InputRecipePage extends StatelessWidget {
             ),
           ],
         ),
-      ).then((value) => value as bool);
+      ).then((value) => value == true);
     }
 
     return PopScope(

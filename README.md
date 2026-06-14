@@ -11,14 +11,14 @@
 ## Screenshots
 
 <p align="center">
-  <img src="assets/prints/prints github/0_empty_list.png" width="180" alt="Empty list"/>
-  <img src="assets/prints/prints github/1_recipe_list.png" width="180" alt="Recipe list"/>
-  <img src="assets/prints/prints github/2_new_recipe.png" width="180" alt="New recipe"/>
-  <img src="assets/prints/prints github/5_show_recipe.png" width="180" alt="Show recipe"/>
+  <img src="assets/prints/prints%20github/0_empty_list.png" width="180" alt="Empty list"/>
+  <img src="assets/prints/prints%20github/1_recipe_list.png" width="180" alt="Recipe list"/>
+  <img src="assets/prints/prints%20github/2_new_recipe.png" width="180" alt="New recipe"/>
+  <img src="assets/prints/prints%20github/5_show_recipe.png" width="180" alt="Show recipe"/>
 </p>
 
 <p align="center">
-  <img src="assets/prints/prints github/6_demo.gif" width="250" alt="Demo"/>
+  <img src="assets/prints/prints%20github/6_demo.gif" width="250" alt="Demo"/>
 </p>
 
 ## Features
