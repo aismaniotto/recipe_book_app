@@ -10,6 +10,7 @@ class RecipeHeaderWidget extends StatelessWidget {
   final Type type;
   final int? qtdPeopleServide;
   final Difficulty difficulty;
+  final int? prepTimeMinutes;
 
   const RecipeHeaderWidget(
       {super.key,
@@ -17,7 +18,8 @@ class RecipeHeaderWidget extends StatelessWidget {
       required this.description,
       required this.type,
       required this.qtdPeopleServide,
-      required this.difficulty});
+      required this.difficulty,
+      this.prepTimeMinutes});
 
   @override
   Widget build(BuildContext context) {
@@ -81,6 +83,20 @@ class RecipeHeaderWidget extends StatelessWidget {
           ),
         ),
         SizedBox(height: 5),
+        if (prepTimeMinutes != null)
+          RichText(
+            text: TextSpan(
+              text: '',
+              style: DefaultTextStyle.of(context).style,
+              children: <TextSpan>[
+                TextSpan(
+                    text: "${LocaleKeys.prep_time.tr()}: ",
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+                TextSpan(text: '$prepTimeMinutes min'),
+              ],
+            ),
+          ),
+        if (prepTimeMinutes != null) SizedBox(height: 5),
         RichText(
           text: TextSpan(
             text: '',

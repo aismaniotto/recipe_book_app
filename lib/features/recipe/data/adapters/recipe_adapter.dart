@@ -23,7 +23,9 @@ class RecipeAdapter extends Adapter<Recipe> {
             .toList(),
         steps: (map['steps'] as List)
             .map((stepMap) => identificableTextAdapter.fromMap(stepMap))
-            .toList());
+            .toList(),
+        isFavorite: map['isFavorite'] as bool?,
+        prepTimeMinutes: map['prepTimeMinutes'] as int?);
   }
 
   @override
@@ -41,6 +43,8 @@ class RecipeAdapter extends Adapter<Recipe> {
       'steps': recipe.steps
           .map((step) => identificableTextAdapter.toMap(step))
           .toList(),
+      'isFavorite': recipe.isFavorite,
+      'prepTimeMinutes': recipe.prepTimeMinutes,
     };
   }
 }

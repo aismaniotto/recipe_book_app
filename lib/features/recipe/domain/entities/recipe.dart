@@ -13,6 +13,8 @@ class Recipe {
   Difficulty difficulty;
   List<IdentificableText> ingredientList;
   List<IdentificableText> steps;
+  bool isFavorite;
+  int? prepTimeMinutes;
   //TODO:String picturePath;
 
   Recipe(
@@ -23,11 +25,14 @@ class Recipe {
       this.quantityPeopleServide,
       Difficulty? difficulty,
       List<IdentificableText>? ingredientList,
-      List<IdentificableText>? steps})
+      List<IdentificableText>? steps,
+      bool? isFavorite,
+      this.prepTimeMinutes})
       : id = id ?? Uuid().v4(),
         title = title ?? '',
         type = type ?? Type.other,
         difficulty = difficulty ?? Difficulty.easy,
         ingredientList = ingredientList ?? [],
-        steps = steps ?? [];
+        steps = steps ?? [],
+        isFavorite = isFavorite ?? false;
 }

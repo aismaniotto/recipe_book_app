@@ -73,6 +73,18 @@ mixin _$RecipeStore on _RecipeStore, Store {
   }
 
   @override
+  void changePrepTimeMinutes(int? newPrepTime) {
+    final _$actionInfo = _$_RecipeStoreActionController.startAction(
+      name: '_RecipeStore.changePrepTimeMinutes',
+    );
+    try {
+      return super.changePrepTimeMinutes(newPrepTime);
+    } finally {
+      _$_RecipeStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void addNewIngredient() {
     final _$actionInfo = _$_RecipeStoreActionController.startAction(
       name: '_RecipeStore.addNewIngredient',

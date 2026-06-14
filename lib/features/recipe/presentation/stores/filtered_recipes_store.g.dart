@@ -36,22 +36,68 @@ mixin _$FilteredRecipesStore on _FilteredRecipesStore, Store {
     });
   }
 
-  late final _$filterAtom = Atom(
-    name: '_FilteredRecipesStore.filter',
+  late final _$searchQueryAtom = Atom(
+    name: '_FilteredRecipesStore.searchQuery',
     context: context,
   );
 
   @override
-  String get filter {
-    _$filterAtom.reportRead();
-    return super.filter;
+  String get searchQuery {
+    _$searchQueryAtom.reportRead();
+    return super.searchQuery;
   }
 
   @override
-  set filter(String value) {
-    _$filterAtom.reportWrite(value, super.filter, () {
-      super.filter = value;
+  set searchQuery(String value) {
+    _$searchQueryAtom.reportWrite(value, super.searchQuery, () {
+      super.searchQuery = value;
     });
+  }
+
+  late final _$showFavoritesOnlyAtom = Atom(
+    name: '_FilteredRecipesStore.showFavoritesOnly',
+    context: context,
+  );
+
+  @override
+  bool get showFavoritesOnly {
+    _$showFavoritesOnlyAtom.reportRead();
+    return super.showFavoritesOnly;
+  }
+
+  @override
+  set showFavoritesOnly(bool value) {
+    _$showFavoritesOnlyAtom.reportWrite(value, super.showFavoritesOnly, () {
+      super.showFavoritesOnly = value;
+    });
+  }
+
+  late final _$sortOptionAtom = Atom(
+    name: '_FilteredRecipesStore.sortOption',
+    context: context,
+  );
+
+  @override
+  SortOption get sortOption {
+    _$sortOptionAtom.reportRead();
+    return super.sortOption;
+  }
+
+  @override
+  set sortOption(SortOption value) {
+    _$sortOptionAtom.reportWrite(value, super.sortOption, () {
+      super.sortOption = value;
+    });
+  }
+
+  late final _$toggleFavoriteAsyncAction = AsyncAction(
+    '_FilteredRecipesStore.toggleFavorite',
+    context: context,
+  );
+
+  @override
+  Future<dynamic> toggleFavorite(Recipe recipe) {
+    return _$toggleFavoriteAsyncAction.run(() => super.toggleFavorite(recipe));
   }
 
   late final _$getAllRecipesAsyncAction = AsyncAction(
@@ -74,10 +120,53 @@ mixin _$FilteredRecipesStore on _FilteredRecipesStore, Store {
     return _$deleteRecipeAsyncAction.run(() => super.deleteRecipe(recipe));
   }
 
+  late final _$_FilteredRecipesStoreActionController = ActionController(
+    name: '_FilteredRecipesStore',
+    context: context,
+  );
+
+  @override
+  void setSearchQuery(String query) {
+    final _$actionInfo = _$_FilteredRecipesStoreActionController.startAction(
+      name: '_FilteredRecipesStore.setSearchQuery',
+    );
+    try {
+      return super.setSearchQuery(query);
+    } finally {
+      _$_FilteredRecipesStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void toggleFavoritesOnly() {
+    final _$actionInfo = _$_FilteredRecipesStoreActionController.startAction(
+      name: '_FilteredRecipesStore.toggleFavoritesOnly',
+    );
+    try {
+      return super.toggleFavoritesOnly();
+    } finally {
+      _$_FilteredRecipesStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setSortOption(SortOption option) {
+    final _$actionInfo = _$_FilteredRecipesStoreActionController.startAction(
+      name: '_FilteredRecipesStore.setSortOption',
+    );
+    try {
+      return super.setSortOption(option);
+    } finally {
+      _$_FilteredRecipesStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
-filter: ${filter},
+searchQuery: ${searchQuery},
+showFavoritesOnly: ${showFavoritesOnly},
+sortOption: ${sortOption},
 filteredRecipes: ${filteredRecipes}
     ''';
   }

@@ -59,5 +59,16 @@
   "undefined": "indefinido",
   "save": "Salvar",
   "edit": "Editar",
-  "delete": "Deletar"
+  "delete": "Deletar",
+  "search": "Buscar receitas...",
+  "favorites": "Favoritos",
+  "no_favorites_yet": "Nenhuma receita favorita ainda.\nToque no ícone de coração para adicionar!",
+  "no_results_found": "Nenhuma receita encontrada para esta busca.",
+  "sort_by": "Ordenar por",
+  "sort_by_name": "Nome",
+  "sort_by_type": "Tipo",
+  "sort_by_difficulty": "Dificuldade",
+  "prep_time": "Tempo de preparo",
+  "prep_time_minutes": "{minutes} min",
+  "prep_time_hint": "Tempo em minutos"
 }

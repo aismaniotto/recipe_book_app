@@ -30,6 +30,7 @@ class ShowRecipePage extends StatelessWidget {
       type: recipe.type,
       qtdPeopleServide: recipe.quantityPeopleServide,
       difficulty: recipe.difficulty,
+      prepTimeMinutes: recipe.prepTimeMinutes,
     ));
     columnWidgets.add(TitleListWidget(LocaleKeys.ingredients.tr()));
     columnWidgets.addAll(prepareList<IdentificableText>(recipe.ingredientList));

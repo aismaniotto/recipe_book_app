@@ -6,8 +6,10 @@ class RecipeTileWidget extends StatelessWidget {
   final Recipe recipe;
   final VoidCallback onTap;
   final VoidCallback onLongPress;
+  final VoidCallback? onFavoriteToggle;
 
-  const RecipeTileWidget(this.recipe, this.onTap, this.onLongPress, {super.key});
+  const RecipeTileWidget(this.recipe, this.onTap, this.onLongPress,
+      {super.key, this.onFavoriteToggle});
 
   @override
   Widget build(BuildContext context) {
@@ -15,19 +17,40 @@ class RecipeTileWidget extends StatelessWidget {
         child: ListTile(
       leading: getIconType(recipe.type),
       title: Text(recipe.title),
-      subtitle: Text(
-        recipe.description ?? '',
-        maxLines: 3,
-        overflow: TextOverflow.fade,
+      subtitle: Row(
+        children: [
+          if (recipe.description != null && recipe.description!.isNotEmpty)
+            Expanded(
+              child: Text(
+                recipe.description!,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          if (recipe.prepTimeMinutes != null) ...[
+            if (recipe.description != null && recipe.description!.isNotEmpty)
+              SizedBox(width: 8),
+            Icon(Icons.timer_outlined, size: 14, color: Colors.grey),
+            SizedBox(width: 2),
+            Text('${recipe.prepTimeMinutes} min',
+                style: TextStyle(fontSize: 12, color: Colors.grey)),
+          ],
+        ],
       ),
       trailing: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            recipe.quantityPeopleServide != null
-                ? Text('x${recipe.quantityPeopleServide}')
-                : Text(''),
-            getIconDifficulty(recipe.difficulty)
+            GestureDetector(
+              onTap: onFavoriteToggle,
+              child: Icon(
+                recipe.isFavorite ? Icons.favorite : Icons.favorite_border,
+                color: recipe.isFavorite ? Colors.red : Colors.grey,
+                size: 20,
+              ),
+            ),
+            SizedBox(height: 4),
+            getIconDifficulty(recipe.difficulty),
           ]),
       onTap: onTap,
       onLongPress: onLongPress,

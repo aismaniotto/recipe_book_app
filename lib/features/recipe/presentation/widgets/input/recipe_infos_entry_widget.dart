@@ -16,6 +16,8 @@ class RecipeInfosEntryWidget extends StatelessWidget {
   final ValueChanged<int> onQuantityPeopleServideChanged;
   final Difficulty difficulty;
   final ValueChanged<Difficulty?> onDifficultyChanged;
+  final int? prepTimeMinutes;
+  final ValueChanged<int?> onPrepTimeChanged;
 
   const RecipeInfosEntryWidget(
       {super.key,
@@ -28,7 +30,9 @@ class RecipeInfosEntryWidget extends StatelessWidget {
       required this.quantityPeopleServide,
       required this.onQuantityPeopleServideChanged,
       required this.difficulty,
-      required this.onDifficultyChanged});
+      required this.onDifficultyChanged,
+      required this.prepTimeMinutes,
+      required this.onPrepTimeChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -101,6 +105,16 @@ class RecipeInfosEntryWidget extends StatelessWidget {
               );
             }).toList(),
             onTap: () => {FocusScope.of(context).unfocus()}),
+        TextFormField(
+            decoration:
+                InputDecoration(labelText: LocaleKeys.prep_time_hint.tr()),
+            initialValue: prepTimeMinutes?.toString(),
+            onChanged: (String value) =>
+                onPrepTimeChanged(value.isEmpty ? null : int.tryParse(value)),
+            keyboardType: TextInputType.number,
+            inputFormatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.digitsOnly
+            ]),
       ],
     );
   }

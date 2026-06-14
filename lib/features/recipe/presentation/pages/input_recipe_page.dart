@@ -91,6 +91,8 @@ class InputRecipePage extends StatelessWidget {
                             store.changeQuantityPeopleServide,
                         difficulty: store.difficulty,
                         onDifficultyChanged: store.changeDifficulty,
+                        prepTimeMinutes: store.prepTimeMinutes,
+                        onPrepTimeChanged: store.changePrepTimeMinutes,
                       );
                     })),
               ),

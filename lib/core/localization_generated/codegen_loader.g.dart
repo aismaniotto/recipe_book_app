@@ -75,7 +75,18 @@ class CodegenLoader extends AssetLoader{
   "undefined": "indefinido",
   "save": "Salvar",
   "edit": "Editar",
-  "delete": "Deletar"
+  "delete": "Deletar",
+  "search": "Buscar receitas...",
+  "favorites": "Favoritos",
+  "no_favorites_yet": "Nenhuma receita favorita ainda.\nToque no ícone de coração para adicionar!",
+  "no_results_found": "Nenhuma receita encontrada para esta busca.",
+  "sort_by": "Ordenar por",
+  "sort_by_name": "Nome",
+  "sort_by_type": "Tipo",
+  "sort_by_difficulty": "Dificuldade",
+  "prep_time": "Tempo de preparo",
+  "prep_time_minutes": "{minutes} min",
+  "prep_time_hint": "Tempo em minutos"
 };
 static const Map<String,dynamic> _en = {
   "recipe": "Recipe",
@@ -138,7 +149,18 @@ static const Map<String,dynamic> _en = {
   "undefined": "undefined",
   "save": "Save",
   "edit": "Edit",
-  "delete": "Delete"
+  "delete": "Delete",
+  "search": "Search recipes...",
+  "favorites": "Favorites",
+  "no_favorites_yet": "No favorite recipes yet.\nTap the heart icon to add one!",
+  "no_results_found": "No recipes found for this search.",
+  "sort_by": "Sort by",
+  "sort_by_name": "Name",
+  "sort_by_type": "Type",
+  "sort_by_difficulty": "Difficulty",
+  "prep_time": "Prep time",
+  "prep_time_minutes": "{minutes} min",
+  "prep_time_hint": "Time in minutes"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"pt": _pt, "en": _en};
 }

@@ -73,29 +73,93 @@ class ListRecipesPage extends StatelessWidget {
 
     store.getAllRecipes();
     return Scaffold(
-        // drawer: NavDrawer(),
         appBar: AppBar(
           title: Text(LocaleKeys.my_recipe_book.tr()),
+          actions: [
+            Observer(
+              builder: (_) => IconButton(
+                icon: Icon(store.showFavoritesOnly
+                    ? Icons.favorite
+                    : Icons.favorite_border),
+                tooltip: LocaleKeys.favorites.tr(),
+                onPressed: () => store.toggleFavoritesOnly(),
+              ),
+            ),
+            PopupMenuButton<SortOption>(
+              icon: Icon(Icons.sort),
+              tooltip: LocaleKeys.sort_by.tr(),
+              onSelected: store.setSortOption,
+              itemBuilder: (context) => [
+                PopupMenuItem(
+                  value: SortOption.name,
+                  child: Text(LocaleKeys.sort_by_name.tr()),
+                ),
+                PopupMenuItem(
+                  value: SortOption.type,
+                  child: Text(LocaleKeys.sort_by_type.tr()),
+                ),
+                PopupMenuItem(
+                  value: SortOption.difficulty,
+                  child: Text(LocaleKeys.sort_by_difficulty.tr()),
+                ),
+              ],
+            ),
+          ],
         ),
-        body: Observer(
-          builder: (_) {
-            if (store.filteredRecipes.isEmpty) {
-              return EmptyListWidget();
-            }
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: LocaleKeys.search.tr(),
+                  prefixIcon: Icon(Icons.search),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 16),
+                ),
+                onChanged: store.setSearchQuery,
+              ),
+            ),
+            Expanded(
+              child: Observer(
+                builder: (_) {
+                  if (store.filteredRecipes.isEmpty) {
+                    if (store.showFavoritesOnly) {
+                      return EmptyListWidget(
+                        message: LocaleKeys.no_favorites_yet.tr(),
+                        icon: Icons.favorite_border,
+                      );
+                    }
+                    if (store.searchQuery.isNotEmpty) {
+                      return EmptyListWidget(
+                        message: LocaleKeys.no_results_found.tr(),
+                        icon: Icons.search_off,
+                      );
+                    }
+                    return EmptyListWidget(
+                      message: LocaleKeys.no_recipe_add_yet.tr(),
+                    );
+                  }
 
-            return ListView.builder(
-              itemCount: store.filteredRecipes.length,
-              itemBuilder: (_, index) {
-                Recipe recipe = store.filteredRecipes[index];
-                return RecipeTileWidget(
-                    recipe,
-                    () => navigationService
-                        .navigateTo('/show_recipe', arguments: recipe)
-                        .whenComplete(() => store.getAllRecipes()),
-                    () => longPressActions(recipe));
-              },
-            );
-          },
+                  return ListView.builder(
+                    itemCount: store.filteredRecipes.length,
+                    itemBuilder: (_, index) {
+                      Recipe recipe = store.filteredRecipes[index];
+                      return RecipeTileWidget(
+                          recipe,
+                          () => navigationService
+                              .navigateTo('/show_recipe', arguments: recipe)
+                              .whenComplete(() => store.getAllRecipes()),
+                          () => longPressActions(recipe),
+                          onFavoriteToggle: () => store.toggleFavorite(recipe));
+                    },
+                  );
+                },
+              ),
+            ),
+          ],
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {

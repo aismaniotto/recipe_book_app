@@ -60,6 +60,11 @@ abstract class _RecipeStore with Store {
     }
   }
 
+  int? get prepTimeMinutes => recipe.prepTimeMinutes;
+  @action
+  void changePrepTimeMinutes(int? newPrepTime) =>
+      recipe.prepTimeMinutes = newPrepTime;
+
   List<IdentificableText> get ingredientList => recipe.ingredientList;
 
   @action

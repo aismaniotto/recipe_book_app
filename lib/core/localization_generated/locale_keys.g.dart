@@ -60,5 +60,16 @@ abstract class  LocaleKeys {
   static const save = 'save';
   static const edit = 'edit';
   static const delete = 'delete';
+  static const search = 'search';
+  static const favorites = 'favorites';
+  static const no_favorites_yet = 'no_favorites_yet';
+  static const no_results_found = 'no_results_found';
+  static const sort_by = 'sort_by';
+  static const sort_by_name = 'sort_by_name';
+  static const sort_by_type = 'sort_by_type';
+  static const sort_by_difficulty = 'sort_by_difficulty';
+  static const prep_time = 'prep_time';
+  static const prep_time_minutes = 'prep_time_minutes';
+  static const prep_time_hint = 'prep_time_hint';
 
 }
