@@ -25,6 +25,7 @@ Flutter/flutter_export_environment.sh
 Flutter/ephemeral/
 ServiceDefinitions.json
 Runner/GeneratedPluginRegistrant.*
+**/xcshareddata/swiftpm/
 
 # Exceptions to above rules.
 !default.mode1v3

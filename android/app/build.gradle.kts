@@ -7,6 +7,7 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
     // Google Services (Firebase) — usa o google-services.json em android/app/.
     id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
 }
 
 // Credenciais de assinatura de release. O key.properties existe apenas na

@@ -13,6 +13,8 @@ analyzer:
   exclude:
     # Generated code (mobx stores, easy_localization keys/loader).
     - "**/*.g.dart"
+    # Build output, incl. third-party SwiftPM/FlutterFire checkouts.
+    - "build/**"
 
 linter:
   # The lint rules applied to this project can be customized in the
