@@ -14,12 +14,11 @@ class ShowRecipePage extends StatelessWidget {
   final DeleteRecipe deleteRecipe;
   final NavigationService navigationService;
 
-  ShowRecipePage(
-      {Key? key,
+  const ShowRecipePage(
+      {super.key,
       required this.recipe,
       required this.deleteRecipe,
-      required this.navigationService})
-      : super(key: key);
+      required this.navigationService});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +36,7 @@ class ShowRecipePage extends StatelessWidget {
     columnWidgets.add(TitleListWidget(LocaleKeys.steps.tr()));
     columnWidgets.addAll(prepareList<IdentificableText>(recipe.steps));
 
-    void _showDialog() {
+    void confirmDelete() {
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -82,7 +81,7 @@ class ShowRecipePage extends StatelessWidget {
             icon: Icon(Icons.delete),
             tooltip: LocaleKeys.delete.tr(),
             onPressed: () {
-              _showDialog();
+              confirmDelete();
             },
           ),
         ],
@@ -101,8 +100,9 @@ class ShowRecipePage extends StatelessWidget {
 
   List<Widget> prepareList<T>(List<T> list) {
     var widgetList = <Widget>[];
-    list.forEach(
-        (element) => widgetList.add(ItemListWidget(element.toString())));
+    for (var element in list) {
+      widgetList.add(ItemListWidget(element.toString()));
+    }
 
     return widgetList;
   }

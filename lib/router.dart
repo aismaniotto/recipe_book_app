@@ -39,7 +39,7 @@ class Router {
       case '/update_recipe':
         var recipe = settings.arguments as Recipe;
         return MaterialPageRoute(
-            settings: RouteSettings(name: 'UpdateRecipePage: ' + recipe.title),
+            settings: RouteSettings(name: 'UpdateRecipePage: ${recipe.title}'),
             builder: (_) => InputRecipePage(
                 store: ioc<RecipeStore>(param1: recipe),
                 navigationService: ioc()));

@@ -18,7 +18,7 @@ class RecipeInfosEntryWidget extends StatelessWidget {
   final ValueChanged<Difficulty?> onDifficultyChanged;
 
   const RecipeInfosEntryWidget(
-      {Key? key,
+      {super.key,
       required this.title,
       required this.onTitleChanged,
       required this.description,
@@ -28,8 +28,7 @@ class RecipeInfosEntryWidget extends StatelessWidget {
       required this.quantityPeopleServide,
       required this.onQuantityPeopleServideChanged,
       required this.difficulty,
-      required this.onDifficultyChanged})
-      : super(key: key);
+      required this.onDifficultyChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +53,7 @@ class RecipeInfosEntryWidget extends StatelessWidget {
         DropdownButtonFormField(
             autovalidateMode: AutovalidateMode.always,
             decoration: InputDecoration(labelText: LocaleKeys.type.tr()),
-            value: type,
+            initialValue: type,
             onChanged: onTypeChanged,
             validator: (Type? value) =>
                 value == null ? LocaleKeys.type_required.tr() : null,
@@ -87,7 +86,7 @@ class RecipeInfosEntryWidget extends StatelessWidget {
             autovalidateMode: AutovalidateMode.always,
             decoration:
                 InputDecoration(labelText: LocaleKeys.difficulty_level.tr()),
-            value: difficulty,
+            initialValue: difficulty,
             onChanged: onDifficultyChanged,
             validator: (Difficulty? value) =>
                 value == null ? LocaleKeys.difficulty_required.tr() : null,

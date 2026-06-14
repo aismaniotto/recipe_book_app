@@ -8,6 +8,6 @@ class AddRecipe {
 
   Future<Recipe> call(Recipe recipe) async {
     // TODO: check if already exist
-    return await this.repostitory.addRecipe(recipe);
+    return await repostitory.addRecipe(recipe);
   }
 }

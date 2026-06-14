@@ -5,7 +5,7 @@ import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
 import 'package:recipe_book_app/core/services/navigation_service.dart';
 import 'package:recipe_book_app/features/recipe/presentation/pages/list_recipes_page.dart';
 import 'package:recipe_book_app/core/localization_generated/codegen_loader.g.dart';
-import 'package:recipe_book_app/router.dart' as R;
+import 'package:recipe_book_app/router.dart' as app_router;
 
 void main() async {
   await ioc.init();
@@ -22,16 +22,27 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       // navigatorObservers: [ioc.ioc<AnalyticsService>().getAnalyticsObserver()],
       navigatorKey: ioc.ioc<NavigationService>().navigatorKey,
-      onGenerateRoute: R.Router.generateRoute,
+      onGenerateRoute: app_router.Router.generateRoute,
       title: LocaleKeys.recipe_book,
       theme: ThemeData(
-          primarySwatch: Colors.red,
+          colorSchemeSeed: Colors.red,
           scaffoldBackgroundColor: const Color(0xFFEFEFEF),
+          appBarTheme: AppBarTheme(
+            backgroundColor: Colors.red,
+            foregroundColor: Colors.white,
+          ),
+          tabBarTheme: TabBarThemeData(
+            labelColor: Colors.white,
+            unselectedLabelColor: Colors.white70,
+            indicatorColor: Colors.white,
+          ),
           textTheme: TextTheme(bodyMedium: TextStyle(fontSize: 16.0))),
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,

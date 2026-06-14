@@ -7,6 +7,6 @@ class UpdateRecipe {
   UpdateRecipe({required this.repostitory});
 
   Future<Recipe> call(Recipe recipe) async {
-    return await this.repostitory.updateRecipe(recipe);
+    return await repostitory.updateRecipe(recipe);
   }
 }

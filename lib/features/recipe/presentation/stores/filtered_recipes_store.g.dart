@@ -12,13 +12,16 @@ mixin _$FilteredRecipesStore on _FilteredRecipesStore, Store {
   Computed<ObservableList<Recipe>>? _$filteredRecipesComputed;
 
   @override
-  ObservableList<Recipe> get filteredRecipes => (_$filteredRecipesComputed ??=
-          Computed<ObservableList<Recipe>>(() => super.filteredRecipes,
-              name: '_FilteredRecipesStore.filteredRecipes'))
-      .value;
+  ObservableList<Recipe> get filteredRecipes =>
+      (_$filteredRecipesComputed ??= Computed<ObservableList<Recipe>>(
+        () => super.filteredRecipes,
+        name: '_FilteredRecipesStore.filteredRecipes',
+      )).value;
 
-  late final _$_recipesAtom =
-      Atom(name: '_FilteredRecipesStore._recipes', context: context);
+  late final _$_recipesAtom = Atom(
+    name: '_FilteredRecipesStore._recipes',
+    context: context,
+  );
 
   @override
   List<Recipe> get _recipes {
@@ -33,8 +36,10 @@ mixin _$FilteredRecipesStore on _FilteredRecipesStore, Store {
     });
   }
 
-  late final _$filterAtom =
-      Atom(name: '_FilteredRecipesStore.filter', context: context);
+  late final _$filterAtom = Atom(
+    name: '_FilteredRecipesStore.filter',
+    context: context,
+  );
 
   @override
   String get filter {
@@ -49,16 +54,20 @@ mixin _$FilteredRecipesStore on _FilteredRecipesStore, Store {
     });
   }
 
-  late final _$getAllRecipesAsyncAction =
-      AsyncAction('_FilteredRecipesStore.getAllRecipes', context: context);
+  late final _$getAllRecipesAsyncAction = AsyncAction(
+    '_FilteredRecipesStore.getAllRecipes',
+    context: context,
+  );
 
   @override
   Future<dynamic> getAllRecipes() {
     return _$getAllRecipesAsyncAction.run(() => super.getAllRecipes());
   }
 
-  late final _$deleteRecipeAsyncAction =
-      AsyncAction('_FilteredRecipesStore.deleteRecipe', context: context);
+  late final _$deleteRecipeAsyncAction = AsyncAction(
+    '_FilteredRecipesStore.deleteRecipe',
+    context: context,
+  );
 
   @override
   Future<dynamic> deleteRecipe(Recipe recipe) {

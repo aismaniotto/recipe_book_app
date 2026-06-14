@@ -7,6 +7,6 @@ class DeleteRecipe {
   DeleteRecipe({required this.repostitory});
 
   Future call(Recipe recipe) async {
-    return await this.repostitory.deleteRecipe(recipe.id);
+    return await repostitory.deleteRecipe(recipe.id);
   }
 }

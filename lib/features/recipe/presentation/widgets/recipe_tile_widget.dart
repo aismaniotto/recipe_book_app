@@ -7,7 +7,7 @@ class RecipeTileWidget extends StatelessWidget {
   final VoidCallback onTap;
   final VoidCallback onLongPress;
 
-  const RecipeTileWidget(this.recipe, this.onTap, this.onLongPress);
+  const RecipeTileWidget(this.recipe, this.onTap, this.onLongPress, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +34,8 @@ class RecipeTileWidget extends StatelessWidget {
     ));
   }
 
-  Icon getIconType(Type recipeType) {
-    IconData icon;
+  FaIcon getIconType(Type recipeType) {
+    FaIconData icon;
     switch (recipeType) {
       case Type.breakfast:
         icon = FontAwesomeIcons.breadSlice;
@@ -44,13 +44,13 @@ class RecipeTileWidget extends StatelessWidget {
         icon = FontAwesomeIcons.utensils;
         break;
       case Type.side:
-        icon = FontAwesomeIcons.conciergeBell;
+        icon = FontAwesomeIcons.bellConcierge;
         break;
       case Type.snack:
         icon = FontAwesomeIcons.cookieBite;
         break;
       case Type.drink:
-        icon = FontAwesomeIcons.cocktail;
+        icon = FontAwesomeIcons.martiniGlassCitrus;
         break;
       case Type.dessert:
         icon = FontAwesomeIcons.iceCream;
@@ -58,11 +58,8 @@ class RecipeTileWidget extends StatelessWidget {
       case Type.other:
         icon = FontAwesomeIcons.book;
         break;
-
-      default:
-        icon = FontAwesomeIcons.book;
     }
-    return Icon(icon, size: 45.0);
+    return FaIcon(icon, size: 45.0);
   }
 
   Icon getIconDifficulty(Difficulty difficulty) {
@@ -81,11 +78,6 @@ class RecipeTileWidget extends StatelessWidget {
         return Icon(
           Icons.brightness_1,
           color: Colors.orange,
-        );
-      default:
-        return Icon(
-          Icons.not_interested,
-          color: Colors.black,
         );
     }
   }

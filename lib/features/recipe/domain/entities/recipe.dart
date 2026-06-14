@@ -16,14 +16,14 @@ class Recipe {
   //TODO:String picturePath;
 
   Recipe(
-      {id,
-      title,
+      {String? id,
+      String? title,
       this.description,
-      type,
+      Type? type,
       this.quantityPeopleServide,
-      difficulty,
-      ingredientList,
-      steps})
+      Difficulty? difficulty,
+      List<IdentificableText>? ingredientList,
+      List<IdentificableText>? steps})
       : id = id ?? Uuid().v4(),
         title = title ?? '',
         type = type ?? Type.other,
