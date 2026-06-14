@@ -64,6 +64,20 @@ Inspired by [Resocoder's Flutter TDD Clean Architecture Course](https://github.c
 
 ## Getting Started
 
+### Firebase Setup
+
+This project uses Firebase. The config files are not versioned for security reasons. To set up:
+
+1. Create a Firebase project at [Firebase Console](https://console.firebase.google.com/)
+2. Register your Android and iOS apps
+3. Download the config files and place them at:
+   - **Android:** `android/app/google-services.json`
+   - **iOS:** `ios/Runner/GoogleService-Info.plist`
+
+You can use the `.example` files as reference for the expected structure.
+
+### Run
+
 ```bash
 # Install dependencies
 flutter pub get
