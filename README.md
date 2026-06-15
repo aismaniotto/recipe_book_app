@@ -26,10 +26,14 @@
 - Create, edit and delete recipes
 - Add ingredients and preparation steps
 - Categorize recipes by type (meal, snack, dessert, drink, etc.)
-- Set difficulty level and number of servings
+- Set difficulty level, number of servings and prep time
 - Reorder ingredients and steps via drag & drop
+- Search recipes by title or description
+- Mark recipes as favorites and filter by favorites
+- Sort recipes by name, type or difficulty
 - Localization support (English and Portuguese)
 - Local database with Sembast
+- Firebase Crashlytics and Analytics integration
 
 ## Architecture
 
@@ -57,6 +61,8 @@ Inspired by [Resocoder's Flutter TDD Clean Architecture Course](https://github.c
 | Localization | [easy_localization](https://pub.dev/packages/easy_localization) |
 | Icons | [font_awesome_flutter](https://pub.dev/packages/font_awesome_flutter) |
 | Code generation | [build_runner](https://pub.dev/packages/build_runner) + [mobx_codegen](https://pub.dev/packages/mobx_codegen) |
+| Crash reporting | [firebase_crashlytics](https://pub.dev/packages/firebase_crashlytics) |
+| Analytics | [firebase_analytics](https://pub.dev/packages/firebase_analytics) |
 
 ## Requirements
 
@@ -107,6 +113,33 @@ flutter pub run easy_localization:generate \
   --source-dir=assets/lang \
   --output-dir=lib/core/localization_generated \
   -f keys -o locale_keys.g.dart
+```
+
+## Tests
+
+### Run tests
+
+```bash
+flutter test
+```
+
+### Run tests with coverage report
+
+```bash
+# Generate coverage data
+flutter test --coverage
+
+# Generate HTML report (requires lcov)
+genhtml coverage/lcov.info -o coverage/html
+
+# Open report in browser
+open coverage/html/index.html
+```
+
+To install `lcov` on macOS:
+
+```bash
+brew install lcov
 ```
 
 ### Build release

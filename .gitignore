@@ -33,6 +33,9 @@
 # Web related
 lib/generated_plugin_registrant.dart
 
+# Test coverage
+coverage/
+
 # Firebase config (contains API keys)
 android/app/google-services.json
 ios/Runner/GoogleService-Info.plist
