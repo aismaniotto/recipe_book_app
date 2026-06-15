@@ -1,13 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:mobx/mobx.dart';
+import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
 import 'package:recipe_book_app/core/services/navigation_service.dart';
+import 'package:recipe_book_app/core/widgets/snack_bar_helper.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 import 'package:recipe_book_app/features/recipe/presentation/stores/filtered_recipes_store.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/empty_list_widget.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/nav_drawer.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/recipe_tile_widget.dart';
-import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
 
 class ListRecipesPage extends StatelessWidget {
   final FilteredRecipesStore store;
@@ -73,7 +75,16 @@ class ListRecipesPage extends StatelessWidget {
     }
 
     store.getAllRecipes();
-    return Scaffold(
+    return ReactionBuilder(
+      builder: (context) => reaction(
+        (_) => store.lastFailure,
+        (failure) {
+          if (failure != null) {
+            SnackBarHelper.showError(context, LocaleKeys.error_load_recipes.tr());
+          }
+        },
+      ),
+      child: Scaffold(
         drawer: NavDrawer(navigationService: navigationService),
         appBar: AppBar(
           title: Text(LocaleKeys.my_recipe_book.tr()),
@@ -171,6 +182,7 @@ class ListRecipesPage extends StatelessWidget {
           },
           tooltip: LocaleKeys.add_new_recipe.tr(),
           child: Icon(Icons.add),
-        ));
+        )),
+    );
   }
 }

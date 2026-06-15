@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:mobx/mobx.dart';
 import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:recipe_book_app/core/services/navigation_service.dart';
+import 'package:recipe_book_app/core/widgets/snack_bar_helper.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/input/recipe_infos_entry_widget.dart';
 import 'package:recipe_book_app/features/recipe/presentation/stores/recipe_store.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/input/custom_reordenable_listview.dart';
@@ -35,7 +37,16 @@ class InputRecipePage extends StatelessWidget {
       ).then((value) => value == true);
     }
 
-    return PopScope(
+    return ReactionBuilder(
+      builder: (context) => reaction(
+        (_) => store.lastFailure,
+        (failure) {
+          if (failure != null) {
+            SnackBarHelper.showError(context, LocaleKeys.error_save_recipe.tr());
+          }
+        },
+      ),
+      child: PopScope(
       canPop: false,
       onPopInvokedWithResult: (bool didPop, Object? result) async {
         if (didPop) return;
@@ -119,6 +130,7 @@ class InputRecipePage extends StatelessWidget {
             ],
           ),
         ),
+      ),
       ),
     );
   }

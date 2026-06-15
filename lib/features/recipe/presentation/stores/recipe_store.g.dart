@@ -9,6 +9,24 @@ part of 'recipe_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$RecipeStore on _RecipeStore, Store {
+  late final _$lastFailureAtom = Atom(
+    name: '_RecipeStore.lastFailure',
+    context: context,
+  );
+
+  @override
+  Failure? get lastFailure {
+    _$lastFailureAtom.reportRead();
+    return super.lastFailure;
+  }
+
+  @override
+  set lastFailure(Failure? value) {
+    _$lastFailureAtom.reportWrite(value, super.lastFailure, () {
+      super.lastFailure = value;
+    });
+  }
+
   late final _$saveRecipeAsyncAction = AsyncAction(
     '_RecipeStore.saveRecipe',
     context: context,
@@ -183,7 +201,7 @@ mixin _$RecipeStore on _RecipeStore, Store {
   @override
   String toString() {
     return '''
-
+lastFailure: ${lastFailure}
     ''';
   }
 }

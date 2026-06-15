@@ -1,4 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:get_it/get_it.dart';
+import 'package:recipe_book_app/core/services/navigation_service.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/identificable_text.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 import 'package:recipe_book_app/features/recipe/domain/usecases/add_recipe.dart';
@@ -7,11 +9,20 @@ import 'package:recipe_book_app/features/recipe/presentation/stores/recipe_store
 
 import 'helpers/fake_recipe_repository.dart';
 
+class FakeNavigationService extends NavigationService {
+  @override
+  void goBack() {}
+}
+
 void main() {
   late RecipeStore store;
   late FakeRecipeRepository repository;
 
   setUp(() {
+    final getIt = GetIt.instance;
+    if (!getIt.isRegistered<NavigationService>()) {
+      getIt.registerSingleton<NavigationService>(FakeNavigationService());
+    }
     repository = FakeRecipeRepository();
     store = RecipeStore(
       AddRecipe(repostitory: repository),
@@ -280,6 +291,27 @@ void main() {
       expect(editStore.title, 'Editado');
       expect(editStore.type, Type.dessert);
       expect(editStore.prepTimeMinutes, 15);
+    });
+  });
+
+  group('lastFailure', () {
+    test('é null por padrão', () {
+      expect(store.lastFailure, isNull);
+    });
+
+    test('é preenchido quando save falha', () async {
+      store.changeTitle('Teste');
+      repository.shouldFail = true;
+      await store.saveRecipe();
+
+      expect(store.lastFailure, isNotNull);
+    });
+
+    test('é null quando save sucede', () async {
+      store.changeTitle('Teste');
+      await store.saveRecipe();
+
+      expect(store.lastFailure, isNull);
     });
   });
 }

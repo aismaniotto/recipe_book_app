@@ -1,5 +1,6 @@
 import 'package:mobx/mobx.dart';
 import 'package:recipe_book_app/core/IoC/ioc.dart';
+import 'package:recipe_book_app/core/error/failure.dart';
 import 'package:recipe_book_app/core/services/crashlytics_service.dart';
 import 'package:recipe_book_app/core/services/navigation_service.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/identificable_text.dart';
@@ -18,6 +19,9 @@ abstract class _RecipeStore with Store {
   final UpdateRecipe _updateRecipe;
   bool isUpdate = false;
   late Recipe recipe;
+
+  @observable
+  Failure? lastFailure;
 
   _RecipeStore(this._addRecipe, this._updateRecipe, {Recipe? recipe}) {
     if (recipe == null) {
@@ -120,8 +124,14 @@ abstract class _RecipeStore with Store {
         ? await _updateRecipe(recipe)
         : await _addRecipe(recipe);
     result.fold(
-      (failure) => CrashlyticsService.recordFailure(failure),
-      (_) => ioc<NavigationService>().goBack(),
+      (failure) {
+        lastFailure = failure;
+        CrashlyticsService.recordFailure(failure);
+      },
+      (_) {
+        lastFailure = null;
+        ioc<NavigationService>().goBack();
+      },
     );
   }
 }

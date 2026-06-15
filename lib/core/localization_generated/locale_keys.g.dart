@@ -84,5 +84,8 @@ abstract class  LocaleKeys {
   static const settings_theme_color = 'settings_theme_color';
   static const settings_language = 'settings_language';
   static const share = 'share';
+  static const error_load_recipes = 'error_load_recipes';
+  static const error_save_recipe = 'error_save_recipe';
+  static const error_generic = 'error_generic';
 
 }

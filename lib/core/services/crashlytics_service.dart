@@ -1,11 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:recipe_book_app/core/error/failure.dart';
 
 class CrashlyticsService {
+  static bool get _isAvailable => Firebase.apps.isNotEmpty;
+
   static FirebaseCrashlytics get _instance => FirebaseCrashlytics.instance;
 
   static Future<void> init() async {
+    if (!_isAvailable) return;
     FlutterError.onError = _instance.recordFlutterFatalError;
     PlatformDispatcher.instance.onError = (error, stack) {
       _instance.recordError(error, stack, fatal: true);
@@ -16,6 +20,7 @@ class CrashlyticsService {
   static Future<void> setContext({
     String? locale,
   }) async {
+    if (!_isAvailable) return;
     if (locale != null) {
       await _instance.setCustomKey('locale', locale);
     }
@@ -26,10 +31,12 @@ class CrashlyticsService {
     StackTrace? stackTrace, {
     bool fatal = false,
   }) async {
+    if (!_isAvailable) return;
     await _instance.recordError(error, stackTrace, fatal: fatal);
   }
 
   static Future<void> recordFailure(Failure failure) async {
+    if (!_isAvailable) return;
     await _instance.setCustomKey('failure_type', failure.runtimeType.toString());
 
     for (final entry in failure.data.entries) {

@@ -83,5 +83,8 @@
   "settings": "Impostazioni",
   "settings_theme_color": "Colore del tema",
   "settings_language": "Lingua",
-  "share": "Condividi"
+  "share": "Condividi",
+  "error_load_recipes": "Impossibile caricare le ricette. Riprova.",
+  "error_save_recipe": "Impossibile salvare la ricetta. Riprova.",
+  "error_generic": "Qualcosa è andato storto. Riprova."
 }

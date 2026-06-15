@@ -83,5 +83,8 @@
   "settings": "Configuración",
   "settings_theme_color": "Color del tema",
   "settings_language": "Idioma",
-  "share": "Compartir"
+  "share": "Compartir",
+  "error_load_recipes": "Error al cargar las recetas. Inténtelo de nuevo.",
+  "error_save_recipe": "Error al guardar la receta. Inténtelo de nuevo.",
+  "error_generic": "Algo salió mal. Inténtelo de nuevo."
 }

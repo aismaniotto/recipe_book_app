@@ -311,4 +311,32 @@ void main() {
       expect(store.filteredRecipes, isEmpty);
     });
   });
+
+  group('lastFailure', () {
+    test('é null quando getAllRecipes sucede', () async {
+      repository.recipes = [makeRecipe(title: 'Ok')];
+      await store.getAllRecipes();
+
+      expect(store.lastFailure, isNull);
+    });
+
+    test('é preenchido quando getAllRecipes falha', () async {
+      repository.shouldFail = true;
+      await store.getAllRecipes();
+
+      expect(store.lastFailure, isNotNull);
+      expect(store.lastFailure!.message, 'getAll failed');
+    });
+
+    test('é limpo quando getAllRecipes sucede após falha', () async {
+      repository.shouldFail = true;
+      await store.getAllRecipes();
+      expect(store.lastFailure, isNotNull);
+
+      repository.shouldFail = false;
+      repository.recipes = [makeRecipe(title: 'Ok')];
+      await store.getAllRecipes();
+      expect(store.lastFailure, isNull);
+    });
+  });
 }

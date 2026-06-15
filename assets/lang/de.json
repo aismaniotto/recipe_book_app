@@ -83,5 +83,8 @@
   "settings": "Einstellungen",
   "settings_theme_color": "Themenfarbe",
   "settings_language": "Sprache",
-  "share": "Teilen"
+  "share": "Teilen",
+  "error_load_recipes": "Rezepte konnten nicht geladen werden. Bitte versuchen Sie es erneut.",
+  "error_save_recipe": "Rezept konnte nicht gespeichert werden. Bitte versuchen Sie es erneut.",
+  "error_generic": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
 }

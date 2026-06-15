@@ -99,7 +99,10 @@ class CodegenLoader extends AssetLoader{
   "settings": "Einstellungen",
   "settings_theme_color": "Themenfarbe",
   "settings_language": "Sprache",
-  "share": "Teilen"
+  "share": "Teilen",
+  "error_load_recipes": "Rezepte konnten nicht geladen werden. Bitte versuchen Sie es erneut.",
+  "error_save_recipe": "Rezept konnte nicht gespeichert werden. Bitte versuchen Sie es erneut.",
+  "error_generic": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
 };
 static const Map<String,dynamic> _ru = {
   "recipe": "Рецепт",
@@ -186,7 +189,10 @@ static const Map<String,dynamic> _ru = {
   "settings": "Настройки",
   "settings_theme_color": "Цвет темы",
   "settings_language": "Язык",
-  "share": "Поделиться"
+  "share": "Поделиться",
+  "error_load_recipes": "Не удалось загрузить рецепты. Попробуйте ещё раз.",
+  "error_save_recipe": "Не удалось сохранить рецепт. Попробуйте ещё раз.",
+  "error_generic": "Что-то пошло не так. Попробуйте ещё раз."
 };
 static const Map<String,dynamic> _pt = {
   "recipe": "Receita",
@@ -273,7 +279,10 @@ static const Map<String,dynamic> _pt = {
   "settings": "Configurações",
   "settings_theme_color": "Cor do tema",
   "settings_language": "Idioma",
-  "share": "Compartilhar"
+  "share": "Compartilhar",
+  "error_load_recipes": "Falha ao carregar receitas. Tente novamente.",
+  "error_save_recipe": "Falha ao salvar receita. Tente novamente.",
+  "error_generic": "Algo deu errado. Tente novamente."
 };
 static const Map<String,dynamic> _en = {
   "recipe": "Recipe",
@@ -360,7 +369,10 @@ static const Map<String,dynamic> _en = {
   "settings": "Settings",
   "settings_theme_color": "Theme color",
   "settings_language": "Language",
-  "share": "Share"
+  "share": "Share",
+  "error_load_recipes": "Failed to load recipes. Please try again.",
+  "error_save_recipe": "Failed to save recipe. Please try again.",
+  "error_generic": "Something went wrong. Please try again."
 };
 static const Map<String,dynamic> _it = {
   "recipe": "Ricetta",
@@ -447,7 +459,10 @@ static const Map<String,dynamic> _it = {
   "settings": "Impostazioni",
   "settings_theme_color": "Colore del tema",
   "settings_language": "Lingua",
-  "share": "Condividi"
+  "share": "Condividi",
+  "error_load_recipes": "Impossibile caricare le ricette. Riprova.",
+  "error_save_recipe": "Impossibile salvare la ricetta. Riprova.",
+  "error_generic": "Qualcosa è andato storto. Riprova."
 };
 static const Map<String,dynamic> _es = {
   "recipe": "Receta",
@@ -534,7 +549,10 @@ static const Map<String,dynamic> _es = {
   "settings": "Configuración",
   "settings_theme_color": "Color del tema",
   "settings_language": "Idioma",
-  "share": "Compartir"
+  "share": "Compartir",
+  "error_load_recipes": "Error al cargar las recetas. Inténtelo de nuevo.",
+  "error_save_recipe": "Error al guardar la receta. Inténtelo de nuevo.",
+  "error_generic": "Algo salió mal. Inténtelo de nuevo."
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"de": _de, "ru": _ru, "pt": _pt, "en": _en, "it": _it, "es": _es};
 }

@@ -83,5 +83,8 @@
   "settings": "Settings",
   "settings_theme_color": "Theme color",
   "settings_language": "Language",
-  "share": "Share"
+  "share": "Share",
+  "error_load_recipes": "Failed to load recipes. Please try again.",
+  "error_save_recipe": "Failed to save recipe. Please try again.",
+  "error_generic": "Something went wrong. Please try again."
 }
