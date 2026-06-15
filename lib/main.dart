@@ -16,8 +16,12 @@ import 'package:recipe_book_app/router.dart' as app_router;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  await CrashlyticsService.init();
+  try {
+    await Firebase.initializeApp();
+    await CrashlyticsService.init();
+  } catch (_) {
+    // App should work even if Firebase fails to initialize
+  }
   await ioc.init();
   final settingsStore = ioc.ioc<SettingsStore>();
   await settingsStore.loadSettings();
