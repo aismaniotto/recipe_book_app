@@ -26,10 +26,7 @@ class AppTheme {
           ),
         ),
         inputDecorationTheme: InputDecorationTheme(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
-          contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          border: UnderlineInputBorder(),
         ),
         textTheme: TextTheme(
           headlineLarge: AppTextStyles.headline1,
