@@ -95,5 +95,8 @@ abstract class  LocaleKeys {
   static const settings_font_small = 'settings_font_small';
   static const settings_font_medium = 'settings_font_medium';
   static const settings_font_large = 'settings_font_large';
+  static const settings_behavior = 'settings_behavior';
+  static const settings_default_sort = 'settings_default_sort';
+  static const settings_confirm_delete = 'settings_confirm_delete';
 
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
+import 'package:recipe_book_app/features/recipe/presentation/stores/filtered_recipes_store.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'settings_store.g.dart';
@@ -35,6 +36,7 @@ abstract class _SettingsStore with Store {
   static const _themeColorKey = 'theme_color';
   static const _themeModeKey = 'theme_mode';
   static const _fontScaleKey = 'font_scale';
+  static const _defaultSortKey = 'default_sort';
 
   @observable
   Color themeColor = Colors.red;
@@ -44,6 +46,9 @@ abstract class _SettingsStore with Store {
 
   @observable
   FontScale fontScale = FontScale.medium;
+
+  @observable
+  SortOption defaultSortOption = SortOption.name;
 
   @action
   Future<void> loadSettings() async {
@@ -59,6 +64,10 @@ abstract class _SettingsStore with Store {
     final scaleIndex = prefs.getInt(_fontScaleKey);
     if (scaleIndex != null) {
       fontScale = FontScale.values[scaleIndex];
+    }
+    final sortIndex = prefs.getInt(_defaultSortKey);
+    if (sortIndex != null) {
+      defaultSortOption = SortOption.values[sortIndex];
     }
   }
 
@@ -82,4 +91,12 @@ abstract class _SettingsStore with Store {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setInt(_fontScaleKey, scale.index);
   }
+
+  @action
+  Future<void> setDefaultSortOption(SortOption option) async {
+    defaultSortOption = option;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt(_defaultSortKey, option.index);
+  }
+
 }

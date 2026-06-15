@@ -94,5 +94,8 @@
   "settings_font_size": "Tamaño de fuente",
   "settings_font_small": "Pequeño",
   "settings_font_medium": "Mediano",
-  "settings_font_large": "Grande"
+  "settings_font_large": "Grande",
+  "settings_behavior": "Comportamiento",
+  "settings_default_sort": "Orden predeterminado",
+  "settings_confirm_delete": "Confirmar antes de eliminar"
 }

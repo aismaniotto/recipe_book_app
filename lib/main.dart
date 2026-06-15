@@ -9,6 +9,7 @@ import 'package:recipe_book_app/core/services/crashlytics_service.dart';
 import 'package:recipe_book_app/core/services/navigation_service.dart';
 import 'package:recipe_book_app/core/theme/app_theme.dart';
 import 'package:recipe_book_app/features/recipe/presentation/pages/list_recipes_page.dart';
+import 'package:recipe_book_app/features/recipe/presentation/stores/filtered_recipes_store.dart';
 import 'package:recipe_book_app/features/settings/presentation/stores/settings_store.dart';
 import 'package:recipe_book_app/core/localization_generated/codegen_loader.g.dart';
 import 'package:recipe_book_app/router.dart' as app_router;
@@ -18,7 +19,9 @@ void main() async {
   await Firebase.initializeApp();
   await CrashlyticsService.init();
   await ioc.init();
-  await ioc.ioc<SettingsStore>().loadSettings();
+  final settingsStore = ioc.ioc<SettingsStore>();
+  await settingsStore.loadSettings();
+  ioc.ioc<FilteredRecipesStore>().setSortOption(settingsStore.defaultSortOption);
   await EasyLocalization.ensureInitialized();
 
   runApp(

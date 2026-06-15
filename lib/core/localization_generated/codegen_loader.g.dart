@@ -110,7 +110,10 @@ class CodegenLoader extends AssetLoader{
   "settings_font_size": "Schriftgröße",
   "settings_font_small": "Klein",
   "settings_font_medium": "Mittel",
-  "settings_font_large": "Groß"
+  "settings_font_large": "Groß",
+  "settings_behavior": "Verhalten",
+  "settings_default_sort": "Standard-Sortierung",
+  "settings_confirm_delete": "Vor dem Löschen bestätigen"
 };
 static const Map<String,dynamic> _ru = {
   "recipe": "Рецепт",
@@ -208,7 +211,10 @@ static const Map<String,dynamic> _ru = {
   "settings_font_size": "Размер шрифта",
   "settings_font_small": "Маленький",
   "settings_font_medium": "Средний",
-  "settings_font_large": "Большой"
+  "settings_font_large": "Большой",
+  "settings_behavior": "Поведение",
+  "settings_default_sort": "Сортировка по умолчанию",
+  "settings_confirm_delete": "Подтверждать перед удалением"
 };
 static const Map<String,dynamic> _pt = {
   "recipe": "Receita",
@@ -306,7 +312,10 @@ static const Map<String,dynamic> _pt = {
   "settings_font_size": "Tamanho da fonte",
   "settings_font_small": "Pequeno",
   "settings_font_medium": "Médio",
-  "settings_font_large": "Grande"
+  "settings_font_large": "Grande",
+  "settings_behavior": "Comportamento",
+  "settings_default_sort": "Ordenação padrão",
+  "settings_confirm_delete": "Confirmar antes de deletar"
 };
 static const Map<String,dynamic> _en = {
   "recipe": "Recipe",
@@ -404,7 +413,10 @@ static const Map<String,dynamic> _en = {
   "settings_font_size": "Font size",
   "settings_font_small": "Small",
   "settings_font_medium": "Medium",
-  "settings_font_large": "Large"
+  "settings_font_large": "Large",
+  "settings_behavior": "Behavior",
+  "settings_default_sort": "Default sort order",
+  "settings_confirm_delete": "Confirm before deleting"
 };
 static const Map<String,dynamic> _it = {
   "recipe": "Ricetta",
@@ -502,7 +514,10 @@ static const Map<String,dynamic> _it = {
   "settings_font_size": "Dimensione del testo",
   "settings_font_small": "Piccolo",
   "settings_font_medium": "Medio",
-  "settings_font_large": "Grande"
+  "settings_font_large": "Grande",
+  "settings_behavior": "Comportamento",
+  "settings_default_sort": "Ordinamento predefinito",
+  "settings_confirm_delete": "Conferma prima di eliminare"
 };
 static const Map<String,dynamic> _es = {
   "recipe": "Receta",
@@ -600,7 +615,10 @@ static const Map<String,dynamic> _es = {
   "settings_font_size": "Tamaño de fuente",
   "settings_font_small": "Pequeño",
   "settings_font_medium": "Mediano",
-  "settings_font_large": "Grande"
+  "settings_font_large": "Grande",
+  "settings_behavior": "Comportamiento",
+  "settings_default_sort": "Orden predeterminado",
+  "settings_confirm_delete": "Confirmar antes de eliminar"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"de": _de, "ru": _ru, "pt": _pt, "en": _en, "it": _it, "es": _es};
 }

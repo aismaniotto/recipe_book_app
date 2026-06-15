@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:recipe_book_app/features/recipe/presentation/stores/filtered_recipes_store.dart';
 import 'package:recipe_book_app/features/settings/presentation/stores/settings_store.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -90,6 +91,28 @@ void main() {
       await store.loadSettings();
       expect(store.fontScale, FontScale.medium);
     });
+
+    test('defaultSortOption padrão é name', () {
+      expect(store.defaultSortOption, SortOption.name);
+    });
+
+    test('setDefaultSortOption altera e persiste', () async {
+      await store.setDefaultSortOption(SortOption.difficulty);
+      expect(store.defaultSortOption, SortOption.difficulty);
+
+      final prefs = await SharedPreferences.getInstance();
+      expect(prefs.getInt('default_sort'), SortOption.difficulty.index);
+    });
+
+    test('loadSettings restaura ordenação salva', () async {
+      await store.setDefaultSortOption(SortOption.type);
+
+      final newStore = SettingsStore();
+      await newStore.loadSettings();
+
+      expect(newStore.defaultSortOption, SortOption.type);
+    });
+
   });
 
   group('availableThemeColors', () {

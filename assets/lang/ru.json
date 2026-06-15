@@ -94,5 +94,8 @@
   "settings_font_size": "Размер шрифта",
   "settings_font_small": "Маленький",
   "settings_font_medium": "Средний",
-  "settings_font_large": "Большой"
+  "settings_font_large": "Большой",
+  "settings_behavior": "Поведение",
+  "settings_default_sort": "Сортировка по умолчанию",
+  "settings_confirm_delete": "Подтверждать перед удалением"
 }

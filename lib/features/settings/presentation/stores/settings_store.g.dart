@@ -63,6 +63,24 @@ mixin _$SettingsStore on _SettingsStore, Store {
     });
   }
 
+  late final _$defaultSortOptionAtom = Atom(
+    name: '_SettingsStore.defaultSortOption',
+    context: context,
+  );
+
+  @override
+  SortOption get defaultSortOption {
+    _$defaultSortOptionAtom.reportRead();
+    return super.defaultSortOption;
+  }
+
+  @override
+  set defaultSortOption(SortOption value) {
+    _$defaultSortOptionAtom.reportWrite(value, super.defaultSortOption, () {
+      super.defaultSortOption = value;
+    });
+  }
+
   late final _$loadSettingsAsyncAction = AsyncAction(
     '_SettingsStore.loadSettings',
     context: context,
@@ -103,12 +121,25 @@ mixin _$SettingsStore on _SettingsStore, Store {
     return _$setFontScaleAsyncAction.run(() => super.setFontScale(scale));
   }
 
+  late final _$setDefaultSortOptionAsyncAction = AsyncAction(
+    '_SettingsStore.setDefaultSortOption',
+    context: context,
+  );
+
+  @override
+  Future<void> setDefaultSortOption(SortOption option) {
+    return _$setDefaultSortOptionAsyncAction.run(
+      () => super.setDefaultSortOption(option),
+    );
+  }
+
   @override
   String toString() {
     return '''
 themeColor: ${themeColor},
 themeMode: ${themeMode},
-fontScale: ${fontScale}
+fontScale: ${fontScale},
+defaultSortOption: ${defaultSortOption}
     ''';
   }
 }

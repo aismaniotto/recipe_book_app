@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
+import 'package:recipe_book_app/features/recipe/presentation/stores/filtered_recipes_store.dart';
 import 'package:recipe_book_app/features/settings/presentation/stores/settings_store.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -112,6 +113,17 @@ class SettingsPage extends StatelessWidget {
             _SectionTitle(LocaleKeys.settings_language.tr()),
             SizedBox(height: 12),
             ..._buildLanguageOptions(context),
+            SizedBox(height: 32),
+            _SectionTitle(LocaleKeys.settings_behavior.tr()),
+            SizedBox(height: 12),
+            Observer(
+              builder: (_) => ListTile(
+                title: Text(LocaleKeys.settings_default_sort.tr()),
+                subtitle: Text(_sortOptionLabel(store.defaultSortOption)),
+                leading: Icon(Icons.sort),
+                onTap: () => _showSortPicker(context),
+              ),
+            ),
           ],
         ),
       ),
@@ -139,6 +151,35 @@ class SettingsPage extends StatelessWidget {
         onTap: () => context.setLocale(lang.$2),
       );
     }).toList();
+  }
+
+  String _sortOptionLabel(SortOption option) {
+    switch (option) {
+      case SortOption.name:
+        return LocaleKeys.sort_by_name.tr();
+      case SortOption.type:
+        return LocaleKeys.sort_by_type.tr();
+      case SortOption.difficulty:
+        return LocaleKeys.sort_by_difficulty.tr();
+    }
+  }
+
+  void _showSortPicker(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (_) => SimpleDialog(
+        title: Text(LocaleKeys.settings_default_sort.tr()),
+        children: SortOption.values.map((option) {
+          return SimpleDialogOption(
+            onPressed: () {
+              store.setDefaultSortOption(option);
+              Navigator.of(context).pop();
+            },
+            child: Text(_sortOptionLabel(option)),
+          );
+        }).toList(),
+      ),
+    );
   }
 }
 
