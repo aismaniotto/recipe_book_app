@@ -1,12 +1,14 @@
+import 'package:dartz/dartz.dart';
+import 'package:recipe_book_app/core/error/failure.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 import 'package:recipe_book_app/features/recipe/domain/repositories/recipe_repository.dart';
 
 class DeleteRecipe {
-  final RecipeRepository repostitory;
+  final RecipeRepository repository;
 
-  DeleteRecipe({required this.repostitory});
+  DeleteRecipe({required this.repository});
 
-  Future call(Recipe recipe) async {
-    return await this.repostitory.deleteRecipe(recipe.id);
+  Future<Either<Failure, void>> call(Recipe recipe) async {
+    return await repository.deleteRecipe(recipe.id);
   }
 }

@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:recipe_book_app/features/recipe/data/adapters/recipe_adapter.dart';
 import 'package:recipe_book_app/features/recipe/data/datasources/app_database.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
@@ -9,7 +7,7 @@ abstract class RecipeDataSource {
   Future<Recipe> addRecipe(Recipe recipe);
   Future<Recipe> updateRecipe(Recipe recipe);
   Future<void> deleteRecipe(String id);
-  Future<Recipe> getRecipeById(String id);
+  Future<void> deleteAll();
   Future<List<Recipe>> getAllRecipes();
 }
 
@@ -45,6 +43,11 @@ class RecipeDataSourceImpl extends RecipeDataSource {
   }
 
   @override
+  Future<void> deleteAll() async {
+    await _recipesFolder.delete(await _db);
+  }
+
+  @override
   Future<List<Recipe>> getAllRecipes() async {
     final recordsSnapshot = await _recipesFolder.find(await _db);
     return recordsSnapshot.map((snapshot) {
@@ -52,10 +55,4 @@ class RecipeDataSourceImpl extends RecipeDataSource {
     }).toList();
   }
 
-  @override
-  Future<Recipe> getRecipeById(String id) async {
-    final recipe = await (_recipesFolder.record(id).get(await _db)
-        as FutureOr<Map<String, Object?>>);
-    return recipeAdapter.fromMap(recipe);
-  }
 }

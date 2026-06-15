@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
+import 'package:recipe_book_app/core/theme/color_set.dart';
 import 'package:recipe_book_app/core/utils/enum_to_string.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 
@@ -10,15 +11,16 @@ class RecipeHeaderWidget extends StatelessWidget {
   final Type type;
   final int? qtdPeopleServide;
   final Difficulty difficulty;
+  final int? prepTimeMinutes;
 
   const RecipeHeaderWidget(
-      {Key? key,
+      {super.key,
       required this.name,
       required this.description,
       required this.type,
       required this.qtdPeopleServide,
-      required this.difficulty})
-      : super(key: key);
+      required this.difficulty,
+      this.prepTimeMinutes});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,7 @@ class RecipeHeaderWidget extends StatelessWidget {
           child: Text(
             name.toUpperCase(),
             style: TextStyle(
-                color: Colors.blueGrey,
+                color: ColorSet.accent,
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
                 fontStyle: FontStyle.italic),
@@ -42,7 +44,7 @@ class RecipeHeaderWidget extends StatelessWidget {
             style: DefaultTextStyle.of(context).style,
             children: <TextSpan>[
               TextSpan(
-                  text: LocaleKeys.type.tr() + ": ",
+                  text: "${LocaleKeys.type.tr()}: ",
                   style: TextStyle(fontWeight: FontWeight.bold)),
               TextSpan(text: EnumToString.recipeTypeToString(type)),
             ],
@@ -55,18 +57,15 @@ class RecipeHeaderWidget extends StatelessWidget {
             style: DefaultTextStyle.of(context).style,
             children: <TextSpan>[
               TextSpan(
-                  text: LocaleKeys.serve.tr() + ": ",
+                  text: "${LocaleKeys.serve.tr()}: ",
                   style: TextStyle(fontWeight: FontWeight.bold)),
-              // TextSpan(text: '$qtdPeopleServide people'),
               (qtdPeopleServide == null)
                   ? TextSpan(text: LocaleKeys.not_informed.tr())
                   : (qtdPeopleServide! > 1)
                       ? TextSpan(
-                          text: '$qtdPeopleServide ' +
-                              LocaleKeys.person_people.tr())
+                          text: '$qtdPeopleServide ${LocaleKeys.person_people.tr()}')
                       : TextSpan(
-                          text: '$qtdPeopleServide ' +
-                              LocaleKeys.person_person.tr())
+                          text: '$qtdPeopleServide ${LocaleKeys.person_person.tr()}')
             ],
           ),
         ),
@@ -77,25 +76,37 @@ class RecipeHeaderWidget extends StatelessWidget {
             style: DefaultTextStyle.of(context).style,
             children: <TextSpan>[
               TextSpan(
-                  text: LocaleKeys.difficulty_level.tr() + ": ",
+                  text: "${LocaleKeys.difficulty_level.tr()}: ",
                   style: TextStyle(fontWeight: FontWeight.bold)),
               TextSpan(text: EnumToString.difficultyToString(difficulty)),
             ],
           ),
         ),
         SizedBox(height: 5),
+        if (prepTimeMinutes != null)
+          RichText(
+            text: TextSpan(
+              text: '',
+              style: DefaultTextStyle.of(context).style,
+              children: <TextSpan>[
+                TextSpan(
+                    text: "${LocaleKeys.prep_time.tr()}: ",
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+                TextSpan(text: LocaleKeys.prep_time_minutes.tr(namedArgs: {'minutes': prepTimeMinutes.toString()})),
+              ],
+            ),
+          ),
+        if (prepTimeMinutes != null) SizedBox(height: 5),
         RichText(
           text: TextSpan(
             text: '',
             style: DefaultTextStyle.of(context).style,
             children: <TextSpan>[
               TextSpan(
-                  text: LocaleKeys.description.tr() + ": ",
+                  text: "${LocaleKeys.description.tr()}: ",
                   style: TextStyle(fontWeight: FontWeight.bold)),
               TextSpan(
-                  text: description == null
-                      ? LocaleKeys.not_informed.tr()
-                      : description),
+                  text: description ?? LocaleKeys.not_informed.tr()),
             ],
           ),
         ),

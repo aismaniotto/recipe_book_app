@@ -11,8 +11,6 @@ class EnumToString {
         return LocaleKeys.difficulty_medium.tr();
       case Difficulty.hard:
         return LocaleKeys.difficulty_hard.tr();
-      default:
-        return LocaleKeys.unknow.tr();
     }
   }
 
@@ -31,9 +29,6 @@ class EnumToString {
       case Type.dessert:
         return LocaleKeys.recipe_type_dessert.tr();
       case Type.other:
-        return LocaleKeys.recipe_type_some_other.tr();
-
-      default:
         return LocaleKeys.recipe_type_some_other.tr();
     }
   }

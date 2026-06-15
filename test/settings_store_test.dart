@@ -1,0 +1,132 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:recipe_book_app/features/recipe/presentation/stores/filtered_recipes_store.dart';
+import 'package:recipe_book_app/features/settings/presentation/stores/settings_store.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+void main() {
+  group('SettingsStore', () {
+    late SettingsStore store;
+
+    setUp(() async {
+      TestWidgetsFlutterBinding.ensureInitialized();
+      SharedPreferences.setMockInitialValues({});
+      store = SettingsStore();
+    });
+
+    test('themeColor padrão é vermelho', () {
+      expect(store.themeColor, Colors.red);
+    });
+
+    test('setThemeColor altera a cor e persiste', () async {
+      await store.setThemeColor(Colors.blue);
+      expect(store.themeColor, Colors.blue);
+
+      final prefs = await SharedPreferences.getInstance();
+      expect(prefs.getInt('theme_color'), Colors.blue.toARGB32());
+    });
+
+    test('loadSettings restaura cor salva', () async {
+      await store.setThemeColor(Colors.green);
+
+      final newStore = SettingsStore();
+      await newStore.loadSettings();
+
+      expect(newStore.themeColor.toARGB32(), Colors.green.toARGB32());
+    });
+
+    test('loadSettings mantém padrão quando nada salvo', () async {
+      await store.loadSettings();
+      expect(store.themeColor, Colors.red);
+    });
+
+    test('themeMode padrão é system', () {
+      expect(store.themeMode, ThemeMode.system);
+    });
+
+    test('setThemeMode altera o modo e persiste', () async {
+      await store.setThemeMode(ThemeMode.dark);
+      expect(store.themeMode, ThemeMode.dark);
+
+      final prefs = await SharedPreferences.getInstance();
+      expect(prefs.getInt('theme_mode'), ThemeMode.dark.index);
+    });
+
+    test('loadSettings restaura modo salvo', () async {
+      await store.setThemeMode(ThemeMode.light);
+
+      final newStore = SettingsStore();
+      await newStore.loadSettings();
+
+      expect(newStore.themeMode, ThemeMode.light);
+    });
+
+    test('loadSettings mantém system quando nada salvo', () async {
+      await store.loadSettings();
+      expect(store.themeMode, ThemeMode.system);
+    });
+
+    test('fontScale padrão é medium', () {
+      expect(store.fontScale, FontScale.medium);
+    });
+
+    test('setFontScale altera a escala e persiste', () async {
+      await store.setFontScale(FontScale.large);
+      expect(store.fontScale, FontScale.large);
+
+      final prefs = await SharedPreferences.getInstance();
+      expect(prefs.getInt('font_scale'), FontScale.large.index);
+    });
+
+    test('loadSettings restaura escala salva', () async {
+      await store.setFontScale(FontScale.small);
+
+      final newStore = SettingsStore();
+      await newStore.loadSettings();
+
+      expect(newStore.fontScale, FontScale.small);
+    });
+
+    test('loadSettings mantém medium quando nada salvo', () async {
+      await store.loadSettings();
+      expect(store.fontScale, FontScale.medium);
+    });
+
+    test('defaultSortOption padrão é name', () {
+      expect(store.defaultSortOption, SortOption.name);
+    });
+
+    test('setDefaultSortOption altera e persiste', () async {
+      await store.setDefaultSortOption(SortOption.difficulty);
+      expect(store.defaultSortOption, SortOption.difficulty);
+
+      final prefs = await SharedPreferences.getInstance();
+      expect(prefs.getInt('default_sort'), SortOption.difficulty.index);
+    });
+
+    test('loadSettings restaura ordenação salva', () async {
+      await store.setDefaultSortOption(SortOption.type);
+
+      final newStore = SettingsStore();
+      await newStore.loadSettings();
+
+      expect(newStore.defaultSortOption, SortOption.type);
+    });
+
+  });
+
+  group('availableThemeColors', () {
+    test('contém pelo menos 5 cores', () {
+      expect(availableThemeColors.length, greaterThanOrEqualTo(5));
+    });
+
+    test('contém vermelho como primeira opção', () {
+      expect(availableThemeColors.first, Colors.red);
+    });
+
+    test('todas são cores distintas', () {
+      final values = availableThemeColors.map((c) => c.toARGB32()).toSet();
+      expect(values.length, availableThemeColors.length);
+    });
+  });
+}

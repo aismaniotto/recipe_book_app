@@ -8,6 +8,6 @@ class IdentificableText {
 
   @override
   String toString() {
-    return text!;
+    return text ?? '';
   }
 }

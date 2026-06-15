@@ -6,26 +6,33 @@ import 'package:recipe_book_app/features/recipe/data/datasources/recipe_source.d
 import 'package:recipe_book_app/features/recipe/data/repositories/recipe_repository_impl.dart';
 import 'package:recipe_book_app/features/recipe/domain/repositories/recipe_repository.dart';
 import 'package:recipe_book_app/features/recipe/domain/usecases/add_recipe.dart';
+import 'package:recipe_book_app/features/recipe/domain/usecases/delete_all_recipes.dart';
 import 'package:recipe_book_app/features/recipe/domain/usecases/delete_recipe.dart';
+import 'package:recipe_book_app/features/recipe/domain/usecases/export_recipes.dart';
 import 'package:recipe_book_app/features/recipe/domain/usecases/get_all_recipes.dart';
+import 'package:recipe_book_app/features/recipe/domain/usecases/import_recipes.dart';
 import 'package:recipe_book_app/features/recipe/domain/usecases/update_recipe.dart';
 import 'package:recipe_book_app/features/recipe/presentation/stores/filtered_recipes_store.dart';
 import 'package:recipe_book_app/features/recipe/presentation/stores/recipe_store.dart';
+import 'package:recipe_book_app/features/settings/presentation/stores/settings_store.dart';
 
 final ioc = GetIt.instance;
 
 Future<void> init() async {
   // Store
-  ioc.registerLazySingleton(() => FilteredRecipesStore(ioc(), ioc()));
-  // ioc.registerFactory(() => RecipeStore(ioc(), ioc()));
+  ioc.registerLazySingleton(() => SettingsStore());
+  ioc.registerLazySingleton(() => FilteredRecipesStore(ioc(), ioc(), ioc()));
   ioc.registerFactoryParam((dynamic param1, dynamic param2) =>
       RecipeStore(ioc(), ioc(), recipe: param1));
 
   // Use cases
-  ioc.registerLazySingleton(() => AddRecipe(repostitory: ioc()));
-  ioc.registerLazySingleton(() => UpdateRecipe(repostitory: ioc()));
-  ioc.registerLazySingleton(() => DeleteRecipe(repostitory: ioc()));
-  ioc.registerLazySingleton(() => GetAllRecipes(repostitory: ioc()));
+  ioc.registerLazySingleton(() => AddRecipe(repository: ioc()));
+  ioc.registerLazySingleton(() => UpdateRecipe(repository: ioc()));
+  ioc.registerLazySingleton(() => DeleteRecipe(repository: ioc()));
+  ioc.registerLazySingleton(() => GetAllRecipes(repository: ioc()));
+  ioc.registerLazySingleton(() => DeleteAllRecipes(repository: ioc()));
+  ioc.registerLazySingleton(() => ExportRecipes(repository: ioc(), adapter: ioc()));
+  ioc.registerLazySingleton(() => ImportRecipes(repository: ioc(), adapter: ioc()));
 
   // Adapters
   ioc.registerLazySingleton(() => RecipeAdapter(ioc()));

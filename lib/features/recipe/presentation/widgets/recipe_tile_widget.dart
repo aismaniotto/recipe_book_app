@@ -1,13 +1,18 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
+import 'package:recipe_book_app/core/theme/color_set.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 
 class RecipeTileWidget extends StatelessWidget {
   final Recipe recipe;
   final VoidCallback onTap;
   final VoidCallback onLongPress;
+  final VoidCallback? onFavoriteToggle;
 
-  const RecipeTileWidget(this.recipe, this.onTap, this.onLongPress);
+  const RecipeTileWidget(this.recipe, this.onTap, this.onLongPress,
+      {super.key, this.onFavoriteToggle});
 
   @override
   Widget build(BuildContext context) {
@@ -15,27 +20,48 @@ class RecipeTileWidget extends StatelessWidget {
         child: ListTile(
       leading: getIconType(recipe.type),
       title: Text(recipe.title),
-      subtitle: Text(
-        recipe.description ?? '',
-        maxLines: 3,
-        overflow: TextOverflow.fade,
+      subtitle: Row(
+        children: [
+          if (recipe.description != null && recipe.description!.isNotEmpty)
+            Expanded(
+              child: Text(
+                recipe.description!,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          if (recipe.prepTimeMinutes != null) ...[
+            if (recipe.description != null && recipe.description!.isNotEmpty)
+              SizedBox(width: 8),
+            Icon(Icons.timer_outlined, size: 14, color: ColorSet.hint),
+            SizedBox(width: 2),
+            Text(LocaleKeys.prep_time_minutes.tr(namedArgs: {'minutes': recipe.prepTimeMinutes.toString()}),
+                style: TextStyle(fontSize: 12, color: ColorSet.hint)),
+          ],
+        ],
       ),
       trailing: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            recipe.quantityPeopleServide != null
-                ? Text('x${recipe.quantityPeopleServide}')
-                : Text(''),
-            getIconDifficulty(recipe.difficulty)
+            GestureDetector(
+              onTap: onFavoriteToggle,
+              child: Icon(
+                recipe.isFavorite ? Icons.favorite : Icons.favorite_border,
+                color: recipe.isFavorite ? ColorSet.favorite : ColorSet.hint,
+                size: 20,
+              ),
+            ),
+            SizedBox(height: 4),
+            getIconDifficulty(recipe.difficulty),
           ]),
       onTap: onTap,
       onLongPress: onLongPress,
     ));
   }
 
-  Icon getIconType(Type recipeType) {
-    IconData icon;
+  FaIcon getIconType(Type recipeType) {
+    FaIconData icon;
     switch (recipeType) {
       case Type.breakfast:
         icon = FontAwesomeIcons.breadSlice;
@@ -44,13 +70,13 @@ class RecipeTileWidget extends StatelessWidget {
         icon = FontAwesomeIcons.utensils;
         break;
       case Type.side:
-        icon = FontAwesomeIcons.conciergeBell;
+        icon = FontAwesomeIcons.bellConcierge;
         break;
       case Type.snack:
         icon = FontAwesomeIcons.cookieBite;
         break;
       case Type.drink:
-        icon = FontAwesomeIcons.cocktail;
+        icon = FontAwesomeIcons.martiniGlassCitrus;
         break;
       case Type.dessert:
         icon = FontAwesomeIcons.iceCream;
@@ -58,11 +84,8 @@ class RecipeTileWidget extends StatelessWidget {
       case Type.other:
         icon = FontAwesomeIcons.book;
         break;
-
-      default:
-        icon = FontAwesomeIcons.book;
     }
-    return Icon(icon, size: 45.0);
+    return FaIcon(icon, size: 45.0);
   }
 
   Icon getIconDifficulty(Difficulty difficulty) {
@@ -70,22 +93,17 @@ class RecipeTileWidget extends StatelessWidget {
       case Difficulty.easy:
         return Icon(
           Icons.brightness_3,
-          color: Colors.green,
+          color: ColorSet.difficultyEasy,
         );
       case Difficulty.medium:
         return Icon(
           Icons.brightness_2,
-          color: Colors.yellow,
+          color: ColorSet.difficultyMedium,
         );
       case Difficulty.hard:
         return Icon(
           Icons.brightness_1,
-          color: Colors.orange,
-        );
-      default:
-        return Icon(
-          Icons.not_interested,
-          color: Colors.black,
+          color: ColorSet.difficultyHard,
         );
     }
   }

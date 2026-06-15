@@ -1,5 +1,7 @@
 import 'package:mobx/mobx.dart';
 import 'package:recipe_book_app/core/IoC/ioc.dart';
+import 'package:recipe_book_app/core/error/failure.dart';
+import 'package:recipe_book_app/core/services/crashlytics_service.dart';
 import 'package:recipe_book_app/core/services/navigation_service.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/identificable_text.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
@@ -9,8 +11,7 @@ import 'package:recipe_book_app/features/recipe/domain/usecases/update_recipe.da
 part 'recipe_store.g.dart';
 
 class RecipeStore extends _RecipeStore with _$RecipeStore {
-  RecipeStore(AddRecipe addRecipe, UpdateRecipe updateRecipe, {Recipe? recipe})
-      : super(addRecipe, updateRecipe, recipe: recipe);
+  RecipeStore(super.addRecipe, super.updateRecipe, {super.recipe});
 }
 
 abstract class _RecipeStore with Store {
@@ -18,6 +19,9 @@ abstract class _RecipeStore with Store {
   final UpdateRecipe _updateRecipe;
   bool isUpdate = false;
   late Recipe recipe;
+
+  @observable
+  Failure? lastFailure;
 
   _RecipeStore(this._addRecipe, this._updateRecipe, {Recipe? recipe}) {
     if (recipe == null) {
@@ -55,11 +59,17 @@ abstract class _RecipeStore with Store {
       recipe.quantityPeopleServide = newQuantityPeopleServide;
 
   Difficulty get difficulty => recipe.difficulty;
+  @action
   void changeDifficulty(Difficulty? newDifficulty) {
     if (newDifficulty != null) {
       recipe.difficulty = newDifficulty;
     }
   }
+
+  int? get prepTimeMinutes => recipe.prepTimeMinutes;
+  @action
+  void changePrepTimeMinutes(int? newPrepTime) =>
+      recipe.prepTimeMinutes = newPrepTime;
 
   List<IdentificableText> get ingredientList => recipe.ingredientList;
 
@@ -80,9 +90,7 @@ abstract class _RecipeStore with Store {
 
   @action
   void reorderIngredient(int oldIndex, int newIndex) {
-    if (newIndex > oldIndex) {
-      newIndex -= 1;
-    }
+    // newIndex já vem ajustado pelo onReorderItem do ReorderableListView.
     IdentificableText ingredient = recipe.ingredientList.removeAt(oldIndex);
     recipe.ingredientList.insert(newIndex, ingredient);
   }
@@ -105,9 +113,7 @@ abstract class _RecipeStore with Store {
 
   @action
   void reorderStep(int oldIndex, int newIndex) {
-    if (newIndex > oldIndex) {
-      newIndex -= 1;
-    }
+    // newIndex já vem ajustado pelo onReorderItem do ReorderableListView.
     IdentificableText step = recipe.steps.removeAt(oldIndex);
     recipe.steps.insert(newIndex, step);
   }
@@ -115,7 +121,18 @@ abstract class _RecipeStore with Store {
   @action
   Future saveRecipe() async {
     if (title.isEmpty) return;
-    isUpdate ? await _updateRecipe(recipe) : await _addRecipe(recipe);
-    ioc<NavigationService>().goBack();
+    final result = isUpdate
+        ? await _updateRecipe(recipe)
+        : await _addRecipe(recipe);
+    result.fold(
+      (failure) {
+        lastFailure = failure;
+        CrashlyticsService.recordFailure(failure);
+      },
+      (_) {
+        lastFailure = null;
+        ioc<NavigationService>().goBack();
+      },
+    );
   }
 }

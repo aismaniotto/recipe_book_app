@@ -1,8 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:mobx/mobx.dart';
 import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:recipe_book_app/core/services/navigation_service.dart';
+import 'package:recipe_book_app/core/theme/color_set.dart';
+import 'package:recipe_book_app/core/widgets/snack_bar_helper.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/input/recipe_infos_entry_widget.dart';
 import 'package:recipe_book_app/features/recipe/presentation/stores/recipe_store.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/input/custom_reordenable_listview.dart';
@@ -12,11 +15,10 @@ class InputRecipePage extends StatelessWidget {
   final NavigationService navigationService;
 
   const InputRecipePage(
-      {Key? key, required this.store, required this.navigationService})
-      : super(key: key);
+      {super.key, required this.store, required this.navigationService});
   @override
   Widget build(BuildContext context) {
-    Future<bool> _onBackPressed() {
+    Future<bool> onBackPressed() {
       return showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -33,11 +35,27 @@ class InputRecipePage extends StatelessWidget {
             ),
           ],
         ),
-      ).then((value) => value as bool);
+      ).then((value) => value == true);
     }
 
-    return WillPopScope(
-      onWillPop: _onBackPressed,
+    return ReactionBuilder(
+      builder: (context) => reaction(
+        (_) => store.lastFailure,
+        (failure) {
+          if (failure != null) {
+            SnackBarHelper.showError(context, LocaleKeys.error_save_recipe.tr());
+          }
+        },
+      ),
+      child: PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (bool didPop, Object? result) async {
+        if (didPop) return;
+        final bool shouldPop = await onBackPressed();
+        if (shouldPop) {
+          navigationService.goBack();
+        }
+      },
       child: DefaultTabController(
         length: 3,
         child: Scaffold(
@@ -47,7 +65,7 @@ class InputRecipePage extends StatelessWidget {
             actions: <Widget>[
               TextButton(
                 style: TextButton.styleFrom(
-                  foregroundColor: Colors.white,
+                  foregroundColor: ColorSet.textOnPrimary,
                   shape: CircleBorder(
                       side: BorderSide(
                     color: Colors.transparent,
@@ -85,6 +103,8 @@ class InputRecipePage extends StatelessWidget {
                             store.changeQuantityPeopleServide,
                         difficulty: store.difficulty,
                         onDifficultyChanged: store.changeDifficulty,
+                        prepTimeMinutes: store.prepTimeMinutes,
+                        onPrepTimeChanged: store.changePrepTimeMinutes,
                       );
                     })),
               ),
@@ -111,6 +131,7 @@ class InputRecipePage extends StatelessWidget {
             ],
           ),
         ),
+      ),
       ),
     );
   }

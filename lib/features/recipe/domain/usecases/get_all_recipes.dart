@@ -1,13 +1,14 @@
+import 'package:dartz/dartz.dart';
+import 'package:recipe_book_app/core/error/failure.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 import 'package:recipe_book_app/features/recipe/domain/repositories/recipe_repository.dart';
 
 class GetAllRecipes {
-  final RecipeRepository repostitory;
+  final RecipeRepository repository;
 
-  GetAllRecipes({required this.repostitory});
+  GetAllRecipes({required this.repository});
 
-  Future<List<Recipe>> call() async {
-    //TODO: maybe, order by name;
-    return await this.repostitory.getAllRecipes();
+  Future<Either<Failure, List<Recipe>>> call() async {
+    return await repository.getAllRecipes();
   }
 }

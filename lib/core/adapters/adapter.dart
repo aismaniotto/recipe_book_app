@@ -1,4 +1,4 @@
-abstract class Adapter<Type>{
-  Map<String, dynamic> toMap(Type object);
-  Type fromMap(Map<String, dynamic> map);
+abstract class Adapter<T> {
+  Map<String, dynamic> toMap(T object);
+  T fromMap(Map<String, dynamic> map);
 }

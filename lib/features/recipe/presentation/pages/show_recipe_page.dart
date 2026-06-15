@@ -2,6 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
 import 'package:recipe_book_app/core/services/navigation_service.dart';
+import 'package:recipe_book_app/core/utils/recipe_formatter.dart';
+import 'package:share_plus/share_plus.dart' show Share;
 import 'package:recipe_book_app/features/recipe/domain/entities/identificable_text.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 import 'package:recipe_book_app/features/recipe/domain/usecases/delete_recipe.dart';
@@ -14,12 +16,11 @@ class ShowRecipePage extends StatelessWidget {
   final DeleteRecipe deleteRecipe;
   final NavigationService navigationService;
 
-  ShowRecipePage(
-      {Key? key,
+  const ShowRecipePage(
+      {super.key,
       required this.recipe,
       required this.deleteRecipe,
-      required this.navigationService})
-      : super(key: key);
+      required this.navigationService});
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +32,14 @@ class ShowRecipePage extends StatelessWidget {
       type: recipe.type,
       qtdPeopleServide: recipe.quantityPeopleServide,
       difficulty: recipe.difficulty,
+      prepTimeMinutes: recipe.prepTimeMinutes,
     ));
     columnWidgets.add(TitleListWidget(LocaleKeys.ingredients.tr()));
     columnWidgets.addAll(prepareList<IdentificableText>(recipe.ingredientList));
     columnWidgets.add(TitleListWidget(LocaleKeys.steps.tr()));
     columnWidgets.addAll(prepareList<IdentificableText>(recipe.steps));
 
-    void _showDialog() {
+    void confirmDelete() {
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -70,6 +72,14 @@ class ShowRecipePage extends StatelessWidget {
         title: Text(recipe.title),
         actions: <Widget>[
           IconButton(
+            icon: Icon(Icons.share),
+            tooltip: LocaleKeys.share.tr(),
+            onPressed: () {
+              final text = RecipeFormatter.toShareText(recipe);
+              Share.share(text);
+            },
+          ),
+          IconButton(
             icon: Icon(Icons.edit),
             tooltip: LocaleKeys.edit.tr(),
             onPressed: () => {
@@ -82,7 +92,7 @@ class ShowRecipePage extends StatelessWidget {
             icon: Icon(Icons.delete),
             tooltip: LocaleKeys.delete.tr(),
             onPressed: () {
-              _showDialog();
+              confirmDelete();
             },
           ),
         ],
@@ -101,8 +111,9 @@ class ShowRecipePage extends StatelessWidget {
 
   List<Widget> prepareList<T>(List<T> list) {
     var widgetList = <Widget>[];
-    list.forEach(
-        (element) => widgetList.add(ItemListWidget(element.toString())));
+    for (var element in list) {
+      widgetList.add(ItemListWidget(element.toString()));
+    }
 
     return widgetList;
   }

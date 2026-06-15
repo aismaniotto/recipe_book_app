@@ -16,9 +16,11 @@ class RecipeInfosEntryWidget extends StatelessWidget {
   final ValueChanged<int> onQuantityPeopleServideChanged;
   final Difficulty difficulty;
   final ValueChanged<Difficulty?> onDifficultyChanged;
+  final int? prepTimeMinutes;
+  final ValueChanged<int?> onPrepTimeChanged;
 
   const RecipeInfosEntryWidget(
-      {Key? key,
+      {super.key,
       required this.title,
       required this.onTitleChanged,
       required this.description,
@@ -28,8 +30,9 @@ class RecipeInfosEntryWidget extends StatelessWidget {
       required this.quantityPeopleServide,
       required this.onQuantityPeopleServideChanged,
       required this.difficulty,
-      required this.onDifficultyChanged})
-      : super(key: key);
+      required this.onDifficultyChanged,
+      required this.prepTimeMinutes,
+      required this.onPrepTimeChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +57,7 @@ class RecipeInfosEntryWidget extends StatelessWidget {
         DropdownButtonFormField(
             autovalidateMode: AutovalidateMode.always,
             decoration: InputDecoration(labelText: LocaleKeys.type.tr()),
-            value: type,
+            initialValue: type,
             onChanged: onTypeChanged,
             validator: (Type? value) =>
                 value == null ? LocaleKeys.type_required.tr() : null,
@@ -77,8 +80,10 @@ class RecipeInfosEntryWidget extends StatelessWidget {
             decoration:
                 InputDecoration(labelText: LocaleKeys.peoples_serves.tr()),
             initialValue: quantityPeopleServide?.toString(),
-            onChanged: (String value) =>
-                onQuantityPeopleServideChanged(int.parse(value)),
+            onChanged: (String value) {
+                final parsed = int.tryParse(value);
+                if (parsed != null) onQuantityPeopleServideChanged(parsed);
+              },
             keyboardType: TextInputType.number,
             inputFormatters: <TextInputFormatter>[
               FilteringTextInputFormatter.digitsOnly
@@ -87,7 +92,7 @@ class RecipeInfosEntryWidget extends StatelessWidget {
             autovalidateMode: AutovalidateMode.always,
             decoration:
                 InputDecoration(labelText: LocaleKeys.difficulty_level.tr()),
-            value: difficulty,
+            initialValue: difficulty,
             onChanged: onDifficultyChanged,
             validator: (Difficulty? value) =>
                 value == null ? LocaleKeys.difficulty_required.tr() : null,
@@ -102,6 +107,16 @@ class RecipeInfosEntryWidget extends StatelessWidget {
               );
             }).toList(),
             onTap: () => {FocusScope.of(context).unfocus()}),
+        TextFormField(
+            decoration:
+                InputDecoration(labelText: LocaleKeys.prep_time_hint.tr()),
+            initialValue: prepTimeMinutes?.toString(),
+            onChanged: (String value) =>
+                onPrepTimeChanged(value.isEmpty ? null : int.tryParse(value)),
+            keyboardType: TextInputType.number,
+            inputFormatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.digitsOnly
+            ]),
       ],
     );
   }

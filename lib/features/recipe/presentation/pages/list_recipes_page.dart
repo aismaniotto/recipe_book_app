@@ -1,24 +1,26 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:mobx/mobx.dart';
+import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
 import 'package:recipe_book_app/core/services/navigation_service.dart';
+import 'package:recipe_book_app/core/widgets/snack_bar_helper.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 import 'package:recipe_book_app/features/recipe/presentation/stores/filtered_recipes_store.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/empty_list_widget.dart';
+import 'package:recipe_book_app/features/recipe/presentation/widgets/nav_drawer.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/recipe_tile_widget.dart';
-import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
 
 class ListRecipesPage extends StatelessWidget {
   final FilteredRecipesStore store;
   final NavigationService navigationService;
 
   const ListRecipesPage(
-      {Key? key, required this.store, required this.navigationService})
-      : super(key: key);
+      {super.key, required this.store, required this.navigationService});
 
   @override
   Widget build(BuildContext context) {
-    void _sureDeleteRecipe(Recipe recipe) {
+    void sureDeleteRecipe(Recipe recipe) {
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -46,7 +48,7 @@ class ListRecipesPage extends StatelessWidget {
       );
     }
 
-    void _longPressActions(Recipe recipe) {
+    void longPressActions(Recipe recipe) {
       showDialog(
         context: context,
         builder: (context) => SimpleDialog(
@@ -63,7 +65,7 @@ class ListRecipesPage extends StatelessWidget {
             SimpleDialogOption(
               onPressed: () {
                 navigationService.pop(false);
-                _sureDeleteRecipe(recipe);
+                sureDeleteRecipe(recipe);
               },
               child: Text(LocaleKeys.delete.tr()),
             ),
@@ -73,30 +75,104 @@ class ListRecipesPage extends StatelessWidget {
     }
 
     store.getAllRecipes();
-    return Scaffold(
-        // drawer: NavDrawer(),
+    return ReactionBuilder(
+      builder: (context) => reaction(
+        (_) => store.lastFailure,
+        (failure) {
+          if (failure != null) {
+            SnackBarHelper.showError(context, LocaleKeys.error_load_recipes.tr());
+          }
+        },
+      ),
+      child: Scaffold(
+        drawer: NavDrawer(navigationService: navigationService, onReturn: store.getAllRecipes),
         appBar: AppBar(
           title: Text(LocaleKeys.my_recipe_book.tr()),
+          actions: [
+            Observer(
+              builder: (_) => IconButton(
+                icon: Icon(store.showFavoritesOnly
+                    ? Icons.favorite
+                    : Icons.favorite_border),
+                tooltip: LocaleKeys.favorites.tr(),
+                onPressed: () => store.toggleFavoritesOnly(),
+              ),
+            ),
+            PopupMenuButton<SortOption>(
+              icon: Icon(Icons.sort),
+              tooltip: LocaleKeys.sort_by.tr(),
+              onSelected: store.setSortOption,
+              itemBuilder: (context) => [
+                PopupMenuItem(
+                  value: SortOption.name,
+                  child: Text(LocaleKeys.sort_by_name.tr()),
+                ),
+                PopupMenuItem(
+                  value: SortOption.type,
+                  child: Text(LocaleKeys.sort_by_type.tr()),
+                ),
+                PopupMenuItem(
+                  value: SortOption.difficulty,
+                  child: Text(LocaleKeys.sort_by_difficulty.tr()),
+                ),
+              ],
+            ),
+          ],
         ),
-        body: Observer(
-          builder: (_) {
-            if (store.filteredRecipes.isEmpty) {
-              return EmptyListWidget();
-            }
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: LocaleKeys.search.tr(),
+                  prefixIcon: Icon(Icons.search),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 16),
+                ),
+                onChanged: store.setSearchQuery,
+              ),
+            ),
+            Expanded(
+              child: Observer(
+                builder: (_) {
+                  if (store.filteredRecipes.isEmpty) {
+                    if (store.showFavoritesOnly) {
+                      return EmptyListWidget(
+                        message: LocaleKeys.no_favorites_yet.tr(),
+                        icon: Icons.favorite_border,
+                      );
+                    }
+                    if (store.searchQuery.isNotEmpty) {
+                      return EmptyListWidget(
+                        message: LocaleKeys.no_results_found.tr(),
+                        icon: Icons.search_off,
+                      );
+                    }
+                    return EmptyListWidget(
+                      message: LocaleKeys.no_recipe_add_yet.tr(),
+                    );
+                  }
 
-            return ListView.builder(
-              itemCount: store.filteredRecipes.length,
-              itemBuilder: (_, index) {
-                Recipe recipe = store.filteredRecipes[index];
-                return RecipeTileWidget(
-                    recipe,
-                    () => navigationService
-                        .navigateTo('/show_recipe', arguments: recipe)
-                        .whenComplete(() => store.getAllRecipes()),
-                    () => _longPressActions(recipe));
-              },
-            );
-          },
+                  return ListView.builder(
+                    itemCount: store.filteredRecipes.length,
+                    itemBuilder: (_, index) {
+                      Recipe recipe = store.filteredRecipes[index];
+                      return RecipeTileWidget(
+                          recipe,
+                          () => navigationService
+                              .navigateTo('/show_recipe', arguments: recipe)
+                              .whenComplete(() => store.getAllRecipes()),
+                          () => longPressActions(recipe),
+                          onFavoriteToggle: () => store.toggleFavorite(recipe));
+                    },
+                  );
+                },
+              ),
+            ),
+          ],
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
@@ -106,6 +182,7 @@ class ListRecipesPage extends StatelessWidget {
           },
           tooltip: LocaleKeys.add_new_recipe.tr(),
           child: Icon(Icons.add),
-        ));
+        )),
+    );
   }
 }

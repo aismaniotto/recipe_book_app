@@ -1,37 +1,160 @@
-# recipe_book_app
+<p align="center">
+  <img src="assets/arts/banner.png" alt="Recipe Book" width="400"/>
+</p>
 
-A new recipe book Flutter project, architected with clean architecture and state managed with MobX.
+<p align="center">
+  A recipe book app built with Flutter, following Clean Architecture and MobX for state management.
+</p>
 
-## Bases:
+---
 
-- Idea inpsired by [Recipe-App](https://github.com/florinpop17/app-ideas/blob/master/Projects/1-Beginner/Recipe-App.md);
-- architecture inpsired, based and learned from [Resocoder Flutter TDD Clean Architecture Course](https://github.com/ResoCoder/flutter-tdd-clean-architecture-course) (TDD stays to another project 😜).
+## Screenshots
 
-## Demo
-![demo](assets/6_demo.gif)
+<p align="center">
+  <img src="assets/prints/prints%20github/0_empty_list.png" width="180" alt="Empty list"/>
+  <img src="assets/prints/prints%20github/1_recipe_list.png" width="180" alt="Recipe list"/>
+  <img src="assets/prints/prints%20github/2_new_recipe.png" width="180" alt="New recipe"/>
+  <img src="assets/prints/prints%20github/5_show_recipe.png" width="180" alt="Show recipe"/>
+</p>
 
-# Devs
+<p align="center">
+  <img src="assets/prints/prints%20github/6_demo.gif" width="250" alt="Demo"/>
+</p>
 
-## day to day commands
+## Features
 
-### generate or re-generate stores files (\*.g.dart)
+- Create, edit and delete recipes
+- Add ingredients and preparation steps
+- Categorize recipes by type (meal, snack, dessert, drink, etc.)
+- Set difficulty level, number of servings and prep time
+- Reorder ingredients and steps via drag & drop
+- Search recipes by title or description
+- Mark recipes as favorites and filter by favorites
+- Sort recipes by name, type or difficulty
+- Localization support (English and Portuguese)
+- Local database with Sembast
+- Firebase Crashlytics and Analytics integration
 
-`dart run build_runner build`
+## Architecture
 
-### generate or re-generate localizations files from json files (assests/lang/[locale].json)
+The project follows **Clean Architecture** with three layers:
 
-`flutter pub run easy_localization:generate --source-dir=assets/lang --output-dir=lib/core/localization_generated`
+```
+lib/
+  core/           # Shared utilities, services, localization
+  features/
+    recipe/
+      data/       # Data sources, models, repository impl
+      domain/     # Entities, repository contracts, use cases
+      presentation/ # Pages, stores (MobX), widgets
+```
 
-`flutter pub run easy_localization:generate --source-dir=assets/lang --output-dir=lib/core/localization_generated -f keys -o locale_keys.g.dart`
+Inspired by [Resocoder's Flutter TDD Clean Architecture Course](https://github.com/ResoCoder/flutter-tdd-clean-architecture-course).
 
-### generate release .aab (application app bundle)
+## Tech Stack
 
-`flutter build appbundle`
+| Category | Library |
+|----------|---------|
+| State management | [MobX](https://pub.dev/packages/mobx) + [flutter_mobx](https://pub.dev/packages/flutter_mobx) |
+| Dependency injection | [get_it](https://pub.dev/packages/get_it) |
+| Local database | [Sembast](https://pub.dev/packages/sembast) |
+| Localization | [easy_localization](https://pub.dev/packages/easy_localization) |
+| Icons | [font_awesome_flutter](https://pub.dev/packages/font_awesome_flutter) |
+| Code generation | [build_runner](https://pub.dev/packages/build_runner) + [mobx_codegen](https://pub.dev/packages/mobx_codegen) |
+| Crash reporting | [firebase_crashlytics](https://pub.dev/packages/firebase_crashlytics) |
+| Analytics | [firebase_analytics](https://pub.dev/packages/firebase_analytics) |
 
-### generate release apk
+## Requirements
 
-`flutter build apk`
+- Flutter 3.44+ / Dart 3.12+
 
-#### installing the generated apk
+## Getting Started
 
-`flutter install`
+### Firebase Setup
+
+This project uses Firebase. The config files are not versioned for security reasons. To set up:
+
+1. Create a Firebase project at [Firebase Console](https://console.firebase.google.com/)
+2. Register your Android and iOS apps
+3. Download the config files and place them at:
+   - **Android:** `android/app/google-services.json`
+   - **iOS:** `ios/Runner/GoogleService-Info.plist`
+
+You can use the `.example` files as reference for the expected structure.
+
+### Run
+
+```bash
+# Install dependencies
+flutter pub get
+
+# Run the app
+flutter run
+```
+
+## Dev Commands
+
+### Generate / regenerate MobX store files (`*.g.dart`)
+
+```bash
+dart run build_runner build
+```
+
+### Generate / regenerate localization files
+
+```bash
+# Generate loader
+flutter pub run easy_localization:generate \
+  --source-dir=assets/lang \
+  --output-dir=lib/core/localization_generated
+
+# Generate keys
+flutter pub run easy_localization:generate \
+  --source-dir=assets/lang \
+  --output-dir=lib/core/localization_generated \
+  -f keys -o locale_keys.g.dart
+```
+
+## Tests
+
+### Run tests
+
+```bash
+flutter test
+```
+
+### Run tests with coverage report
+
+```bash
+# Generate coverage data
+flutter test --coverage
+
+# Generate HTML report (requires lcov)
+genhtml coverage/lcov.info -o coverage/html
+
+# Open report in browser
+open coverage/html/index.html
+```
+
+To install `lcov` on macOS:
+
+```bash
+brew install lcov
+```
+
+### Build release
+
+```bash
+# Android App Bundle
+flutter build appbundle
+
+# APK
+flutter build apk
+
+# Install on connected device
+flutter install
+```
+
+## Credits
+
+- Idea inspired by [Recipe-App](https://github.com/florinpop17/app-ideas/blob/master/Projects/1-Beginner/Recipe-App.md) from [App Ideas Collection](https://github.com/florinpop17/app-ideas)

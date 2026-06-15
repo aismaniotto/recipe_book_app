@@ -1,5 +1,7 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
+// ignore_for_file: constant_identifier_names
+
 abstract class  LocaleKeys {
   static const recipe = 'recipe';
   static const my_recipe_book = 'my_recipe_book';
@@ -58,5 +60,55 @@ abstract class  LocaleKeys {
   static const save = 'save';
   static const edit = 'edit';
   static const delete = 'delete';
+  static const search = 'search';
+  static const favorites = 'favorites';
+  static const no_favorites_yet = 'no_favorites_yet';
+  static const no_results_found = 'no_results_found';
+  static const sort_by = 'sort_by';
+  static const sort_by_name = 'sort_by_name';
+  static const sort_by_type = 'sort_by_type';
+  static const sort_by_difficulty = 'sort_by_difficulty';
+  static const prep_time = 'prep_time';
+  static const prep_time_minutes = 'prep_time_minutes';
+  static const prep_time_hint = 'prep_time_hint';
+  static const about_app_info = 'about_app_info';
+  static const about_version = 'about_version';
+  static const about_build = 'about_build';
+  static const about_package = 'about_package';
+  static const about_device_info = 'about_device_info';
+  static const about_device_model = 'about_device_model';
+  static const about_device_os = 'about_device_os';
+  static const about_device_os_version = 'about_device_os_version';
+  static const about_licenses = 'about_licenses';
+  static const settings = 'settings';
+  static const settings_theme_color = 'settings_theme_color';
+  static const settings_language = 'settings_language';
+  static const share = 'share';
+  static const error_load_recipes = 'error_load_recipes';
+  static const error_save_recipe = 'error_save_recipe';
+  static const error_generic = 'error_generic';
+  static const settings_dark_mode = 'settings_dark_mode';
+  static const settings_dark_mode_light = 'settings_dark_mode_light';
+  static const settings_dark_mode_dark = 'settings_dark_mode_dark';
+  static const settings_dark_mode_system = 'settings_dark_mode_system';
+  static const settings_font_size = 'settings_font_size';
+  static const settings_font_small = 'settings_font_small';
+  static const settings_font_medium = 'settings_font_medium';
+  static const settings_font_large = 'settings_font_large';
+  static const settings_behavior = 'settings_behavior';
+  static const settings_default_sort = 'settings_default_sort';
+  static const settings_confirm_delete = 'settings_confirm_delete';
+  static const settings_data = 'settings_data';
+  static const settings_export = 'settings_export';
+  static const settings_import = 'settings_import';
+  static const settings_delete_all = 'settings_delete_all';
+  static const settings_delete_all_confirm = 'settings_delete_all_confirm';
+  static const settings_export_success = 'settings_export_success';
+  static const settings_import_success = 'settings_import_success';
+  static const settings_delete_all_success = 'settings_delete_all_success';
+  static const settings_import_hint = 'settings_import_hint';
+  static const settings_export_description = 'settings_export_description';
+  static const settings_import_description = 'settings_import_description';
+  static const settings_delete_all_description = 'settings_delete_all_description';
 
 }
