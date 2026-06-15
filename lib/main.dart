@@ -29,7 +29,7 @@ void main() async {
 
   runApp(
     EasyLocalization(
-        supportedLocales: [Locale('en'), Locale('pt')],
+        supportedLocales: [Locale('en'), Locale('pt'), Locale('es'), Locale('it'), Locale('de'), Locale('ru')],
         path: 'assets/lang',
         assetLoader: CodegenLoader(),
         fallbackLocale: Locale('en'),

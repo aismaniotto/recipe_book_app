@@ -16,6 +16,10 @@
 	<array>
 		<string>en</string>
 		<string>pt</string>
+		<string>es</string>
+		<string>it</string>
+		<string>de</string>
+		<string>ru</string>
 	</array>
 	<key>CFBundleName</key>
 	<string>My Recipes</string>
