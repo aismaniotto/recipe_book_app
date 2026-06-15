@@ -1,66 +1,107 @@
-**Privacy Policy**
+# Privacy Policy
 
-André built the Recipe Book app as a Free app. This SERVICE is provided by André at no cost and is intended for use as is.
+**Last updated:** June 15, 2026
 
-This page is used to inform visitors regarding my policies with the collection, use, and disclosure of Personal Information if anyone decided to use my Service.
+André Maniotto ("I", "me", "my") built the **My Recipes** app ("the App") as a free application. This privacy policy explains how I collect, use and protect information when you use the App.
 
-If you choose to use my Service, then you agree to the collection and use of information in relation to this policy. The Personal Information that I collect is used for providing and improving the Service. I will not use or share your information with anyone except as described in this Privacy Policy.
+---
 
-The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which are accessible at Recipe Book unless otherwise defined in this Privacy Policy.
+## Data Storage
 
-**Information Collection and Use**
+All recipe data you create (titles, ingredients, steps, preparation time, servings, etc.) and your preferences (theme, font size, language, sort order) are stored **locally on your device only**. I do not have access to your recipes and they are never sent to any server.
 
-For a better experience, while using our Service, I may require you to provide us with certain personally identifiable information. The information that I request will be retained on your device and is not collected by me in any way.
+---
 
-The app does use third-party services that may collect information used to identify you.
+## Data You Control
 
-Link to the privacy policy of third-party service providers used by the app
+You have full control over your data:
 
-*   [Google Play Services](https://www.google.com/policies/privacy/)
-*   [Google Analytics for Firebase](https://firebase.google.com/support/privacy)
-*   [Firebase Crashlytics](https://firebase.google.com/support/privacy/)
+- **Export** your recipes as a JSON file at any time.
+- **Import** recipes from a JSON file.
+- **Delete** individual recipes or all recipes at once.
+- **Uninstall** the App to permanently remove all stored data from your device.
 
-**Log Data**
+---
 
-I want to inform you that whenever you use my Service, in a case of an error in the app I collect data and information (through third-party products) on your phone called Log Data. This Log Data may include information such as your device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilizing my Service, the time and date of your use of the Service, and other statistics.
+## Third-Party Services
 
-**Cookies**
+The App uses the following third-party services provided by Google:
 
-Cookies are files with a small amount of data that are commonly used as anonymous unique identifiers. These are sent to your browser from the websites that you visit and are stored on your device's internal memory.
+### Firebase Crashlytics
 
-This Service does not use these “cookies” explicitly. However, the app may use third-party code and libraries that use “cookies” to collect information and improve their services. You have the option to either accept or refuse these cookies and know when a cookie is being sent to your device. If you choose to refuse our cookies, you may not be able to use some portions of this Service.
+Used to collect crash reports when the App encounters an error. This may include:
 
-**Service Providers**
+- Error details and stack traces
+- Device model and operating system version
+- App language setting
 
-I may employ third-party companies and individuals due to the following reasons:
+Crash data helps me identify and fix issues. No personal information is included in crash reports.
 
-*   To facilitate our Service;
-*   To provide the Service on our behalf;
-*   To perform Service-related services; or
-*   To assist us in analyzing how our Service is used.
+- [Firebase Privacy Policy](https://firebase.google.com/support/privacy)
 
-I want to inform users of this Service that these third parties have access to their Personal Information. The reason is to perform the tasks assigned to them on our behalf. However, they are obligated not to disclose or use the information for any other purpose.
+### Firebase Analytics
 
-**Security**
+Used to collect anonymous usage data such as:
 
-I value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and I cannot guarantee its absolute security.
+- Which screens are visited
+- App open and close events
 
-**Links to Other Sites**
+This data is aggregated and anonymous. It helps me understand how the App is used so I can improve it.
 
-This Service may contain links to other sites. If you click on a third-party link, you will be directed to that site. Note that these external sites are not operated by me. Therefore, I strongly advise you to review the Privacy Policy of these websites. I have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.
+- [Google Analytics Privacy Policy](https://firebase.google.com/support/privacy)
 
-**Children’s Privacy**
+### Google Play Services
 
-These Services do not address anyone under the age of 13. I do not knowingly collect personally identifiable information from children under 13 years of age. In the case I discover that a child under 13 has provided me with personal information, I immediately delete this from our servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact me so that I will be able to do the necessary actions.
+Required for Firebase to function on Android devices.
 
-**Changes to This Privacy Policy**
+- [Google Play Services Privacy Policy](https://www.google.com/policies/privacy/)
 
-I may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. I will notify you of any changes by posting the new Privacy Policy on this page.
+### Advertising
 
-This policy is effective as of 2023-10-08
+The App may display advertisements provided by third-party advertising services. These services may collect and use anonymous data such as your advertising identifier and general usage patterns to display relevant ads. No personal information is shared with advertisers. You can opt out of personalized advertising through your device settings.
 
-**Contact Us**
+---
 
-If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at contato@smaniotto.dev.
+## Information I Do NOT Collect
 
-This privacy policy page was created at [privacypolicytemplate.net](https://privacypolicytemplate.net) and modified/generated by [App Privacy Policy Generator](https://app-privacy-policy-generator.nisrulz.com/)
+- Personal information (name, email, address, phone number)
+- Account or login credentials (the App has no account system)
+- Location data
+- Contacts, photos, or files (except JSON files you explicitly select for import)
+- Advertising identifiers
+
+---
+
+## Permissions
+
+The App requests minimal permissions:
+
+- **Internet access** — required for sending crash reports and analytics to Firebase.
+
+The App does not request access to your camera, microphone, location, contacts, or storage beyond the files you explicitly choose to import.
+
+---
+
+## Children's Privacy
+
+The App does not target children under 13 and does not knowingly collect any personal information from children. Since the App does not collect personal information from any user, there is no children's data to be concerned about.
+
+---
+
+## Data Security
+
+Your recipe data is stored locally on your device using standard application storage. Data sent to Firebase (crash reports and analytics) is transmitted over encrypted connections (HTTPS).
+
+---
+
+## Changes to This Privacy Policy
+
+I may update this privacy policy from time to time. Any changes will be posted on this page with an updated date. I encourage you to review this page periodically.
+
+---
+
+## Contact
+
+If you have any questions about this privacy policy, you can contact me at:
+
+**contato@smaniotto.dev**
