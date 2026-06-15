@@ -2,12 +2,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:recipe_book_app/core/IoC/ioc.dart' as ioc;
 import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
 import 'package:recipe_book_app/core/services/crashlytics_service.dart';
 import 'package:recipe_book_app/core/services/navigation_service.dart';
 import 'package:recipe_book_app/core/theme/app_theme.dart';
 import 'package:recipe_book_app/features/recipe/presentation/pages/list_recipes_page.dart';
+import 'package:recipe_book_app/features/settings/presentation/stores/settings_store.dart';
 import 'package:recipe_book_app/core/localization_generated/codegen_loader.g.dart';
 import 'package:recipe_book_app/router.dart' as app_router;
 
@@ -16,6 +18,7 @@ void main() async {
   await Firebase.initializeApp();
   await CrashlyticsService.init();
   await ioc.init();
+  await ioc.ioc<SettingsStore>().loadSettings();
   await EasyLocalization.ensureInitialized();
 
   runApp(
@@ -34,19 +37,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CrashlyticsService.setContext(locale: context.locale.toString());
+    final settingsStore = ioc.ioc<SettingsStore>();
 
-    return MaterialApp(
-      navigatorObservers: [FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance)],
-      navigatorKey: ioc.ioc<NavigationService>().navigatorKey,
-      onGenerateRoute: app_router.Router.generateRoute,
-      title: LocaleKeys.recipe_book.tr(),
-      theme: AppTheme.light,
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      home: ListRecipesPage(
-        store: ioc.ioc(),
-        navigationService: ioc.ioc(),
+    return Observer(
+      builder: (_) => MaterialApp(
+        navigatorObservers: [FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance)],
+        navigatorKey: ioc.ioc<NavigationService>().navigatorKey,
+        onGenerateRoute: app_router.Router.generateRoute,
+        title: LocaleKeys.recipe_book.tr(),
+        theme: AppTheme.light(primaryColor: settingsStore.themeColor),
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        home: ListRecipesPage(
+          store: ioc.ioc(),
+          navigationService: ioc.ioc(),
+        ),
       ),
     );
   }

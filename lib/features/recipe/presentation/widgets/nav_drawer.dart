@@ -16,12 +16,23 @@ class NavDrawer extends StatelessWidget {
         children: <Widget>[
           DrawerHeader(
             decoration: BoxDecoration(
-              color: Colors.red,
+              color: Theme.of(context).appBarTheme.backgroundColor,
             ),
             child: Text(
               LocaleKeys.recipe_book.tr(),
               style: TextStyle(color: Colors.white, fontSize: 25),
             ),
+          ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text(
+              LocaleKeys.settings.tr(),
+              style: TextStyle(fontSize: 18),
+            ),
+            onTap: () {
+              Navigator.of(context).pop();
+              navigationService.navigateTo('/settings');
+            },
           ),
           ListTile(
             leading: Icon(Icons.info),

@@ -11,11 +11,13 @@ import 'package:recipe_book_app/features/recipe/domain/usecases/get_all_recipes.
 import 'package:recipe_book_app/features/recipe/domain/usecases/update_recipe.dart';
 import 'package:recipe_book_app/features/recipe/presentation/stores/filtered_recipes_store.dart';
 import 'package:recipe_book_app/features/recipe/presentation/stores/recipe_store.dart';
+import 'package:recipe_book_app/features/settings/presentation/stores/settings_store.dart';
 
 final ioc = GetIt.instance;
 
 Future<void> init() async {
   // Store
+  ioc.registerLazySingleton(() => SettingsStore());
   ioc.registerLazySingleton(() => FilteredRecipesStore(ioc(), ioc(), ioc()));
   // ioc.registerFactory(() => RecipeStore(ioc(), ioc()));
   ioc.registerFactoryParam((dynamic param1, dynamic param2) =>

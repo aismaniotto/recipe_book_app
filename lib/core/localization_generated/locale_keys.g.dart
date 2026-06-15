@@ -80,5 +80,8 @@ abstract class  LocaleKeys {
   static const about_device_os = 'about_device_os';
   static const about_device_os_version = 'about_device_os_version';
   static const about_licenses = 'about_licenses';
+  static const settings = 'settings';
+  static const settings_theme_color = 'settings_theme_color';
+  static const settings_language = 'settings_language';
 
 }

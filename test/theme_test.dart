@@ -59,21 +59,31 @@ void main() {
   });
 
   group('AppTheme', () {
-    test('light retorna ThemeData', () {
-      final theme = AppTheme.light;
+    test('light() retorna ThemeData', () {
+      final theme = AppTheme.light();
       expect(theme, isA<ThemeData>());
     });
 
     test('scaffoldBackgroundColor usa ColorSet.background', () {
-      expect(AppTheme.light.scaffoldBackgroundColor, ColorSet.background);
+      expect(AppTheme.light().scaffoldBackgroundColor, ColorSet.background);
     });
 
-    test('appBar usa primary como background', () {
-      expect(AppTheme.light.appBarTheme.backgroundColor, ColorSet.primary);
+    test('appBar usa primary como background por padrão', () {
+      expect(AppTheme.light().appBarTheme.backgroundColor, ColorSet.primary);
     });
 
     test('appBar usa textOnPrimary como foreground', () {
-      expect(AppTheme.light.appBarTheme.foregroundColor, ColorSet.textOnPrimary);
+      expect(AppTheme.light().appBarTheme.foregroundColor, ColorSet.textOnPrimary);
+    });
+
+    test('aceita cor primária customizada', () {
+      final theme = AppTheme.light(primaryColor: Colors.blue);
+      expect(theme.appBarTheme.backgroundColor, Colors.blue);
+    });
+
+    test('FAB usa cor primária customizada', () {
+      final theme = AppTheme.light(primaryColor: Colors.green);
+      expect(theme.floatingActionButtonTheme.backgroundColor, Colors.green);
     });
   });
 }

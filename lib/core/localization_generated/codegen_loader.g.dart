@@ -95,7 +95,10 @@ class CodegenLoader extends AssetLoader{
   "about_device_model": "Modell",
   "about_device_os": "Betriebssystem",
   "about_device_os_version": "BS-Version",
-  "about_licenses": "Open-Source-Lizenzen"
+  "about_licenses": "Open-Source-Lizenzen",
+  "settings": "Einstellungen",
+  "settings_theme_color": "Themenfarbe",
+  "settings_language": "Sprache"
 };
 static const Map<String,dynamic> _ru = {
   "recipe": "Рецепт",
@@ -178,7 +181,10 @@ static const Map<String,dynamic> _ru = {
   "about_device_model": "Модель",
   "about_device_os": "Операционная система",
   "about_device_os_version": "Версия ОС",
-  "about_licenses": "Лицензии открытого кода"
+  "about_licenses": "Лицензии открытого кода",
+  "settings": "Настройки",
+  "settings_theme_color": "Цвет темы",
+  "settings_language": "Язык"
 };
 static const Map<String,dynamic> _pt = {
   "recipe": "Receita",
@@ -261,7 +267,10 @@ static const Map<String,dynamic> _pt = {
   "about_device_model": "Modelo",
   "about_device_os": "Sistema Operacional",
   "about_device_os_version": "Versão do SO",
-  "about_licenses": "Licenças de código aberto"
+  "about_licenses": "Licenças de código aberto",
+  "settings": "Configurações",
+  "settings_theme_color": "Cor do tema",
+  "settings_language": "Idioma"
 };
 static const Map<String,dynamic> _en = {
   "recipe": "Recipe",
@@ -344,7 +353,10 @@ static const Map<String,dynamic> _en = {
   "about_device_model": "Model",
   "about_device_os": "Operating System",
   "about_device_os_version": "OS Version",
-  "about_licenses": "Open source licenses"
+  "about_licenses": "Open source licenses",
+  "settings": "Settings",
+  "settings_theme_color": "Theme color",
+  "settings_language": "Language"
 };
 static const Map<String,dynamic> _it = {
   "recipe": "Ricetta",
@@ -427,7 +439,10 @@ static const Map<String,dynamic> _it = {
   "about_device_model": "Modello",
   "about_device_os": "Sistema Operativo",
   "about_device_os_version": "Versione SO",
-  "about_licenses": "Licenze open source"
+  "about_licenses": "Licenze open source",
+  "settings": "Impostazioni",
+  "settings_theme_color": "Colore del tema",
+  "settings_language": "Lingua"
 };
 static const Map<String,dynamic> _es = {
   "recipe": "Receta",
@@ -510,7 +525,10 @@ static const Map<String,dynamic> _es = {
   "about_device_model": "Modelo",
   "about_device_os": "Sistema Operativo",
   "about_device_os_version": "Versión del SO",
-  "about_licenses": "Licencias de código abierto"
+  "about_licenses": "Licencias de código abierto",
+  "settings": "Configuración",
+  "settings_theme_color": "Color del tema",
+  "settings_language": "Idioma"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"de": _de, "ru": _ru, "pt": _pt, "en": _en, "it": _it, "es": _es};
 }

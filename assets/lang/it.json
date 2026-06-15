@@ -79,5 +79,8 @@
   "about_device_model": "Modello",
   "about_device_os": "Sistema Operativo",
   "about_device_os_version": "Versione SO",
-  "about_licenses": "Licenze open source"
+  "about_licenses": "Licenze open source",
+  "settings": "Impostazioni",
+  "settings_theme_color": "Colore del tema",
+  "settings_language": "Lingua"
 }

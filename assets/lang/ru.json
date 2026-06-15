@@ -79,5 +79,8 @@
   "about_device_model": "Модель",
   "about_device_os": "Операционная система",
   "about_device_os_version": "Версия ОС",
-  "about_licenses": "Лицензии открытого кода"
+  "about_licenses": "Лицензии открытого кода",
+  "settings": "Настройки",
+  "settings_theme_color": "Цвет темы",
+  "settings_language": "Язык"
 }
