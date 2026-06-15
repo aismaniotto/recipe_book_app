@@ -229,6 +229,38 @@ void main() {
       }
     });
 
+    test('fromMap usa Type.other como fallback para tipo inválido', () {
+      final map = {
+        'id': 'fallback-type',
+        'title': 'Teste',
+        'description': null,
+        'type': 'Type.invalido',
+        'quantityPeopleServide': null,
+        'difficulty': 'Difficulty.easy',
+        'ingredientList': [],
+        'steps': [],
+      };
+
+      final recipe = adapter.fromMap(map);
+      expect(recipe.type, Type.other);
+    });
+
+    test('fromMap usa Difficulty.easy como fallback para dificuldade inválida', () {
+      final map = {
+        'id': 'fallback-diff',
+        'title': 'Teste',
+        'description': null,
+        'type': 'Type.meal',
+        'quantityPeopleServide': null,
+        'difficulty': 'Difficulty.invalida',
+        'ingredientList': [],
+        'steps': [],
+      };
+
+      final recipe = adapter.fromMap(map);
+      expect(recipe.difficulty, Difficulty.easy);
+    });
+
     test('toMap e fromMap são inversos (round-trip)', () {
       final original = Recipe(
         title: 'Bolo',

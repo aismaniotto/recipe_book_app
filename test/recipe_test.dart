@@ -86,5 +86,10 @@ void main() {
       final text = IdentificableText('Sal');
       expect(text.toString(), 'Sal');
     });
+
+    test('toString retorna string vazia quando text é null', () {
+      final text = IdentificableText(null);
+      expect(text.toString(), '');
+    });
   });
 }
