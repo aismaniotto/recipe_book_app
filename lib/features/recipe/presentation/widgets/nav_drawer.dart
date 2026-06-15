@@ -37,16 +37,17 @@ class NavDrawer extends StatelessWidget {
                     navigationService.navigateTo('/settings');
                   },
                 ),
-                ListTile(
-                  leading: Icon(Icons.storage),
-                  title: Text(LocaleKeys.settings_data.tr()),
-                  onTap: () {
-                    Navigator.of(context).pop();
-                    navigationService.navigateTo('/data_management').whenComplete(() {
-                      onReturn?.call();
-                    });
-                  },
-                ),
+                // TODO: unhide when data management is ready
+                // ListTile(
+                //   leading: Icon(Icons.storage),
+                //   title: Text(LocaleKeys.settings_data.tr()),
+                //   onTap: () {
+                //     Navigator.of(context).pop();
+                //     navigationService.navigateTo('/data_management').whenComplete(() {
+                //       onReturn?.call();
+                //     });
+                //   },
+                // ),
                 ListTile(
                   leading: Icon(Icons.info),
                   title: Text(LocaleKeys.about.tr()),
