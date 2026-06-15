@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
+import 'package:recipe_book_app/core/theme/color_set.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 
 class RecipeTileWidget extends StatelessWidget {
@@ -32,10 +33,10 @@ class RecipeTileWidget extends StatelessWidget {
           if (recipe.prepTimeMinutes != null) ...[
             if (recipe.description != null && recipe.description!.isNotEmpty)
               SizedBox(width: 8),
-            Icon(Icons.timer_outlined, size: 14, color: Colors.grey),
+            Icon(Icons.timer_outlined, size: 14, color: ColorSet.hint),
             SizedBox(width: 2),
             Text(LocaleKeys.prep_time_minutes.tr(namedArgs: {'minutes': recipe.prepTimeMinutes.toString()}),
-                style: TextStyle(fontSize: 12, color: Colors.grey)),
+                style: TextStyle(fontSize: 12, color: ColorSet.hint)),
           ],
         ],
       ),
@@ -47,7 +48,7 @@ class RecipeTileWidget extends StatelessWidget {
               onTap: onFavoriteToggle,
               child: Icon(
                 recipe.isFavorite ? Icons.favorite : Icons.favorite_border,
-                color: recipe.isFavorite ? Colors.red : Colors.grey,
+                color: recipe.isFavorite ? ColorSet.favorite : ColorSet.hint,
                 size: 20,
               ),
             ),
@@ -92,17 +93,17 @@ class RecipeTileWidget extends StatelessWidget {
       case Difficulty.easy:
         return Icon(
           Icons.brightness_3,
-          color: Colors.green,
+          color: ColorSet.difficultyEasy,
         );
       case Difficulty.medium:
         return Icon(
           Icons.brightness_2,
-          color: Colors.yellow,
+          color: ColorSet.difficultyMedium,
         );
       case Difficulty.hard:
         return Icon(
           Icons.brightness_1,
-          color: Colors.orange,
+          color: ColorSet.difficultyHard,
         );
     }
   }

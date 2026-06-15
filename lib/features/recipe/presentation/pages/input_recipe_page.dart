@@ -4,6 +4,7 @@ import 'package:mobx/mobx.dart';
 import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:recipe_book_app/core/services/navigation_service.dart';
+import 'package:recipe_book_app/core/theme/color_set.dart';
 import 'package:recipe_book_app/core/widgets/snack_bar_helper.dart';
 import 'package:recipe_book_app/features/recipe/presentation/widgets/input/recipe_infos_entry_widget.dart';
 import 'package:recipe_book_app/features/recipe/presentation/stores/recipe_store.dart';
@@ -64,7 +65,7 @@ class InputRecipePage extends StatelessWidget {
             actions: <Widget>[
               TextButton(
                 style: TextButton.styleFrom(
-                  foregroundColor: Colors.white,
+                  foregroundColor: ColorSet.textOnPrimary,
                   shape: CircleBorder(
                       side: BorderSide(
                     color: Colors.transparent,

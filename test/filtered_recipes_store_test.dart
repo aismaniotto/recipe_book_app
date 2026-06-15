@@ -14,9 +14,9 @@ void main() {
   setUp(() {
     repository = FakeRecipeRepository();
     store = FilteredRecipesStore(
-      GetAllRecipes(repostitory: repository),
-      DeleteRecipe(repostitory: repository),
-      UpdateRecipe(repostitory: repository),
+      GetAllRecipes(repository: repository),
+      DeleteRecipe(repository: repository),
+      UpdateRecipe(repository: repository),
     );
   });
 

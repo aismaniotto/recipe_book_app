@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:recipe_book_app/core/theme/color_set.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
 
@@ -162,7 +163,7 @@ class _SectionTitle extends StatelessWidget {
         style: TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w600,
-          color: Colors.grey[700],
+          color: ColorSet.textSecondary,
         ),
       ),
     );
@@ -183,7 +184,7 @@ class _InfoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Icon(icon, color: Colors.red),
+      leading: Icon(icon, color: Theme.of(context).primaryColor),
       title: Text(label),
       subtitle: Text(value),
     );

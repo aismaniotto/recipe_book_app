@@ -17,7 +17,7 @@ void main() {
 
   group('AddRecipe', () {
     late AddRecipe usecase;
-    setUp(() => usecase = AddRecipe(repostitory: repository));
+    setUp(() => usecase = AddRecipe(repository: repository));
 
     test('retorna Right com receita em caso de sucesso', () async {
       final recipe = Recipe(title: 'Bolo');
@@ -50,7 +50,7 @@ void main() {
 
   group('UpdateRecipe', () {
     late UpdateRecipe usecase;
-    setUp(() => usecase = UpdateRecipe(repostitory: repository));
+    setUp(() => usecase = UpdateRecipe(repository: repository));
 
     test('retorna Right com receita atualizada', () async {
       final recipe = Recipe(id: 'r1', title: 'Original');
@@ -74,7 +74,7 @@ void main() {
 
   group('DeleteRecipe', () {
     late DeleteRecipe usecase;
-    setUp(() => usecase = DeleteRecipe(repostitory: repository));
+    setUp(() => usecase = DeleteRecipe(repository: repository));
 
     test('retorna Right e remove do repositório', () async {
       final recipe = Recipe(id: 'to-delete', title: 'Deletar');
@@ -98,7 +98,7 @@ void main() {
 
   group('GetAllRecipes', () {
     late GetAllRecipes usecase;
-    setUp(() => usecase = GetAllRecipes(repostitory: repository));
+    setUp(() => usecase = GetAllRecipes(repository: repository));
 
     test('retorna Right com lista de receitas', () async {
       repository.recipes = [

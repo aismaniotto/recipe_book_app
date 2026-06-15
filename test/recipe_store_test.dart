@@ -25,8 +25,8 @@ void main() {
     }
     repository = FakeRecipeRepository();
     store = RecipeStore(
-      AddRecipe(repostitory: repository),
-      UpdateRecipe(repostitory: repository),
+      AddRecipe(repository: repository),
+      UpdateRecipe(repository: repository),
     );
   });
 
@@ -258,8 +258,8 @@ void main() {
       );
 
       final editStore = RecipeStore(
-        AddRecipe(repostitory: repository),
-        UpdateRecipe(repostitory: repository),
+        AddRecipe(repository: repository),
+        UpdateRecipe(repository: repository),
         recipe: existing,
       );
 
@@ -279,8 +279,8 @@ void main() {
     test('permite editar campos da receita existente', () {
       final existing = Recipe(title: 'Original', type: Type.meal);
       final editStore = RecipeStore(
-        AddRecipe(repostitory: repository),
-        UpdateRecipe(repostitory: repository),
+        AddRecipe(repository: repository),
+        UpdateRecipe(repository: repository),
         recipe: existing,
       );
 

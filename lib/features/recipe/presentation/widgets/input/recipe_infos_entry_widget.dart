@@ -80,8 +80,10 @@ class RecipeInfosEntryWidget extends StatelessWidget {
             decoration:
                 InputDecoration(labelText: LocaleKeys.peoples_serves.tr()),
             initialValue: quantityPeopleServide?.toString(),
-            onChanged: (String value) =>
-                onQuantityPeopleServideChanged(int.parse(value)),
+            onChanged: (String value) {
+                final parsed = int.tryParse(value);
+                if (parsed != null) onQuantityPeopleServideChanged(parsed);
+              },
             keyboardType: TextInputType.number,
             inputFormatters: <TextInputFormatter>[
               FilteringTextInputFormatter.digitsOnly

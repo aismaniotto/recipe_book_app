@@ -59,6 +59,7 @@ abstract class _RecipeStore with Store {
       recipe.quantityPeopleServide = newQuantityPeopleServide;
 
   Difficulty get difficulty => recipe.difficulty;
+  @action
   void changeDifficulty(Difficulty? newDifficulty) {
     if (newDifficulty != null) {
       recipe.difficulty = newDifficulty;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:recipe_book_app/core/theme/color_set.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/identificable_text.dart';
 import 'package:uuid/uuid.dart';
 
@@ -42,12 +43,12 @@ class CustomReordenableListView extends StatelessWidget {
                   (index + 1 == items.length || items.length == 1)
                       ? IconButton(
                           icon: Icon(Icons.add),
-                          color: Colors.green,
+                          color: ColorSet.success,
                           onPressed: () => onItemAdd(),
                         )
                       : IconButton(
                           icon: Icon(Icons.clear),
-                          color: Colors.red,
+                          color: ColorSet.error,
                           onPressed: () => onItemDelete(index),
                         ),
                   Icon(Icons.dehaze),

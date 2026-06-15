@@ -4,11 +4,11 @@ import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 import 'package:recipe_book_app/features/recipe/domain/repositories/recipe_repository.dart';
 
 class UpdateRecipe {
-  final RecipeRepository repostitory;
+  final RecipeRepository repository;
 
-  UpdateRecipe({required this.repostitory});
+  UpdateRecipe({required this.repository});
 
   Future<Either<Failure, Recipe>> call(Recipe recipe) async {
-    return await repostitory.updateRecipe(recipe);
+    return await repository.updateRecipe(recipe);
   }
 }

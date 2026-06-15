@@ -21,4 +21,12 @@ class ColorSet {
 
   static const Color divider = Color(0xFFBDBDBD);
   static const Color favorite = Color(0xFFE53935);
+
+  static const Color hint = Color(0xFF9E9E9E);
+  static const Color disabled = Color(0xFFBDBDBD);
+  static const Color accent = Color(0xFF607D8B);
+
+  static const Color difficultyEasy = Color(0xFF4CAF50);
+  static const Color difficultyMedium = Color(0xFFFFC107);
+  static const Color difficultyHard = Color(0xFFFF9800);
 }

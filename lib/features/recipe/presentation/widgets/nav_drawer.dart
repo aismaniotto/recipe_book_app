@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
+import 'package:recipe_book_app/core/theme/color_set.dart';
 import 'package:recipe_book_app/core/services/navigation_service.dart';
 
 class NavDrawer extends StatelessWidget {
@@ -20,7 +21,7 @@ class NavDrawer extends StatelessWidget {
             ),
             child: Text(
               LocaleKeys.recipe_book.tr(),
-              style: TextStyle(color: Colors.white, fontSize: 25),
+              style: TextStyle(color: ColorSet.textOnPrimary, fontSize: 25),
             ),
           ),
           ListTile(

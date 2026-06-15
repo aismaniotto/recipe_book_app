@@ -13,10 +13,13 @@ class RecipeAdapter extends Adapter<Recipe> {
         id: map['id'],
         title: map['title'],
         description: map['description'],
-        type: Type.values.firstWhere((e) => e.toString() == map['type']),
+        type: Type.values.firstWhere(
+            (e) => e.toString() == map['type'],
+            orElse: () => Type.other),
         quantityPeopleServide: map['quantityPeopleServide'],
-        difficulty: Difficulty.values
-            .firstWhere((e) => e.toString() == map['difficulty']),
+        difficulty: Difficulty.values.firstWhere(
+            (e) => e.toString() == map['difficulty'],
+            orElse: () => Difficulty.easy),
         ingredientList: (map['ingredientList'] as List)
             .map((ingredientMap) =>
                 identificableTextAdapter.fromMap(ingredientMap))

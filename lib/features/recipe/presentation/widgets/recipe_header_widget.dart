@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
+import 'package:recipe_book_app/core/theme/color_set.dart';
 import 'package:recipe_book_app/core/utils/enum_to_string.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 
@@ -30,7 +31,7 @@ class RecipeHeaderWidget extends StatelessWidget {
           child: Text(
             name.toUpperCase(),
             style: TextStyle(
-                color: Colors.blueGrey,
+                color: ColorSet.accent,
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
                 fontStyle: FontStyle.italic),

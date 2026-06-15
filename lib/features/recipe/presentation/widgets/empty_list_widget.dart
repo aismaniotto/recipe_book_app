@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_book_app/core/theme/color_set.dart';
 
 class EmptyListWidget extends StatelessWidget {
   final String message;
@@ -18,12 +19,12 @@ class EmptyListWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, size: 64, color: Colors.grey[400]),
+            Icon(icon, size: 64, color: ColorSet.disabled),
             SizedBox(height: 16),
             Text(
               message,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+              style: TextStyle(fontSize: 16, color: ColorSet.textSecondary),
             ),
           ],
         ),

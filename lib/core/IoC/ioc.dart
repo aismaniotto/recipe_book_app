@@ -23,10 +23,10 @@ Future<void> init() async {
       RecipeStore(ioc(), ioc(), recipe: param1));
 
   // Use cases
-  ioc.registerLazySingleton(() => AddRecipe(repostitory: ioc()));
-  ioc.registerLazySingleton(() => UpdateRecipe(repostitory: ioc()));
-  ioc.registerLazySingleton(() => DeleteRecipe(repostitory: ioc()));
-  ioc.registerLazySingleton(() => GetAllRecipes(repostitory: ioc()));
+  ioc.registerLazySingleton(() => AddRecipe(repository: ioc()));
+  ioc.registerLazySingleton(() => UpdateRecipe(repository: ioc()));
+  ioc.registerLazySingleton(() => DeleteRecipe(repository: ioc()));
+  ioc.registerLazySingleton(() => GetAllRecipes(repository: ioc()));
 
   // Adapters
   ioc.registerLazySingleton(() => RecipeAdapter(ioc()));
