@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
-import 'package:recipe_book_app/features/about/presentation/pages/about_page.dart';
 import 'package:recipe_book_app/features/recipe/presentation/stores/filtered_recipes_store.dart';
 import 'package:recipe_book_app/features/settings/presentation/stores/settings_store.dart';
 
@@ -123,15 +122,6 @@ class SettingsPage extends StatelessWidget {
                 subtitle: Text(_sortOptionLabel(store.defaultSortOption)),
                 leading: Icon(Icons.sort),
                 onTap: () => _showSortPicker(context),
-              ),
-            ),
-            Divider(height: 32),
-            ListTile(
-              title: Text(LocaleKeys.about.tr()),
-              leading: Icon(Icons.info_outline),
-              trailing: Icon(Icons.chevron_right),
-              onTap: () => Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => AboutPage()),
               ),
             ),
           ],
