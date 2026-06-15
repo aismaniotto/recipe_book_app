@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:recipe_book_app/core/error/failure.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 import 'package:recipe_book_app/features/recipe/domain/usecases/add_recipe.dart';
 import 'package:recipe_book_app/features/recipe/domain/usecases/delete_recipe.dart';
@@ -19,13 +20,24 @@ void main() {
     late AddRecipe usecase;
     setUp(() => usecase = AddRecipe(repostitory: repository));
 
-    test('delega para o repositório e retorna a receita', () async {
+    test('retorna Right com receita em caso de sucesso', () async {
       final recipe = Recipe(title: 'Bolo');
       final result = await usecase(recipe);
 
-      expect(result.title, 'Bolo');
+      expect(result.isRight(), true);
+      result.fold((_) {}, (r) => expect(r.title, 'Bolo'));
       expect(repository.addCallCount, 1);
-      expect(repository.lastSaved?.title, 'Bolo');
+    });
+
+    test('retorna Left com Failure em caso de erro', () async {
+      repository.shouldFail = true;
+      final result = await usecase(Recipe(title: 'Falha'));
+
+      expect(result.isLeft(), true);
+      result.fold(
+        (f) => expect(f, isA<DatabaseFailure>()),
+        (_) => fail('expected Left'),
+      );
     });
 
     test('adiciona receita à lista do repositório', () async {
@@ -41,15 +53,23 @@ void main() {
     late UpdateRecipe usecase;
     setUp(() => usecase = UpdateRecipe(repostitory: repository));
 
-    test('delega para o repositório e retorna a receita atualizada', () async {
+    test('retorna Right com receita atualizada', () async {
       final recipe = Recipe(id: 'r1', title: 'Original');
       repository.recipes = [recipe];
 
       recipe.title = 'Atualizado';
       final result = await usecase(recipe);
 
-      expect(result.title, 'Atualizado');
+      expect(result.isRight(), true);
+      result.fold((_) {}, (r) => expect(r.title, 'Atualizado'));
       expect(repository.updateCallCount, 1);
+    });
+
+    test('retorna Left em caso de erro', () async {
+      repository.shouldFail = true;
+      final result = await usecase(Recipe(title: 'Falha'));
+
+      expect(result.isLeft(), true);
     });
   });
 
@@ -57,15 +77,23 @@ void main() {
     late DeleteRecipe usecase;
     setUp(() => usecase = DeleteRecipe(repostitory: repository));
 
-    test('delega para o repositório com o id correto', () async {
+    test('retorna Right e remove do repositório', () async {
       final recipe = Recipe(id: 'to-delete', title: 'Deletar');
       repository.recipes = [recipe];
 
-      await usecase(recipe);
+      final result = await usecase(recipe);
 
+      expect(result.isRight(), true);
       expect(repository.deleteCallCount, 1);
       expect(repository.lastDeletedId, 'to-delete');
       expect(repository.recipes, isEmpty);
+    });
+
+    test('retorna Left em caso de erro', () async {
+      repository.shouldFail = true;
+      final result = await usecase(Recipe(title: 'Falha'));
+
+      expect(result.isLeft(), true);
     });
   });
 
@@ -73,7 +101,7 @@ void main() {
     late GetAllRecipes usecase;
     setUp(() => usecase = GetAllRecipes(repostitory: repository));
 
-    test('retorna todas as receitas do repositório', () async {
+    test('retorna Right com lista de receitas', () async {
       repository.recipes = [
         Recipe(title: 'A'),
         Recipe(title: 'B'),
@@ -82,13 +110,22 @@ void main() {
 
       final result = await usecase();
 
-      expect(result.length, 3);
+      expect(result.isRight(), true);
+      result.fold((_) {}, (list) => expect(list.length, 3));
       expect(repository.getAllCallCount, 1);
     });
 
-    test('retorna lista vazia quando não há receitas', () async {
+    test('retorna Right com lista vazia quando não há receitas', () async {
       final result = await usecase();
-      expect(result, isEmpty);
+      expect(result.isRight(), true);
+      result.fold((_) {}, (list) => expect(list, isEmpty));
+    });
+
+    test('retorna Left em caso de erro', () async {
+      repository.shouldFail = true;
+      final result = await usecase();
+
+      expect(result.isLeft(), true);
     });
   });
 
@@ -96,17 +133,26 @@ void main() {
     late GetRecipe usecase;
     setUp(() => usecase = GetRecipe(repostitory: repository));
 
-    test('retorna receita pelo id', () async {
+    test('retorna Right com receita pelo id', () async {
       final recipe = Recipe(id: 'find-me', title: 'Encontrada');
-      repository.recipes = [
-        Recipe(title: 'Outra'),
-        recipe,
-      ];
+      repository.recipes = [Recipe(title: 'Outra'), recipe];
 
       final result = await usecase('find-me');
 
-      expect(result.title, 'Encontrada');
+      expect(result.isRight(), true);
+      result.fold((_) {}, (r) => expect(r.title, 'Encontrada'));
       expect(repository.getByIdCallCount, 1);
+    });
+
+    test('retorna Left em caso de erro', () async {
+      repository.shouldFail = true;
+      final result = await usecase('any');
+
+      expect(result.isLeft(), true);
+      result.fold(
+        (f) => expect(f, isA<NotFoundFailure>()),
+        (_) => fail('expected Left'),
+      );
     });
   });
 }

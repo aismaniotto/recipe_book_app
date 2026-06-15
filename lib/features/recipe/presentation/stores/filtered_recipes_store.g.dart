@@ -90,6 +90,24 @@ mixin _$FilteredRecipesStore on _FilteredRecipesStore, Store {
     });
   }
 
+  late final _$lastFailureAtom = Atom(
+    name: '_FilteredRecipesStore.lastFailure',
+    context: context,
+  );
+
+  @override
+  Failure? get lastFailure {
+    _$lastFailureAtom.reportRead();
+    return super.lastFailure;
+  }
+
+  @override
+  set lastFailure(Failure? value) {
+    _$lastFailureAtom.reportWrite(value, super.lastFailure, () {
+      super.lastFailure = value;
+    });
+  }
+
   late final _$toggleFavoriteAsyncAction = AsyncAction(
     '_FilteredRecipesStore.toggleFavorite',
     context: context,
@@ -167,6 +185,7 @@ mixin _$FilteredRecipesStore on _FilteredRecipesStore, Store {
 searchQuery: ${searchQuery},
 showFavoritesOnly: ${showFavoritesOnly},
 sortOption: ${sortOption},
+lastFailure: ${lastFailure},
 filteredRecipes: ${filteredRecipes}
     ''';
   }

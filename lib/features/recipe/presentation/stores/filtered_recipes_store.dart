@@ -1,4 +1,6 @@
 import 'package:mobx/mobx.dart';
+import 'package:recipe_book_app/core/error/failure.dart';
+import 'package:recipe_book_app/core/services/crashlytics_service.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 import 'package:recipe_book_app/features/recipe/domain/usecases/delete_recipe.dart';
 import 'package:recipe_book_app/features/recipe/domain/usecases/get_all_recipes.dart';
@@ -29,6 +31,9 @@ abstract class _FilteredRecipesStore with Store {
 
   @observable
   SortOption sortOption = SortOption.name;
+
+  @observable
+  Failure? lastFailure;
 
   _FilteredRecipesStore(this._getAllRecipes, this._deleteRecipe, this._updateRecipe);
 
@@ -74,17 +79,35 @@ abstract class _FilteredRecipesStore with Store {
   @action
   Future toggleFavorite(Recipe recipe) async {
     recipe.isFavorite = !recipe.isFavorite;
-    await _updateRecipe(recipe);
+    final result = await _updateRecipe(recipe);
+    result.fold(
+      (failure) => CrashlyticsService.recordFailure(failure),
+      (_) {},
+    );
     await getAllRecipes();
   }
 
   @action
   Future getAllRecipes() async {
-    _recipes = await _getAllRecipes();
+    final result = await _getAllRecipes();
+    result.fold(
+      (failure) {
+        lastFailure = failure;
+        CrashlyticsService.recordFailure(failure);
+      },
+      (recipes) {
+        lastFailure = null;
+        _recipes = recipes;
+      },
+    );
   }
 
   @action
   Future deleteRecipe(Recipe recipe) async {
-    await _deleteRecipe(recipe);
+    final result = await _deleteRecipe(recipe);
+    result.fold(
+      (failure) => CrashlyticsService.recordFailure(failure),
+      (_) {},
+    );
   }
 }

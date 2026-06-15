@@ -1,9 +1,11 @@
+import 'package:dartz/dartz.dart';
+import 'package:recipe_book_app/core/error/failure.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 
 abstract class RecipeRepository {
-  Future<Recipe> addRecipe(Recipe recipe);
-  Future<Recipe> updateRecipe(Recipe recipe);
-  Future<void> deleteRecipe(String id);
-  Future<Recipe> getRecipeById(String id);
-  Future<List<Recipe>> getAllRecipes();
+  Future<Either<Failure, Recipe>> addRecipe(Recipe recipe);
+  Future<Either<Failure, Recipe>> updateRecipe(Recipe recipe);
+  Future<Either<Failure, void>> deleteRecipe(String id);
+  Future<Either<Failure, Recipe>> getRecipeById(String id);
+  Future<Either<Failure, List<Recipe>>> getAllRecipes();
 }

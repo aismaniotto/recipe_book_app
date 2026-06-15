@@ -1,5 +1,6 @@
 import 'package:mobx/mobx.dart';
 import 'package:recipe_book_app/core/IoC/ioc.dart';
+import 'package:recipe_book_app/core/services/crashlytics_service.dart';
 import 'package:recipe_book_app/core/services/navigation_service.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/identificable_text.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
@@ -115,7 +116,12 @@ abstract class _RecipeStore with Store {
   @action
   Future saveRecipe() async {
     if (title.isEmpty) return;
-    isUpdate ? await _updateRecipe(recipe) : await _addRecipe(recipe);
-    ioc<NavigationService>().goBack();
+    final result = isUpdate
+        ? await _updateRecipe(recipe)
+        : await _addRecipe(recipe);
+    result.fold(
+      (failure) => CrashlyticsService.recordFailure(failure),
+      (_) => ioc<NavigationService>().goBack(),
+    );
   }
 }
