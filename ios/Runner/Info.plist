@@ -18,7 +18,7 @@
 		<string>pt</string>
 	</array>
 	<key>CFBundleName</key>
-	<string>recipe_book_app</string>
+	<string>My Recipes</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>

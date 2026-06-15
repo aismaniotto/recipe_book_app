@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 
 class RecipeTileWidget extends StatelessWidget {
@@ -32,7 +34,7 @@ class RecipeTileWidget extends StatelessWidget {
               SizedBox(width: 8),
             Icon(Icons.timer_outlined, size: 14, color: Colors.grey),
             SizedBox(width: 2),
-            Text('${recipe.prepTimeMinutes} min',
+            Text(LocaleKeys.prep_time_minutes.tr(namedArgs: {'minutes': recipe.prepTimeMinutes.toString()}),
                 style: TextStyle(fontSize: 12, color: Colors.grey)),
           ],
         ],

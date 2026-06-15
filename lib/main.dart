@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
       navigatorObservers: [FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance)],
       navigatorKey: ioc.ioc<NavigationService>().navigatorKey,
       onGenerateRoute: app_router.Router.generateRoute,
-      title: LocaleKeys.recipe_book,
+      title: LocaleKeys.recipe_book.tr(),
       theme: ThemeData(
           colorSchemeSeed: Colors.red,
           scaffoldBackgroundColor: const Color(0xFFEFEFEF),

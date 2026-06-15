@@ -92,7 +92,7 @@ class RecipeHeaderWidget extends StatelessWidget {
                 TextSpan(
                     text: "${LocaleKeys.prep_time.tr()}: ",
                     style: TextStyle(fontWeight: FontWeight.bold)),
-                TextSpan(text: '$prepTimeMinutes min'),
+                TextSpan(text: LocaleKeys.prep_time_minutes.tr(namedArgs: {'minutes': prepTimeMinutes.toString()})),
               ],
             ),
           ),
