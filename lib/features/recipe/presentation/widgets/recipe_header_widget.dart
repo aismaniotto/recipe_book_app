@@ -58,7 +58,6 @@ class RecipeHeaderWidget extends StatelessWidget {
               TextSpan(
                   text: "${LocaleKeys.serve.tr()}: ",
                   style: TextStyle(fontWeight: FontWeight.bold)),
-              // TextSpan(text: '$qtdPeopleServide people'),
               (qtdPeopleServide == null)
                   ? TextSpan(text: LocaleKeys.not_informed.tr())
                   : (qtdPeopleServide! > 1)

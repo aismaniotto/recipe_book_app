@@ -58,28 +58,3 @@ class CustomReordenableListView extends StatelessWidget {
     );
   }
 }
-
-// return ListView.builder(
-//     itemCount: steps.length,
-//     itemBuilder: (_, index) {
-//       return Row(
-//         children: <Widget>[
-//           Flexible(
-//             child: TextFormField(
-//               onChanged: (String value) => onItemChange(value, index),
-//             ),
-//           ),
-//           (index + 1 == steps.length || steps.length == 1)
-//               ? IconButton(
-//                   icon: Icon(Icons.add),
-//                   color: Colors.green,
-//                   onPressed: () => onItemAdd(),
-//                 )
-//               : IconButton(
-//                   icon: Icon(Icons.clear),
-//                   color: Colors.red,
-//                   onPressed: () => onItemDelete(index),
-//                 ),
-//         ],
-//       );
-//     });

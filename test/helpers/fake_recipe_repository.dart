@@ -11,7 +11,6 @@ class FakeRecipeRepository implements RecipeRepository {
   int updateCallCount = 0;
   int deleteCallCount = 0;
   int getAllCallCount = 0;
-  int getByIdCallCount = 0;
   bool shouldFail = false;
 
   @override
@@ -49,10 +48,4 @@ class FakeRecipeRepository implements RecipeRepository {
     return Right(List.from(recipes));
   }
 
-  @override
-  Future<Either<Failure, Recipe>> getRecipeById(String id) async {
-    getByIdCallCount++;
-    if (shouldFail) return Left(NotFoundFailure(message: 'not found'));
-    return Right(recipes.firstWhere((r) => r.id == id));
-  }
 }

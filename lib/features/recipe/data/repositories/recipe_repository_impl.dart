@@ -49,13 +49,4 @@ class RecipeRepositoryImpl extends RecipeRepository {
     }
   }
 
-  @override
-  Future<Either<Failure, Recipe>> getRecipeById(String id) async {
-    try {
-      final result = await recipeDataSource.getRecipeById(id);
-      return Right(result);
-    } catch (e, s) {
-      return Left(DatabaseFailure.fromError(e, s));
-    }
-  }
 }

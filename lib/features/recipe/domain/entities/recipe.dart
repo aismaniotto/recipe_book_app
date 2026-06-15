@@ -15,7 +15,6 @@ class Recipe {
   List<IdentificableText> steps;
   bool isFavorite;
   int? prepTimeMinutes;
-  //TODO:String picturePath;
 
   Recipe(
       {String? id,

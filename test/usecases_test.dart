@@ -4,7 +4,6 @@ import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 import 'package:recipe_book_app/features/recipe/domain/usecases/add_recipe.dart';
 import 'package:recipe_book_app/features/recipe/domain/usecases/delete_recipe.dart';
 import 'package:recipe_book_app/features/recipe/domain/usecases/get_all_recipes.dart';
-import 'package:recipe_book_app/features/recipe/domain/usecases/get_recipe.dart';
 import 'package:recipe_book_app/features/recipe/domain/usecases/update_recipe.dart';
 
 import 'helpers/fake_recipe_repository.dart';
@@ -129,30 +128,4 @@ void main() {
     });
   });
 
-  group('GetRecipe', () {
-    late GetRecipe usecase;
-    setUp(() => usecase = GetRecipe(repostitory: repository));
-
-    test('retorna Right com receita pelo id', () async {
-      final recipe = Recipe(id: 'find-me', title: 'Encontrada');
-      repository.recipes = [Recipe(title: 'Outra'), recipe];
-
-      final result = await usecase('find-me');
-
-      expect(result.isRight(), true);
-      result.fold((_) {}, (r) => expect(r.title, 'Encontrada'));
-      expect(repository.getByIdCallCount, 1);
-    });
-
-    test('retorna Left em caso de erro', () async {
-      repository.shouldFail = true;
-      final result = await usecase('any');
-
-      expect(result.isLeft(), true);
-      result.fold(
-        (f) => expect(f, isA<NotFoundFailure>()),
-        (_) => fail('expected Left'),
-      );
-    });
-  });
 }
