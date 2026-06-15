@@ -86,5 +86,9 @@
   "share": "Share",
   "error_load_recipes": "Failed to load recipes. Please try again.",
   "error_save_recipe": "Failed to save recipe. Please try again.",
-  "error_generic": "Something went wrong. Please try again."
+  "error_generic": "Something went wrong. Please try again.",
+  "settings_dark_mode": "Appearance",
+  "settings_dark_mode_light": "Light",
+  "settings_dark_mode_dark": "Dark",
+  "settings_dark_mode_system": "System"
 }

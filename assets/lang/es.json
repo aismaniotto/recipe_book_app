@@ -86,5 +86,9 @@
   "share": "Compartir",
   "error_load_recipes": "Error al cargar las recetas. Inténtelo de nuevo.",
   "error_save_recipe": "Error al guardar la receta. Inténtelo de nuevo.",
-  "error_generic": "Algo salió mal. Inténtelo de nuevo."
+  "error_generic": "Algo salió mal. Inténtelo de nuevo.",
+  "settings_dark_mode": "Apariencia",
+  "settings_dark_mode_light": "Claro",
+  "settings_dark_mode_dark": "Oscuro",
+  "settings_dark_mode_system": "Sistema"
 }

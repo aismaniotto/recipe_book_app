@@ -46,6 +46,8 @@ class MyApp extends StatelessWidget {
         onGenerateRoute: app_router.Router.generateRoute,
         title: LocaleKeys.recipe_book.tr(),
         theme: AppTheme.light(primaryColor: settingsStore.themeColor),
+        darkTheme: AppTheme.dark(primaryColor: settingsStore.themeColor),
+        themeMode: settingsStore.themeMode,
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,

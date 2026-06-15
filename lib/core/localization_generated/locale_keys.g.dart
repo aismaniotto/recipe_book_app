@@ -87,5 +87,9 @@ abstract class  LocaleKeys {
   static const error_load_recipes = 'error_load_recipes';
   static const error_save_recipe = 'error_save_recipe';
   static const error_generic = 'error_generic';
+  static const settings_dark_mode = 'settings_dark_mode';
+  static const settings_dark_mode_light = 'settings_dark_mode_light';
+  static const settings_dark_mode_dark = 'settings_dark_mode_dark';
+  static const settings_dark_mode_system = 'settings_dark_mode_system';
 
 }

@@ -27,6 +27,24 @@ mixin _$SettingsStore on _SettingsStore, Store {
     });
   }
 
+  late final _$themeModeAtom = Atom(
+    name: '_SettingsStore.themeMode',
+    context: context,
+  );
+
+  @override
+  ThemeMode get themeMode {
+    _$themeModeAtom.reportRead();
+    return super.themeMode;
+  }
+
+  @override
+  set themeMode(ThemeMode value) {
+    _$themeModeAtom.reportWrite(value, super.themeMode, () {
+      super.themeMode = value;
+    });
+  }
+
   late final _$loadSettingsAsyncAction = AsyncAction(
     '_SettingsStore.loadSettings',
     context: context,
@@ -47,10 +65,21 @@ mixin _$SettingsStore on _SettingsStore, Store {
     return _$setThemeColorAsyncAction.run(() => super.setThemeColor(color));
   }
 
+  late final _$setThemeModeAsyncAction = AsyncAction(
+    '_SettingsStore.setThemeMode',
+    context: context,
+  );
+
+  @override
+  Future<void> setThemeMode(ThemeMode mode) {
+    return _$setThemeModeAsyncAction.run(() => super.setThemeMode(mode));
+  }
+
   @override
   String toString() {
     return '''
-themeColor: ${themeColor}
+themeColor: ${themeColor},
+themeMode: ${themeMode}
     ''';
   }
 }

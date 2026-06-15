@@ -20,17 +20,42 @@ class SettingsPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              LocaleKeys.settings_theme_color.tr(),
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.grey[700]),
+            _SectionTitle(LocaleKeys.settings_dark_mode.tr()),
+            SizedBox(height: 12),
+            Observer(
+              builder: (_) => SegmentedButton<ThemeMode>(
+                segments: [
+                  ButtonSegment(
+                    value: ThemeMode.light,
+                    icon: Icon(Icons.light_mode),
+                    label: Text(LocaleKeys.settings_dark_mode_light.tr()),
+                  ),
+                  ButtonSegment(
+                    value: ThemeMode.system,
+                    icon: Icon(Icons.settings_brightness),
+                    label: Text(LocaleKeys.settings_dark_mode_system.tr()),
+                  ),
+                  ButtonSegment(
+                    value: ThemeMode.dark,
+                    icon: Icon(Icons.dark_mode),
+                    label: Text(LocaleKeys.settings_dark_mode_dark.tr()),
+                  ),
+                ],
+                selected: {store.themeMode},
+                onSelectionChanged: (selection) =>
+                    store.setThemeMode(selection.first),
+              ),
             ),
+            SizedBox(height: 32),
+            _SectionTitle(LocaleKeys.settings_theme_color.tr()),
             SizedBox(height: 12),
             Observer(
               builder: (_) => Wrap(
                 spacing: 12,
                 runSpacing: 12,
                 children: availableThemeColors.map((color) {
-                  final isSelected = store.themeColor.toARGB32() == color.toARGB32();
+                  final isSelected =
+                      store.themeColor.toARGB32() == color.toARGB32();
                   return GestureDetector(
                     onTap: () => store.setThemeColor(color),
                     child: Container(
@@ -43,7 +68,12 @@ class SettingsPage extends StatelessWidget {
                             ? Border.all(color: Colors.white, width: 3)
                             : null,
                         boxShadow: isSelected
-                            ? [BoxShadow(color: color.withValues(alpha: 0.5), blurRadius: 8, spreadRadius: 2)]
+                            ? [
+                                BoxShadow(
+                                    color: color.withValues(alpha: 0.5),
+                                    blurRadius: 8,
+                                    spreadRadius: 2)
+                              ]
                             : null,
                       ),
                       child: isSelected
@@ -55,10 +85,7 @@ class SettingsPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 32),
-            Text(
-              LocaleKeys.settings_language.tr(),
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.grey[700]),
-            ),
+            _SectionTitle(LocaleKeys.settings_language.tr()),
             SizedBox(height: 12),
             ..._buildLanguageOptions(context),
           ],
@@ -88,5 +115,21 @@ class SettingsPage extends StatelessWidget {
         onTap: () => context.setLocale(lang.$2),
       );
     }).toList();
+  }
+}
+
+class _SectionTitle extends StatelessWidget {
+  final String title;
+  const _SectionTitle(this.title);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      title,
+      style: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+          color: Theme.of(context).textTheme.bodySmall?.color),
+    );
   }
 }

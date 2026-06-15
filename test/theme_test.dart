@@ -85,5 +85,28 @@ void main() {
       final theme = AppTheme.light(primaryColor: Colors.green);
       expect(theme.floatingActionButtonTheme.backgroundColor, Colors.green);
     });
+
+    test('light tem brightness light', () {
+      expect(AppTheme.light().brightness, Brightness.light);
+    });
+  });
+
+  group('AppTheme.dark', () {
+    test('dark() retorna ThemeData', () {
+      expect(AppTheme.dark(), isA<ThemeData>());
+    });
+
+    test('dark tem brightness dark', () {
+      expect(AppTheme.dark().brightness, Brightness.dark);
+    });
+
+    test('dark appBar usa primary como background', () {
+      expect(AppTheme.dark().appBarTheme.backgroundColor, ColorSet.primary);
+    });
+
+    test('dark aceita cor primária customizada', () {
+      final theme = AppTheme.dark(primaryColor: Colors.purple);
+      expect(theme.appBarTheme.backgroundColor, Colors.purple);
+    });
   });
 }

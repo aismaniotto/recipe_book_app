@@ -102,7 +102,11 @@ class CodegenLoader extends AssetLoader{
   "share": "Teilen",
   "error_load_recipes": "Rezepte konnten nicht geladen werden. Bitte versuchen Sie es erneut.",
   "error_save_recipe": "Rezept konnte nicht gespeichert werden. Bitte versuchen Sie es erneut.",
-  "error_generic": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
+  "error_generic": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+  "settings_dark_mode": "Erscheinungsbild",
+  "settings_dark_mode_light": "Hell",
+  "settings_dark_mode_dark": "Dunkel",
+  "settings_dark_mode_system": "System"
 };
 static const Map<String,dynamic> _ru = {
   "recipe": "Рецепт",
@@ -192,7 +196,11 @@ static const Map<String,dynamic> _ru = {
   "share": "Поделиться",
   "error_load_recipes": "Не удалось загрузить рецепты. Попробуйте ещё раз.",
   "error_save_recipe": "Не удалось сохранить рецепт. Попробуйте ещё раз.",
-  "error_generic": "Что-то пошло не так. Попробуйте ещё раз."
+  "error_generic": "Что-то пошло не так. Попробуйте ещё раз.",
+  "settings_dark_mode": "Оформление",
+  "settings_dark_mode_light": "Светлая",
+  "settings_dark_mode_dark": "Тёмная",
+  "settings_dark_mode_system": "Системная"
 };
 static const Map<String,dynamic> _pt = {
   "recipe": "Receita",
@@ -282,7 +290,11 @@ static const Map<String,dynamic> _pt = {
   "share": "Compartilhar",
   "error_load_recipes": "Falha ao carregar receitas. Tente novamente.",
   "error_save_recipe": "Falha ao salvar receita. Tente novamente.",
-  "error_generic": "Algo deu errado. Tente novamente."
+  "error_generic": "Algo deu errado. Tente novamente.",
+  "settings_dark_mode": "Aparência",
+  "settings_dark_mode_light": "Claro",
+  "settings_dark_mode_dark": "Escuro",
+  "settings_dark_mode_system": "Sistema"
 };
 static const Map<String,dynamic> _en = {
   "recipe": "Recipe",
@@ -372,7 +384,11 @@ static const Map<String,dynamic> _en = {
   "share": "Share",
   "error_load_recipes": "Failed to load recipes. Please try again.",
   "error_save_recipe": "Failed to save recipe. Please try again.",
-  "error_generic": "Something went wrong. Please try again."
+  "error_generic": "Something went wrong. Please try again.",
+  "settings_dark_mode": "Appearance",
+  "settings_dark_mode_light": "Light",
+  "settings_dark_mode_dark": "Dark",
+  "settings_dark_mode_system": "System"
 };
 static const Map<String,dynamic> _it = {
   "recipe": "Ricetta",
@@ -462,7 +478,11 @@ static const Map<String,dynamic> _it = {
   "share": "Condividi",
   "error_load_recipes": "Impossibile caricare le ricette. Riprova.",
   "error_save_recipe": "Impossibile salvare la ricetta. Riprova.",
-  "error_generic": "Qualcosa è andato storto. Riprova."
+  "error_generic": "Qualcosa è andato storto. Riprova.",
+  "settings_dark_mode": "Aspetto",
+  "settings_dark_mode_light": "Chiaro",
+  "settings_dark_mode_dark": "Scuro",
+  "settings_dark_mode_system": "Sistema"
 };
 static const Map<String,dynamic> _es = {
   "recipe": "Receta",
@@ -552,7 +572,11 @@ static const Map<String,dynamic> _es = {
   "share": "Compartir",
   "error_load_recipes": "Error al cargar las recetas. Inténtelo de nuevo.",
   "error_save_recipe": "Error al guardar la receta. Inténtelo de nuevo.",
-  "error_generic": "Algo salió mal. Inténtelo de nuevo."
+  "error_generic": "Algo salió mal. Inténtelo de nuevo.",
+  "settings_dark_mode": "Apariencia",
+  "settings_dark_mode_light": "Claro",
+  "settings_dark_mode_dark": "Oscuro",
+  "settings_dark_mode_system": "Sistema"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"de": _de, "ru": _ru, "pt": _pt, "en": _en, "it": _it, "es": _es};
 }

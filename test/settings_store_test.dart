@@ -38,6 +38,32 @@ void main() {
       await store.loadSettings();
       expect(store.themeColor, Colors.red);
     });
+
+    test('themeMode padrão é system', () {
+      expect(store.themeMode, ThemeMode.system);
+    });
+
+    test('setThemeMode altera o modo e persiste', () async {
+      await store.setThemeMode(ThemeMode.dark);
+      expect(store.themeMode, ThemeMode.dark);
+
+      final prefs = await SharedPreferences.getInstance();
+      expect(prefs.getInt('theme_mode'), ThemeMode.dark.index);
+    });
+
+    test('loadSettings restaura modo salvo', () async {
+      await store.setThemeMode(ThemeMode.light);
+
+      final newStore = SettingsStore();
+      await newStore.loadSettings();
+
+      expect(newStore.themeMode, ThemeMode.light);
+    });
+
+    test('loadSettings mantém system quando nada salvo', () async {
+      await store.loadSettings();
+      expect(store.themeMode, ThemeMode.system);
+    });
   });
 
   group('availableThemeColors', () {
