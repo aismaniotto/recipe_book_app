@@ -85,7 +85,7 @@ class ListRecipesPage extends StatelessWidget {
         },
       ),
       child: Scaffold(
-        drawer: NavDrawer(navigationService: navigationService),
+        drawer: NavDrawer(navigationService: navigationService, onReturn: store.getAllRecipes),
         appBar: AppBar(
           title: Text(LocaleKeys.my_recipe_book.tr()),
           actions: [

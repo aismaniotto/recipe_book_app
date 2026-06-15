@@ -7,6 +7,7 @@ abstract class RecipeDataSource {
   Future<Recipe> addRecipe(Recipe recipe);
   Future<Recipe> updateRecipe(Recipe recipe);
   Future<void> deleteRecipe(String id);
+  Future<void> deleteAll();
   Future<List<Recipe>> getAllRecipes();
 }
 
@@ -39,6 +40,11 @@ class RecipeDataSourceImpl extends RecipeDataSource {
         finder: finder);
 
     return recipe;
+  }
+
+  @override
+  Future<void> deleteAll() async {
+    await _recipesFolder.delete(await _db);
   }
 
   @override

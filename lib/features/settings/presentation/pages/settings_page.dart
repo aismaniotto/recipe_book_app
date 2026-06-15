@@ -191,6 +191,7 @@ class SettingsPage extends StatelessWidget {
       ),
     );
   }
+
 }
 
 class _SectionTitle extends StatelessWidget {

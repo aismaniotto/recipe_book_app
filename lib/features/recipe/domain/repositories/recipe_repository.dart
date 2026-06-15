@@ -6,5 +6,6 @@ abstract class RecipeRepository {
   Future<Either<Failure, Recipe>> addRecipe(Recipe recipe);
   Future<Either<Failure, Recipe>> updateRecipe(Recipe recipe);
   Future<Either<Failure, void>> deleteRecipe(String id);
+  Future<Either<Failure, void>> deleteAll();
   Future<Either<Failure, List<Recipe>>> getAllRecipes();
 }

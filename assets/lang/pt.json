@@ -97,5 +97,17 @@
   "settings_font_large": "Grande",
   "settings_behavior": "Comportamento",
   "settings_default_sort": "Ordenação padrão",
-  "settings_confirm_delete": "Confirmar antes de deletar"
+  "settings_confirm_delete": "Confirmar antes de deletar",
+  "settings_data": "Dados",
+  "settings_export": "Exportar receitas",
+  "settings_import": "Importar receitas",
+  "settings_delete_all": "Apagar todas as receitas",
+  "settings_delete_all_confirm": "Isso apagará permanentemente todas as receitas. Tem certeza?",
+  "settings_export_success": "Receitas exportadas com sucesso!",
+  "settings_import_success": "{count} receitas importadas com sucesso!",
+  "settings_delete_all_success": "Todas as receitas foram apagadas.",
+  "settings_import_hint": "Cole o JSON exportado aqui",
+  "settings_export_description": "Salve suas receitas como arquivo JSON",
+  "settings_import_description": "Restaure receitas de um backup JSON",
+  "settings_delete_all_description": "Remova permanentemente todas as receitas"
 }

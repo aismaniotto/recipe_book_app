@@ -6,8 +6,11 @@ import 'package:recipe_book_app/features/recipe/data/datasources/recipe_source.d
 import 'package:recipe_book_app/features/recipe/data/repositories/recipe_repository_impl.dart';
 import 'package:recipe_book_app/features/recipe/domain/repositories/recipe_repository.dart';
 import 'package:recipe_book_app/features/recipe/domain/usecases/add_recipe.dart';
+import 'package:recipe_book_app/features/recipe/domain/usecases/delete_all_recipes.dart';
 import 'package:recipe_book_app/features/recipe/domain/usecases/delete_recipe.dart';
+import 'package:recipe_book_app/features/recipe/domain/usecases/export_recipes.dart';
 import 'package:recipe_book_app/features/recipe/domain/usecases/get_all_recipes.dart';
+import 'package:recipe_book_app/features/recipe/domain/usecases/import_recipes.dart';
 import 'package:recipe_book_app/features/recipe/domain/usecases/update_recipe.dart';
 import 'package:recipe_book_app/features/recipe/presentation/stores/filtered_recipes_store.dart';
 import 'package:recipe_book_app/features/recipe/presentation/stores/recipe_store.dart';
@@ -27,6 +30,9 @@ Future<void> init() async {
   ioc.registerLazySingleton(() => UpdateRecipe(repository: ioc()));
   ioc.registerLazySingleton(() => DeleteRecipe(repository: ioc()));
   ioc.registerLazySingleton(() => GetAllRecipes(repository: ioc()));
+  ioc.registerLazySingleton(() => DeleteAllRecipes(repository: ioc()));
+  ioc.registerLazySingleton(() => ExportRecipes(repository: ioc(), adapter: ioc()));
+  ioc.registerLazySingleton(() => ImportRecipes(repository: ioc(), adapter: ioc()));
 
   // Adapters
   ioc.registerLazySingleton(() => RecipeAdapter(ioc()));

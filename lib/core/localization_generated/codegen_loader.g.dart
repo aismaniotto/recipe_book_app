@@ -113,7 +113,19 @@ class CodegenLoader extends AssetLoader{
   "settings_font_large": "Groß",
   "settings_behavior": "Verhalten",
   "settings_default_sort": "Standard-Sortierung",
-  "settings_confirm_delete": "Vor dem Löschen bestätigen"
+  "settings_confirm_delete": "Vor dem Löschen bestätigen",
+  "settings_data": "Daten",
+  "settings_export": "Rezepte exportieren",
+  "settings_import": "Rezepte importieren",
+  "settings_delete_all": "Alle Rezepte löschen",
+  "settings_delete_all_confirm": "Dadurch werden alle Rezepte dauerhaft gelöscht. Sind Sie sicher?",
+  "settings_export_success": "Rezepte erfolgreich exportiert!",
+  "settings_import_success": "{count} Rezepte erfolgreich importiert!",
+  "settings_delete_all_success": "Alle Rezepte wurden gelöscht.",
+  "settings_import_hint": "Fügen Sie den exportierten JSON hier ein",
+  "settings_export_description": "Speichern Sie Ihre Rezepte als JSON-Datei",
+  "settings_import_description": "Rezepte aus einem JSON-Backup wiederherstellen",
+  "settings_delete_all_description": "Alle Rezepte dauerhaft entfernen"
 };
 static const Map<String,dynamic> _ru = {
   "recipe": "Рецепт",
@@ -214,7 +226,19 @@ static const Map<String,dynamic> _ru = {
   "settings_font_large": "Большой",
   "settings_behavior": "Поведение",
   "settings_default_sort": "Сортировка по умолчанию",
-  "settings_confirm_delete": "Подтверждать перед удалением"
+  "settings_confirm_delete": "Подтверждать перед удалением",
+  "settings_data": "Данные",
+  "settings_export": "Экспорт рецептов",
+  "settings_import": "Импорт рецептов",
+  "settings_delete_all": "Удалить все рецепты",
+  "settings_delete_all_confirm": "Это навсегда удалит все рецепты. Вы уверены?",
+  "settings_export_success": "Рецепты успешно экспортированы!",
+  "settings_import_success": "{count} рецептов успешно импортировано!",
+  "settings_delete_all_success": "Все рецепты удалены.",
+  "settings_import_hint": "Вставьте экспортированный JSON сюда",
+  "settings_export_description": "Сохраните рецепты в файл JSON",
+  "settings_import_description": "Восстановите рецепты из резервной копии JSON",
+  "settings_delete_all_description": "Безвозвратно удалить все рецепты"
 };
 static const Map<String,dynamic> _pt = {
   "recipe": "Receita",
@@ -315,7 +339,19 @@ static const Map<String,dynamic> _pt = {
   "settings_font_large": "Grande",
   "settings_behavior": "Comportamento",
   "settings_default_sort": "Ordenação padrão",
-  "settings_confirm_delete": "Confirmar antes de deletar"
+  "settings_confirm_delete": "Confirmar antes de deletar",
+  "settings_data": "Dados",
+  "settings_export": "Exportar receitas",
+  "settings_import": "Importar receitas",
+  "settings_delete_all": "Apagar todas as receitas",
+  "settings_delete_all_confirm": "Isso apagará permanentemente todas as receitas. Tem certeza?",
+  "settings_export_success": "Receitas exportadas com sucesso!",
+  "settings_import_success": "{count} receitas importadas com sucesso!",
+  "settings_delete_all_success": "Todas as receitas foram apagadas.",
+  "settings_import_hint": "Cole o JSON exportado aqui",
+  "settings_export_description": "Salve suas receitas como arquivo JSON",
+  "settings_import_description": "Restaure receitas de um backup JSON",
+  "settings_delete_all_description": "Remova permanentemente todas as receitas"
 };
 static const Map<String,dynamic> _en = {
   "recipe": "Recipe",
@@ -416,7 +452,19 @@ static const Map<String,dynamic> _en = {
   "settings_font_large": "Large",
   "settings_behavior": "Behavior",
   "settings_default_sort": "Default sort order",
-  "settings_confirm_delete": "Confirm before deleting"
+  "settings_confirm_delete": "Confirm before deleting",
+  "settings_data": "Data",
+  "settings_export": "Export recipes",
+  "settings_import": "Import recipes",
+  "settings_delete_all": "Delete all recipes",
+  "settings_delete_all_confirm": "This will permanently delete all recipes. Are you sure?",
+  "settings_export_success": "Recipes exported successfully!",
+  "settings_import_success": "{count} recipes imported successfully!",
+  "settings_delete_all_success": "All recipes deleted.",
+  "settings_import_hint": "Paste the exported JSON here",
+  "settings_export_description": "Save your recipes as a JSON file",
+  "settings_import_description": "Restore recipes from a JSON backup",
+  "settings_delete_all_description": "Permanently remove all recipes"
 };
 static const Map<String,dynamic> _it = {
   "recipe": "Ricetta",
@@ -517,7 +565,19 @@ static const Map<String,dynamic> _it = {
   "settings_font_large": "Grande",
   "settings_behavior": "Comportamento",
   "settings_default_sort": "Ordinamento predefinito",
-  "settings_confirm_delete": "Conferma prima di eliminare"
+  "settings_confirm_delete": "Conferma prima di eliminare",
+  "settings_data": "Dati",
+  "settings_export": "Esporta ricette",
+  "settings_import": "Importa ricette",
+  "settings_delete_all": "Elimina tutte le ricette",
+  "settings_delete_all_confirm": "Questo eliminerà permanentemente tutte le ricette. Sei sicuro?",
+  "settings_export_success": "Ricette esportate con successo!",
+  "settings_import_success": "{count} ricette importate con successo!",
+  "settings_delete_all_success": "Tutte le ricette sono state eliminate.",
+  "settings_import_hint": "Incolla il JSON esportato qui",
+  "settings_export_description": "Salva le tue ricette come file JSON",
+  "settings_import_description": "Ripristina le ricette da un backup JSON",
+  "settings_delete_all_description": "Rimuovi permanentemente tutte le ricette"
 };
 static const Map<String,dynamic> _es = {
   "recipe": "Receta",
@@ -618,7 +678,19 @@ static const Map<String,dynamic> _es = {
   "settings_font_large": "Grande",
   "settings_behavior": "Comportamiento",
   "settings_default_sort": "Orden predeterminado",
-  "settings_confirm_delete": "Confirmar antes de eliminar"
+  "settings_confirm_delete": "Confirmar antes de eliminar",
+  "settings_data": "Datos",
+  "settings_export": "Exportar recetas",
+  "settings_import": "Importar recetas",
+  "settings_delete_all": "Eliminar todas las recetas",
+  "settings_delete_all_confirm": "Esto eliminará permanentemente todas las recetas. ¿Está seguro?",
+  "settings_export_success": "¡Recetas exportadas exitosamente!",
+  "settings_import_success": "¡{count} recetas importadas exitosamente!",
+  "settings_delete_all_success": "Todas las recetas fueron eliminadas.",
+  "settings_import_hint": "Pegue el JSON exportado aquí",
+  "settings_export_description": "Guarde sus recetas como archivo JSON",
+  "settings_import_description": "Restaure recetas de un respaldo JSON",
+  "settings_delete_all_description": "Elimine permanentemente todas las recetas"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"de": _de, "ru": _ru, "pt": _pt, "en": _en, "it": _it, "es": _es};
 }
