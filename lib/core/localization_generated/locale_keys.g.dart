@@ -71,5 +71,14 @@ abstract class  LocaleKeys {
   static const prep_time = 'prep_time';
   static const prep_time_minutes = 'prep_time_minutes';
   static const prep_time_hint = 'prep_time_hint';
+  static const about_app_info = 'about_app_info';
+  static const about_version = 'about_version';
+  static const about_build = 'about_build';
+  static const about_package = 'about_package';
+  static const about_device_info = 'about_device_info';
+  static const about_device_model = 'about_device_model';
+  static const about_device_os = 'about_device_os';
+  static const about_device_os_version = 'about_device_os_version';
+  static const about_licenses = 'about_licenses';
 
 }

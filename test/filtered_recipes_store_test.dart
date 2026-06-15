@@ -20,7 +20,7 @@ void main() {
     );
   });
 
-  Recipe _makeRecipe({
+  Recipe makeRecipe({
     String title = '',
     String? description,
     Type type = Type.other,
@@ -41,8 +41,8 @@ void main() {
   group('getAllRecipes', () {
     test('carrega receitas do repositório', () async {
       repository.recipes = [
-        _makeRecipe(title: 'Bolo'),
-        _makeRecipe(title: 'Sopa'),
+        makeRecipe(title: 'Bolo'),
+        makeRecipe(title: 'Sopa'),
       ];
 
       await store.getAllRecipes();
@@ -59,9 +59,9 @@ void main() {
   group('busca', () {
     setUp(() async {
       repository.recipes = [
-        _makeRecipe(title: 'Bolo de chocolate', description: 'Delicioso'),
-        _makeRecipe(title: 'Sopa de legumes', description: 'Nutritiva'),
-        _makeRecipe(title: 'Cookies', description: 'Crocantes'),
+        makeRecipe(title: 'Bolo de chocolate', description: 'Delicioso'),
+        makeRecipe(title: 'Sopa de legumes', description: 'Nutritiva'),
+        makeRecipe(title: 'Cookies', description: 'Crocantes'),
       ];
       await store.getAllRecipes();
     });
@@ -104,8 +104,8 @@ void main() {
 
     test('busca com acentos funciona', () async {
       repository.recipes = [
-        _makeRecipe(title: 'Pão de queijo'),
-        _makeRecipe(title: 'Café'),
+        makeRecipe(title: 'Pão de queijo'),
+        makeRecipe(title: 'Café'),
       ];
       await store.getAllRecipes();
 
@@ -116,7 +116,7 @@ void main() {
 
     test('busca com receita sem descrição não quebra', () async {
       repository.recipes = [
-        _makeRecipe(title: 'Sem descrição', description: null),
+        makeRecipe(title: 'Sem descrição', description: null),
       ];
       await store.getAllRecipes();
 
@@ -128,9 +128,9 @@ void main() {
   group('favoritos', () {
     setUp(() async {
       repository.recipes = [
-        _makeRecipe(title: 'Bolo', isFavorite: true),
-        _makeRecipe(title: 'Sopa', isFavorite: false),
-        _makeRecipe(title: 'Cookies', isFavorite: true),
+        makeRecipe(title: 'Bolo', isFavorite: true),
+        makeRecipe(title: 'Sopa', isFavorite: false),
+        makeRecipe(title: 'Cookies', isFavorite: true),
       ];
       await store.getAllRecipes();
     });
@@ -186,8 +186,8 @@ void main() {
 
     test('filtro favoritos com nenhuma favorita retorna vazio', () async {
       repository.recipes = [
-        _makeRecipe(title: 'A', isFavorite: false),
-        _makeRecipe(title: 'B', isFavorite: false),
+        makeRecipe(title: 'A', isFavorite: false),
+        makeRecipe(title: 'B', isFavorite: false),
       ];
       await store.getAllRecipes();
 
@@ -199,11 +199,11 @@ void main() {
   group('ordenação', () {
     setUp(() async {
       repository.recipes = [
-        _makeRecipe(
+        makeRecipe(
             title: 'Cookies', type: Type.snack, difficulty: Difficulty.easy),
-        _makeRecipe(
+        makeRecipe(
             title: 'Arroz', type: Type.meal, difficulty: Difficulty.hard),
-        _makeRecipe(
+        makeRecipe(
             title: 'Bolo', type: Type.dessert, difficulty: Difficulty.medium),
       ];
       await store.getAllRecipes();
@@ -232,8 +232,8 @@ void main() {
 
     test('ordenação por nome é case insensitive', () async {
       repository.recipes = [
-        _makeRecipe(title: 'banana'),
-        _makeRecipe(title: 'Abacaxi'),
+        makeRecipe(title: 'banana'),
+        makeRecipe(title: 'Abacaxi'),
       ];
       await store.getAllRecipes();
 
@@ -245,13 +245,13 @@ void main() {
   group('combinações', () {
     setUp(() async {
       repository.recipes = [
-        _makeRecipe(title: 'Bolo de chocolate', isFavorite: true,
+        makeRecipe(title: 'Bolo de chocolate', isFavorite: true,
             type: Type.dessert, difficulty: Difficulty.medium),
-        _makeRecipe(title: 'Bolo de cenoura', isFavorite: false,
+        makeRecipe(title: 'Bolo de cenoura', isFavorite: false,
             type: Type.dessert, difficulty: Difficulty.easy),
-        _makeRecipe(title: 'Sopa', isFavorite: true,
+        makeRecipe(title: 'Sopa', isFavorite: true,
             type: Type.meal, difficulty: Difficulty.easy),
-        _makeRecipe(title: 'Arroz', isFavorite: false,
+        makeRecipe(title: 'Arroz', isFavorite: false,
             type: Type.meal, difficulty: Difficulty.easy),
       ];
       await store.getAllRecipes();
@@ -284,7 +284,7 @@ void main() {
     });
 
     test('busca + favoritos + ordenação', () async {
-      repository.recipes.add(_makeRecipe(
+      repository.recipes.add(makeRecipe(
           title: 'Bolo de fubá', isFavorite: true,
           type: Type.dessert, difficulty: Difficulty.hard));
       await store.getAllRecipes();
@@ -301,7 +301,7 @@ void main() {
 
   group('deleteRecipe', () {
     test('remove receita do repositório', () async {
-      final recipe = _makeRecipe(title: 'Para deletar');
+      final recipe = makeRecipe(title: 'Para deletar');
       repository.recipes = [recipe];
       await store.getAllRecipes();
       expect(store.filteredRecipes.length, 1);

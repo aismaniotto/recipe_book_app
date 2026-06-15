@@ -70,5 +70,14 @@
   "sort_by_difficulty": "Difficulty",
   "prep_time": "Prep time",
   "prep_time_minutes": "{minutes} min",
-  "prep_time_hint": "Time in minutes"
+  "prep_time_hint": "Time in minutes",
+  "about_app_info": "App Info",
+  "about_version": "Version",
+  "about_build": "Build",
+  "about_package": "Package",
+  "about_device_info": "Device Info",
+  "about_device_model": "Model",
+  "about_device_os": "Operating System",
+  "about_device_os_version": "OS Version",
+  "about_licenses": "Open source licenses"
 }

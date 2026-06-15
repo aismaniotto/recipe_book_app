@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
+import 'package:recipe_book_app/core/services/navigation_service.dart';
 
 class NavDrawer extends StatelessWidget {
-  const NavDrawer({super.key});
+  final NavigationService navigationService;
+
+  const NavDrawer({super.key, required this.navigationService});
 
   @override
   Widget build(BuildContext context) {
@@ -21,20 +24,15 @@ class NavDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.backup),
-            title: Text(
-              LocaleKeys.backup.tr(),
-              style: TextStyle(fontSize: 18),
-            ),
-            onTap: () => {Navigator.of(context).pop()},
-          ),
-          ListTile(
             leading: Icon(Icons.info),
             title: Text(
               LocaleKeys.about.tr(),
               style: TextStyle(fontSize: 18),
             ),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () {
+              Navigator.of(context).pop();
+              navigationService.navigateTo('/about');
+            },
           ),
         ],
       ),

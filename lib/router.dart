@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
+import 'package:recipe_book_app/features/about/presentation/pages/about_page.dart';
 import 'package:recipe_book_app/features/recipe/presentation/pages/input_recipe_page.dart';
 import 'package:recipe_book_app/features/recipe/presentation/pages/show_recipe_page.dart';
 
@@ -36,6 +37,10 @@ class Router {
                   store: ioc(),
                   navigationService: ioc(),
                 ));
+      case '/about':
+        return MaterialPageRoute(
+            settings: RouteSettings(name: 'AboutPage'),
+            builder: (_) => AboutPage());
       case '/update_recipe':
         var recipe = settings.arguments as Recipe;
         return MaterialPageRoute(

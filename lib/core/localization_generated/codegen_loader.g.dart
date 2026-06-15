@@ -86,7 +86,16 @@ class CodegenLoader extends AssetLoader{
   "sort_by_difficulty": "Dificuldade",
   "prep_time": "Tempo de preparo",
   "prep_time_minutes": "{minutes} min",
-  "prep_time_hint": "Tempo em minutos"
+  "prep_time_hint": "Tempo em minutos",
+  "about_app_info": "Informações do App",
+  "about_version": "Versão",
+  "about_build": "Build",
+  "about_package": "Pacote",
+  "about_device_info": "Informações do Dispositivo",
+  "about_device_model": "Modelo",
+  "about_device_os": "Sistema Operacional",
+  "about_device_os_version": "Versão do SO",
+  "about_licenses": "Licenças de código aberto"
 };
 static const Map<String,dynamic> _en = {
   "recipe": "Recipe",
@@ -160,7 +169,16 @@ static const Map<String,dynamic> _en = {
   "sort_by_difficulty": "Difficulty",
   "prep_time": "Prep time",
   "prep_time_minutes": "{minutes} min",
-  "prep_time_hint": "Time in minutes"
+  "prep_time_hint": "Time in minutes",
+  "about_app_info": "App Info",
+  "about_version": "Version",
+  "about_build": "Build",
+  "about_package": "Package",
+  "about_device_info": "Device Info",
+  "about_device_model": "Model",
+  "about_device_os": "Operating System",
+  "about_device_os_version": "OS Version",
+  "about_licenses": "Open source licenses"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"pt": _pt, "en": _en};
 }
