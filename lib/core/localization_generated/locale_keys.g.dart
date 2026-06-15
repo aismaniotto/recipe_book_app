@@ -83,5 +83,6 @@ abstract class  LocaleKeys {
   static const settings = 'settings';
   static const settings_theme_color = 'settings_theme_color';
   static const settings_language = 'settings_language';
+  static const share = 'share';
 
 }

@@ -98,7 +98,8 @@ class CodegenLoader extends AssetLoader{
   "about_licenses": "Open-Source-Lizenzen",
   "settings": "Einstellungen",
   "settings_theme_color": "Themenfarbe",
-  "settings_language": "Sprache"
+  "settings_language": "Sprache",
+  "share": "Teilen"
 };
 static const Map<String,dynamic> _ru = {
   "recipe": "Рецепт",
@@ -184,7 +185,8 @@ static const Map<String,dynamic> _ru = {
   "about_licenses": "Лицензии открытого кода",
   "settings": "Настройки",
   "settings_theme_color": "Цвет темы",
-  "settings_language": "Язык"
+  "settings_language": "Язык",
+  "share": "Поделиться"
 };
 static const Map<String,dynamic> _pt = {
   "recipe": "Receita",
@@ -270,7 +272,8 @@ static const Map<String,dynamic> _pt = {
   "about_licenses": "Licenças de código aberto",
   "settings": "Configurações",
   "settings_theme_color": "Cor do tema",
-  "settings_language": "Idioma"
+  "settings_language": "Idioma",
+  "share": "Compartilhar"
 };
 static const Map<String,dynamic> _en = {
   "recipe": "Recipe",
@@ -356,7 +359,8 @@ static const Map<String,dynamic> _en = {
   "about_licenses": "Open source licenses",
   "settings": "Settings",
   "settings_theme_color": "Theme color",
-  "settings_language": "Language"
+  "settings_language": "Language",
+  "share": "Share"
 };
 static const Map<String,dynamic> _it = {
   "recipe": "Ricetta",
@@ -442,7 +446,8 @@ static const Map<String,dynamic> _it = {
   "about_licenses": "Licenze open source",
   "settings": "Impostazioni",
   "settings_theme_color": "Colore del tema",
-  "settings_language": "Lingua"
+  "settings_language": "Lingua",
+  "share": "Condividi"
 };
 static const Map<String,dynamic> _es = {
   "recipe": "Receta",
@@ -528,7 +533,8 @@ static const Map<String,dynamic> _es = {
   "about_licenses": "Licencias de código abierto",
   "settings": "Configuración",
   "settings_theme_color": "Color del tema",
-  "settings_language": "Idioma"
+  "settings_language": "Idioma",
+  "share": "Compartir"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"de": _de, "ru": _ru, "pt": _pt, "en": _en, "it": _it, "es": _es};
 }
