@@ -34,9 +34,9 @@ class MainActivity : FlutterActivity() {
             if (resultCode == Activity.RESULT_OK && data?.data != null) {
                 try {
                     val uri = data.data!!
-                    val inputStream = contentResolver.openInputStream(uri)
-                    val content = inputStream?.bufferedReader()?.readText()
-                    inputStream?.close()
+                    val content = contentResolver.openInputStream(uri)?.use { stream ->
+                        stream.bufferedReader().readText()
+                    }
                     pendingResult?.success(content)
                 } catch (e: Exception) {
                     pendingResult?.error("READ_ERROR", e.message, null)

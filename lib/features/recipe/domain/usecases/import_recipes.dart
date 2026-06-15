@@ -18,7 +18,8 @@ class ImportRecipes {
       for (final item in list) {
         final recipe = adapter.fromMap(item as Map<String, dynamic>);
         final result = await repository.addRecipe(recipe);
-        if (result.isRight()) count++;
+        if (result.isLeft()) return Left(DatabaseFailure(message: 'Failed to import recipe: ${recipe.title}'));
+        count++;
       }
       return Right(count);
     } catch (e, s) {

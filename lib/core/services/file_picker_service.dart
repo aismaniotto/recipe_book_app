@@ -7,7 +7,7 @@ class FilePickerService {
     try {
       final result = await _channel.invokeMethod<String>('pickJsonFile');
       return result;
-    } on PlatformException {
+    } catch (_) {
       return null;
     }
   }

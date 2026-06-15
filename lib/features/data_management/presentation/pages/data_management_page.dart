@@ -54,6 +54,7 @@ class DataManagementPage extends StatelessWidget {
 
   Future<void> _exportRecipes(BuildContext context) async {
     final result = await ioc<ExportRecipes>()();
+    if (!context.mounted) return;
     result.fold(
       (failure) => SnackBarHelper.showError(context, LocaleKeys.error_generic.tr()),
       (json) async {
