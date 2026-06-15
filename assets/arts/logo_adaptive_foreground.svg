@@ -1,29 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="500" viewBox="0 0 1024 500" role="img" aria-labelledby="title desc">
-  <title id="title">Recipe Book banner</title>
-  <desc id="desc">Recipe Book wordmark beside the recipe book logo.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Recipe Book adaptive icon foreground</title>
+  <desc id="desc">Transparent foreground for Android adaptive launcher icons.</desc>
   <defs>
-    <linearGradient id="backgroundGradient" x1="0" x2="1024" y1="0" y2="500" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#fff5e2"/>
-      <stop offset="1" stop-color="#f5cba9"/>
-    </linearGradient>
-    <linearGradient id="coverGradient" x1="122" x2="410" y1="52" y2="448" gradientUnits="userSpaceOnUse">
+    <linearGradient id="coverGradient" x1="260" x2="790" y1="86" y2="938" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#ff2f24"/>
       <stop offset="1" stop-color="#cf1618"/>
     </linearGradient>
-    <linearGradient id="spineGradient" x1="70" x2="138" y1="58" y2="442" gradientUnits="userSpaceOnUse">
+    <linearGradient id="spineGradient" x1="142" x2="286" y1="96" y2="928" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#c00006"/>
       <stop offset="1" stop-color="#98000b"/>
     </linearGradient>
     <filter id="markShadow" x="-12%" y="-12%" width="124%" height="124%">
-      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#2b1712" flood-opacity=".23"/>
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#2b1712" flood-opacity=".24"/>
     </filter>
   </defs>
 
-  <rect width="1024" height="500" fill="url(#backgroundGradient)"/>
-  <circle cx="884" cy="92" r="84" fill="#eb7d62" opacity=".18"/>
-  <circle cx="120" cy="424" r="112" fill="#95bf72" opacity=".18"/>
-
-  <g transform="translate(54 34) scale(.44)" filter="url(#markShadow)">
+  <g transform="translate(114 104) scale(.78)" filter="url(#markShadow)">
     <path d="M158 70h712c32 0 58 26 58 58v768c0 32-26 58-58 58H158c-32 0-58-26-58-58V128c0-32 26-58 58-58z" fill="#2b1712"/>
     <path d="M304 100h534c31 0 56 25 56 56v712c0 31-25 56-56 56H304z" fill="url(#coverGradient)"/>
     <path d="M130 156c0-31 25-56 56-56h118v824H186c-31 0-56-25-56-56z" fill="url(#spineGradient)"/>
@@ -37,8 +29,4 @@
     <path d="M431 770h218v100H431z" fill="none" stroke="#241714" stroke-width="24" stroke-linejoin="round"/>
     <path d="M462 794h154" stroke="#eee5d8" stroke-width="18" stroke-linecap="round"/>
   </g>
-
-  <text x="516" y="214" fill="#2b1712" font-family="Avenir Next, Avenir, Helvetica, Arial, sans-serif" font-size="82" font-weight="800" letter-spacing="0">Recipe</text>
-  <text x="516" y="304" fill="#cf1618" font-family="Avenir Next, Avenir, Helvetica, Arial, sans-serif" font-size="82" font-weight="800" letter-spacing="0">Book</text>
-  <path d="M520 342h296" stroke="#87b86b" stroke-width="14" stroke-linecap="round"/>
 </svg>
