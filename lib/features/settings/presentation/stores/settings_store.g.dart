@@ -45,6 +45,24 @@ mixin _$SettingsStore on _SettingsStore, Store {
     });
   }
 
+  late final _$fontScaleAtom = Atom(
+    name: '_SettingsStore.fontScale',
+    context: context,
+  );
+
+  @override
+  FontScale get fontScale {
+    _$fontScaleAtom.reportRead();
+    return super.fontScale;
+  }
+
+  @override
+  set fontScale(FontScale value) {
+    _$fontScaleAtom.reportWrite(value, super.fontScale, () {
+      super.fontScale = value;
+    });
+  }
+
   late final _$loadSettingsAsyncAction = AsyncAction(
     '_SettingsStore.loadSettings',
     context: context,
@@ -75,11 +93,22 @@ mixin _$SettingsStore on _SettingsStore, Store {
     return _$setThemeModeAsyncAction.run(() => super.setThemeMode(mode));
   }
 
+  late final _$setFontScaleAsyncAction = AsyncAction(
+    '_SettingsStore.setFontScale',
+    context: context,
+  );
+
+  @override
+  Future<void> setFontScale(FontScale scale) {
+    return _$setFontScaleAsyncAction.run(() => super.setFontScale(scale));
+  }
+
   @override
   String toString() {
     return '''
 themeColor: ${themeColor},
-themeMode: ${themeMode}
+themeMode: ${themeMode},
+fontScale: ${fontScale}
     ''';
   }
 }

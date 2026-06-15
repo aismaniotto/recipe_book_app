@@ -47,6 +47,30 @@ class SettingsPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 32),
+            _SectionTitle(LocaleKeys.settings_font_size.tr()),
+            SizedBox(height: 12),
+            Observer(
+              builder: (_) => SegmentedButton<FontScale>(
+                segments: [
+                  ButtonSegment(
+                    value: FontScale.small,
+                    label: Text(LocaleKeys.settings_font_small.tr()),
+                  ),
+                  ButtonSegment(
+                    value: FontScale.medium,
+                    label: Text(LocaleKeys.settings_font_medium.tr()),
+                  ),
+                  ButtonSegment(
+                    value: FontScale.large,
+                    label: Text(LocaleKeys.settings_font_large.tr()),
+                  ),
+                ],
+                selected: {store.fontScale},
+                onSelectionChanged: (selection) =>
+                    store.setFontScale(selection.first),
+              ),
+            ),
+            SizedBox(height: 32),
             _SectionTitle(LocaleKeys.settings_theme_color.tr()),
             SizedBox(height: 12),
             Observer(

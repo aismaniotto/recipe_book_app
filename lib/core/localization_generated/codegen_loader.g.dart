@@ -106,7 +106,11 @@ class CodegenLoader extends AssetLoader{
   "settings_dark_mode": "Erscheinungsbild",
   "settings_dark_mode_light": "Hell",
   "settings_dark_mode_dark": "Dunkel",
-  "settings_dark_mode_system": "System"
+  "settings_dark_mode_system": "System",
+  "settings_font_size": "Schriftgröße",
+  "settings_font_small": "Klein",
+  "settings_font_medium": "Mittel",
+  "settings_font_large": "Groß"
 };
 static const Map<String,dynamic> _ru = {
   "recipe": "Рецепт",
@@ -200,7 +204,11 @@ static const Map<String,dynamic> _ru = {
   "settings_dark_mode": "Оформление",
   "settings_dark_mode_light": "Светлая",
   "settings_dark_mode_dark": "Тёмная",
-  "settings_dark_mode_system": "Системная"
+  "settings_dark_mode_system": "Системная",
+  "settings_font_size": "Размер шрифта",
+  "settings_font_small": "Маленький",
+  "settings_font_medium": "Средний",
+  "settings_font_large": "Большой"
 };
 static const Map<String,dynamic> _pt = {
   "recipe": "Receita",
@@ -294,7 +302,11 @@ static const Map<String,dynamic> _pt = {
   "settings_dark_mode": "Aparência",
   "settings_dark_mode_light": "Claro",
   "settings_dark_mode_dark": "Escuro",
-  "settings_dark_mode_system": "Sistema"
+  "settings_dark_mode_system": "Sistema",
+  "settings_font_size": "Tamanho da fonte",
+  "settings_font_small": "Pequeno",
+  "settings_font_medium": "Médio",
+  "settings_font_large": "Grande"
 };
 static const Map<String,dynamic> _en = {
   "recipe": "Recipe",
@@ -388,7 +400,11 @@ static const Map<String,dynamic> _en = {
   "settings_dark_mode": "Appearance",
   "settings_dark_mode_light": "Light",
   "settings_dark_mode_dark": "Dark",
-  "settings_dark_mode_system": "System"
+  "settings_dark_mode_system": "System",
+  "settings_font_size": "Font size",
+  "settings_font_small": "Small",
+  "settings_font_medium": "Medium",
+  "settings_font_large": "Large"
 };
 static const Map<String,dynamic> _it = {
   "recipe": "Ricetta",
@@ -482,7 +498,11 @@ static const Map<String,dynamic> _it = {
   "settings_dark_mode": "Aspetto",
   "settings_dark_mode_light": "Chiaro",
   "settings_dark_mode_dark": "Scuro",
-  "settings_dark_mode_system": "Sistema"
+  "settings_dark_mode_system": "Sistema",
+  "settings_font_size": "Dimensione del testo",
+  "settings_font_small": "Piccolo",
+  "settings_font_medium": "Medio",
+  "settings_font_large": "Grande"
 };
 static const Map<String,dynamic> _es = {
   "recipe": "Receta",
@@ -576,7 +596,11 @@ static const Map<String,dynamic> _es = {
   "settings_dark_mode": "Apariencia",
   "settings_dark_mode_light": "Claro",
   "settings_dark_mode_dark": "Oscuro",
-  "settings_dark_mode_system": "Sistema"
+  "settings_dark_mode_system": "Sistema",
+  "settings_font_size": "Tamaño de fuente",
+  "settings_font_small": "Pequeño",
+  "settings_font_medium": "Mediano",
+  "settings_font_large": "Grande"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"de": _de, "ru": _ru, "pt": _pt, "en": _en, "it": _it, "es": _es};
 }

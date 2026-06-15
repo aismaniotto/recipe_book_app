@@ -90,5 +90,9 @@
   "settings_dark_mode": "Aspetto",
   "settings_dark_mode_light": "Chiaro",
   "settings_dark_mode_dark": "Scuro",
-  "settings_dark_mode_system": "Sistema"
+  "settings_dark_mode_system": "Sistema",
+  "settings_font_size": "Dimensione del testo",
+  "settings_font_small": "Piccolo",
+  "settings_font_medium": "Medio",
+  "settings_font_large": "Grande"
 }

@@ -90,5 +90,9 @@
   "settings_dark_mode": "Erscheinungsbild",
   "settings_dark_mode_light": "Hell",
   "settings_dark_mode_dark": "Dunkel",
-  "settings_dark_mode_system": "System"
+  "settings_dark_mode_system": "System",
+  "settings_font_size": "Schriftgröße",
+  "settings_font_small": "Klein",
+  "settings_font_medium": "Mittel",
+  "settings_font_large": "Groß"
 }

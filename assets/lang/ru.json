@@ -90,5 +90,9 @@
   "settings_dark_mode": "Оформление",
   "settings_dark_mode_light": "Светлая",
   "settings_dark_mode_dark": "Тёмная",
-  "settings_dark_mode_system": "Системная"
+  "settings_dark_mode_system": "Системная",
+  "settings_font_size": "Размер шрифта",
+  "settings_font_small": "Маленький",
+  "settings_font_medium": "Средний",
+  "settings_font_large": "Большой"
 }

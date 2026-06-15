@@ -91,5 +91,9 @@ abstract class  LocaleKeys {
   static const settings_dark_mode_light = 'settings_dark_mode_light';
   static const settings_dark_mode_dark = 'settings_dark_mode_dark';
   static const settings_dark_mode_system = 'settings_dark_mode_system';
+  static const settings_font_size = 'settings_font_size';
+  static const settings_font_small = 'settings_font_small';
+  static const settings_font_medium = 'settings_font_medium';
+  static const settings_font_large = 'settings_font_large';
 
 }

@@ -109,4 +109,27 @@ void main() {
       expect(theme.appBarTheme.backgroundColor, Colors.purple);
     });
   });
+
+  group('AppTheme fontScale', () {
+    test('light com fontScale 1.0 mantém tamanhos padrão', () {
+      final theme = AppTheme.light(fontScale: 1.0);
+      expect(theme.textTheme.bodyMedium?.fontSize, 16.0);
+    });
+
+    test('light com fontScale maior aumenta tamanhos', () {
+      final theme = AppTheme.light(fontScale: 1.2);
+      expect(theme.textTheme.bodyMedium?.fontSize, closeTo(19.2, 0.1));
+      expect(theme.textTheme.headlineLarge?.fontSize, closeTo(33.6, 0.1));
+    });
+
+    test('light com fontScale menor diminui tamanhos', () {
+      final theme = AppTheme.light(fontScale: 0.85);
+      expect(theme.textTheme.bodyMedium?.fontSize, closeTo(13.6, 0.1));
+    });
+
+    test('dark com fontScale aplica escala', () {
+      final theme = AppTheme.dark(fontScale: 1.2);
+      expect(theme.textTheme.bodyMedium?.fontSize, closeTo(19.2, 0.1));
+    });
+  });
 }

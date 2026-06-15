@@ -64,6 +64,32 @@ void main() {
       await store.loadSettings();
       expect(store.themeMode, ThemeMode.system);
     });
+
+    test('fontScale padrão é medium', () {
+      expect(store.fontScale, FontScale.medium);
+    });
+
+    test('setFontScale altera a escala e persiste', () async {
+      await store.setFontScale(FontScale.large);
+      expect(store.fontScale, FontScale.large);
+
+      final prefs = await SharedPreferences.getInstance();
+      expect(prefs.getInt('font_scale'), FontScale.large.index);
+    });
+
+    test('loadSettings restaura escala salva', () async {
+      await store.setFontScale(FontScale.small);
+
+      final newStore = SettingsStore();
+      await newStore.loadSettings();
+
+      expect(newStore.fontScale, FontScale.small);
+    });
+
+    test('loadSettings mantém medium quando nada salvo', () async {
+      await store.loadSettings();
+      expect(store.fontScale, FontScale.medium);
+    });
   });
 
   group('availableThemeColors', () {
