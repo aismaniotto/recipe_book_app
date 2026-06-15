@@ -42,6 +42,13 @@ class FakeRecipeRepository implements RecipeRepository {
   }
 
   @override
+  Future<Either<Failure, void>> deleteAll() async {
+    if (shouldFail) return Left(DatabaseFailure(message: 'deleteAll failed'));
+    recipes.clear();
+    return Right(null);
+  }
+
+  @override
   Future<Either<Failure, List<Recipe>>> getAllRecipes() async {
     getAllCallCount++;
     if (shouldFail) return Left(DatabaseFailure(message: 'getAll failed'));

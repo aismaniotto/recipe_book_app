@@ -98,5 +98,17 @@ abstract class  LocaleKeys {
   static const settings_behavior = 'settings_behavior';
   static const settings_default_sort = 'settings_default_sort';
   static const settings_confirm_delete = 'settings_confirm_delete';
+  static const settings_data = 'settings_data';
+  static const settings_export = 'settings_export';
+  static const settings_import = 'settings_import';
+  static const settings_delete_all = 'settings_delete_all';
+  static const settings_delete_all_confirm = 'settings_delete_all_confirm';
+  static const settings_export_success = 'settings_export_success';
+  static const settings_import_success = 'settings_import_success';
+  static const settings_delete_all_success = 'settings_delete_all_success';
+  static const settings_import_hint = 'settings_import_hint';
+  static const settings_export_description = 'settings_export_description';
+  static const settings_import_description = 'settings_import_description';
+  static const settings_delete_all_description = 'settings_delete_all_description';
 
 }

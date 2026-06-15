@@ -27,6 +27,12 @@ class FakeRecipeDataSource implements RecipeDataSource {
   }
 
   @override
+  Future<void> deleteAll() async {
+    if (shouldThrow) throw Exception('deleteAll failed');
+    recipes.clear();
+  }
+
+  @override
   Future<List<Recipe>> getAllRecipes() async {
     if (shouldThrow) throw Exception('getAll failed');
     return List.from(recipes);

@@ -97,5 +97,17 @@
   "settings_font_large": "Large",
   "settings_behavior": "Behavior",
   "settings_default_sort": "Default sort order",
-  "settings_confirm_delete": "Confirm before deleting"
+  "settings_confirm_delete": "Confirm before deleting",
+  "settings_data": "Data",
+  "settings_export": "Export recipes",
+  "settings_import": "Import recipes",
+  "settings_delete_all": "Delete all recipes",
+  "settings_delete_all_confirm": "This will permanently delete all recipes. Are you sure?",
+  "settings_export_success": "Recipes exported successfully!",
+  "settings_import_success": "{count} recipes imported successfully!",
+  "settings_delete_all_success": "All recipes deleted.",
+  "settings_import_hint": "Paste the exported JSON here",
+  "settings_export_description": "Save your recipes as a JSON file",
+  "settings_import_description": "Restore recipes from a JSON backup",
+  "settings_delete_all_description": "Permanently remove all recipes"
 }

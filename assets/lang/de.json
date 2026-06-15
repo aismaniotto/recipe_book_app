@@ -97,5 +97,17 @@
   "settings_font_large": "Groß",
   "settings_behavior": "Verhalten",
   "settings_default_sort": "Standard-Sortierung",
-  "settings_confirm_delete": "Vor dem Löschen bestätigen"
+  "settings_confirm_delete": "Vor dem Löschen bestätigen",
+  "settings_data": "Daten",
+  "settings_export": "Rezepte exportieren",
+  "settings_import": "Rezepte importieren",
+  "settings_delete_all": "Alle Rezepte löschen",
+  "settings_delete_all_confirm": "Dadurch werden alle Rezepte dauerhaft gelöscht. Sind Sie sicher?",
+  "settings_export_success": "Rezepte erfolgreich exportiert!",
+  "settings_import_success": "{count} Rezepte erfolgreich importiert!",
+  "settings_delete_all_success": "Alle Rezepte wurden gelöscht.",
+  "settings_import_hint": "Fügen Sie den exportierten JSON hier ein",
+  "settings_export_description": "Speichern Sie Ihre Rezepte als JSON-Datei",
+  "settings_import_description": "Rezepte aus einem JSON-Backup wiederherstellen",
+  "settings_delete_all_description": "Alle Rezepte dauerhaft entfernen"
 }

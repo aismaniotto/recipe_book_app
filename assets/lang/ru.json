@@ -97,5 +97,17 @@
   "settings_font_large": "Большой",
   "settings_behavior": "Поведение",
   "settings_default_sort": "Сортировка по умолчанию",
-  "settings_confirm_delete": "Подтверждать перед удалением"
+  "settings_confirm_delete": "Подтверждать перед удалением",
+  "settings_data": "Данные",
+  "settings_export": "Экспорт рецептов",
+  "settings_import": "Импорт рецептов",
+  "settings_delete_all": "Удалить все рецепты",
+  "settings_delete_all_confirm": "Это навсегда удалит все рецепты. Вы уверены?",
+  "settings_export_success": "Рецепты успешно экспортированы!",
+  "settings_import_success": "{count} рецептов успешно импортировано!",
+  "settings_delete_all_success": "Все рецепты удалены.",
+  "settings_import_hint": "Вставьте экспортированный JSON сюда",
+  "settings_export_description": "Сохраните рецепты в файл JSON",
+  "settings_import_description": "Восстановите рецепты из резервной копии JSON",
+  "settings_delete_all_description": "Безвозвратно удалить все рецепты"
 }

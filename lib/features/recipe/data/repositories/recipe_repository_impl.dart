@@ -40,6 +40,16 @@ class RecipeRepositoryImpl extends RecipeRepository {
   }
 
   @override
+  Future<Either<Failure, void>> deleteAll() async {
+    try {
+      await recipeDataSource.deleteAll();
+      return Right(null);
+    } catch (e, s) {
+      return Left(DatabaseFailure.fromError(e, s));
+    }
+  }
+
+  @override
   Future<Either<Failure, List<Recipe>>> getAllRecipes() async {
     try {
       final result = await recipeDataSource.getAllRecipes();
