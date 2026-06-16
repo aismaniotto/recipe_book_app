@@ -74,9 +74,9 @@ class ShowRecipePage extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.share),
             tooltip: LocaleKeys.share.tr(),
-            onPressed: () {
+            onPressed: () async {
               final text = RecipeFormatter.toShareText(recipe);
-              SharePlus.instance.share(ShareParams(text: text));
+              await SharePlus.instance.share(ShareParams(text: text));
             },
           ),
           IconButton(
