@@ -62,7 +62,7 @@ class DataManagementPage extends StatelessWidget {
         final timestamp = DateTime.now().millisecondsSinceEpoch;
         final file = File('${dir.path}/recipes_backup_$timestamp.json');
         await file.writeAsString(json);
-        await Share.shareXFiles([XFile(file.path)]);
+        await SharePlus.instance.share(ShareParams(files: [XFile(file.path)]));
         if (context.mounted) {
           SnackBarHelper.showSuccess(context, LocaleKeys.settings_export_success.tr());
         }

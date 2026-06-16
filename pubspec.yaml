@@ -33,13 +33,13 @@ dependencies:
   cupertino_icons: ^1.0.9
   path: ^1.9.1
   dartz: ^0.10.1
-  package_info_plus: ^8.3.0
-  device_info_plus: ^11.4.0
-  firebase_core: ^3.13.0
-  firebase_crashlytics: ^4.3.5
-  firebase_analytics: ^11.5.2
+  package_info_plus: ^10.1.0
+  device_info_plus: ^13.1.0
+  firebase_core: ^4.10.0
+  firebase_crashlytics: ^5.2.3
+  firebase_analytics: ^12.4.2
   shared_preferences: ^2.5.3
-  share_plus: ^10.1.4
+  share_plus: ^13.1.0
 
 dev_dependencies:
   flutter_test:

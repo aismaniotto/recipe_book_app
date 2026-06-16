@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
 import 'package:recipe_book_app/core/services/navigation_service.dart';
 import 'package:recipe_book_app/core/utils/recipe_formatter.dart';
-import 'package:share_plus/share_plus.dart' show Share;
+import 'package:share_plus/share_plus.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/identificable_text.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 import 'package:recipe_book_app/features/recipe/domain/usecases/delete_recipe.dart';
@@ -76,7 +76,7 @@ class ShowRecipePage extends StatelessWidget {
             tooltip: LocaleKeys.share.tr(),
             onPressed: () {
               final text = RecipeFormatter.toShareText(recipe);
-              Share.share(text);
+              SharePlus.instance.share(ShareParams(text: text));
             },
           ),
           IconButton(
