@@ -110,11 +110,11 @@
   "settings_export_description": "Speichern Sie Ihre Rezepte als JSON-Datei",
   "settings_import_description": "Rezepte aus einem JSON-Backup wiederherstellen",
   "settings_delete_all_description": "Alle Rezepte dauerhaft entfernen",
-  "nps_title": "Deine Meinung zahlt!",
+  "nps_title": "Deine Meinung zählt!",
   "nps_question": "Wie wahrscheinlich ist es, dass du diese App einem Freund empfiehlst?",
   "nps_not_likely": "Unwahrscheinlich",
   "nps_very_likely": "Sehr wahrscheinlich",
   "nps_submit": "Absenden",
-  "nps_later": "Spater",
-  "nps_thanks": "Danke fur dein Feedback!"
+  "nps_later": "Später",
+  "nps_thanks": "Danke für dein Feedback!"
 }

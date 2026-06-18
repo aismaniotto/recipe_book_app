@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:recipe_book_app/core/services/navigation_service.dart';
 import 'package:recipe_book_app/core/services/nps_service.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/identificable_text.dart';
@@ -22,6 +23,7 @@ void main() {
   late FakeRecipeRepository repository;
 
   setUp(() {
+    SharedPreferences.setMockInitialValues({});
     final getIt = GetIt.instance;
     if (!getIt.isRegistered<NavigationService>()) {
       getIt.registerSingleton<NavigationService>(FakeNavigationService());

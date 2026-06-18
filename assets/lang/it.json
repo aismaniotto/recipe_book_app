@@ -111,7 +111,7 @@
   "settings_import_description": "Ripristina le ricette da un backup JSON",
   "settings_delete_all_description": "Rimuovi permanentemente tutte le ricette",
   "nps_title": "La tua opinione conta!",
-  "nps_question": "Quanto e probabile che consigli questa app a un amico?",
+  "nps_question": "Quanto è probabile che consigli questa app a un amico?",
   "nps_not_likely": "Poco probabile",
   "nps_very_likely": "Molto probabile",
   "nps_submit": "Invia",

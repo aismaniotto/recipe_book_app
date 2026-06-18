@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
@@ -35,7 +36,7 @@ class ListRecipesPage extends StatelessWidget {
     if (npsService.isPromoter(score)) {
       final inAppReview = InAppReview.instance;
       final available = await inAppReview.isAvailable();
-      debugPrint('In-App Review available: $available');
+      if (kDebugMode) debugPrint('In-App Review available: $available');
       if (available) {
         await inAppReview.requestReview();
       }
@@ -81,10 +82,10 @@ class ListRecipesPage extends StatelessWidget {
               onPressed: () {
                 navigationService
                     .navigateTo('/update_recipe', arguments: recipe)
-                    .whenComplete(() {
+                    .whenComplete(() async {
                       store.getAllRecipes();
                       if (!context.mounted) return;
-                      _checkAndShowNps(context);
+                      await _checkAndShowNps(context);
                     });
                 navigationService.pop(false);
               },
@@ -196,7 +197,7 @@ class ListRecipesPage extends StatelessWidget {
                                 store.getAllRecipes();
                                 await ioc<NpsService>().onRecipeViewed();
                                 if (!context.mounted) return;
-                                _checkAndShowNps(context);
+                                await _checkAndShowNps(context);
                               }),
                           () => longPressActions(recipe),
                           onFavoriteToggle: () => store.toggleFavorite(recipe));
@@ -211,10 +212,10 @@ class ListRecipesPage extends StatelessWidget {
           onPressed: () {
             navigationService
                 .navigateTo('/new_recipe')
-                .whenComplete(() {
+                .whenComplete(() async {
                   store.getAllRecipes();
                   if (!context.mounted) return;
-                  _checkAndShowNps(context);
+                  await _checkAndShowNps(context);
                 });
           },
           tooltip: LocaleKeys.add_new_recipe.tr(),

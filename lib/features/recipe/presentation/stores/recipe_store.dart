@@ -130,13 +130,15 @@ abstract class _RecipeStore with Store {
         lastFailure = failure;
         CrashlyticsService.recordFailure(failure);
       },
-      (_) {
+      (_) async {
         lastFailure = null;
-        if (isUpdate) {
-          ioc<NpsService>().onRecipeEdited();
-        } else {
-          ioc<NpsService>().onRecipeCreated();
-        }
+        try {
+          if (isUpdate) {
+            await ioc<NpsService>().onRecipeEdited();
+          } else {
+            await ioc<NpsService>().onRecipeCreated();
+          }
+        } catch (_) {}
         ioc<NavigationService>().goBack();
       },
     );

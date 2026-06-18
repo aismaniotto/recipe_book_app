@@ -126,13 +126,13 @@ class CodegenLoader extends AssetLoader{
   "settings_export_description": "Speichern Sie Ihre Rezepte als JSON-Datei",
   "settings_import_description": "Rezepte aus einem JSON-Backup wiederherstellen",
   "settings_delete_all_description": "Alle Rezepte dauerhaft entfernen",
-  "nps_title": "Deine Meinung zahlt!",
+  "nps_title": "Deine Meinung zählt!",
   "nps_question": "Wie wahrscheinlich ist es, dass du diese App einem Freund empfiehlst?",
   "nps_not_likely": "Unwahrscheinlich",
   "nps_very_likely": "Sehr wahrscheinlich",
   "nps_submit": "Absenden",
-  "nps_later": "Spater",
-  "nps_thanks": "Danke fur dein Feedback!"
+  "nps_later": "Später",
+  "nps_thanks": "Danke für dein Feedback!"
 };
 static const Map<String,dynamic> _ru = {
   "recipe": "Рецепт",
@@ -366,10 +366,10 @@ static const Map<String,dynamic> _pt = {
   "settings_export_description": "Salve suas receitas como arquivo JSON",
   "settings_import_description": "Restaure receitas de um backup JSON",
   "settings_delete_all_description": "Remova permanentemente todas as receitas",
-  "nps_title": "Sua opiniao importa!",
-  "nps_question": "Qual a probabilidade de voce recomendar este app a um amigo?",
-  "nps_not_likely": "Pouco provavel",
-  "nps_very_likely": "Muito provavel",
+  "nps_title": "Sua opinião importa!",
+  "nps_question": "Qual a probabilidade de você recomendar este app a um amigo?",
+  "nps_not_likely": "Pouco provável",
+  "nps_very_likely": "Muito provável",
   "nps_submit": "Enviar",
   "nps_later": "Depois",
   "nps_thanks": "Obrigado pelo seu feedback!"
@@ -607,7 +607,7 @@ static const Map<String,dynamic> _it = {
   "settings_import_description": "Ripristina le ricette da un backup JSON",
   "settings_delete_all_description": "Rimuovi permanentemente tutte le ricette",
   "nps_title": "La tua opinione conta!",
-  "nps_question": "Quanto e probabile che consigli questa app a un amico?",
+  "nps_question": "Quanto è probabile che consigli questa app a un amico?",
   "nps_not_likely": "Poco probabile",
   "nps_very_likely": "Molto probabile",
   "nps_submit": "Invia",
@@ -726,12 +726,12 @@ static const Map<String,dynamic> _es = {
   "settings_export_description": "Guarde sus recetas como archivo JSON",
   "settings_import_description": "Restaure recetas de un respaldo JSON",
   "settings_delete_all_description": "Elimine permanentemente todas las recetas",
-  "nps_title": "Tu opinion importa!",
-  "nps_question": "Que tan probable es que recomiendes esta app a un amigo?",
+  "nps_title": "¡Tu opinión importa!",
+  "nps_question": "¿Qué tan probable es que recomiendes esta app a un amigo?",
   "nps_not_likely": "Poco probable",
   "nps_very_likely": "Muy probable",
   "nps_submit": "Enviar",
-  "nps_later": "Despues",
+  "nps_later": "Después",
   "nps_thanks": "Gracias por tu comentario!"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"de": _de, "ru": _ru, "pt": _pt, "en": _en, "it": _it, "es": _es};
