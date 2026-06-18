@@ -3,6 +3,7 @@ import 'package:recipe_book_app/core/IoC/ioc.dart';
 import 'package:recipe_book_app/core/error/failure.dart';
 import 'package:recipe_book_app/core/services/crashlytics_service.dart';
 import 'package:recipe_book_app/core/services/navigation_service.dart';
+import 'package:recipe_book_app/core/services/nps_service.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/identificable_text.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 import 'package:recipe_book_app/features/recipe/domain/usecases/add_recipe.dart';
@@ -131,6 +132,11 @@ abstract class _RecipeStore with Store {
       },
       (_) {
         lastFailure = null;
+        if (isUpdate) {
+          ioc<NpsService>().onRecipeEdited();
+        } else {
+          ioc<NpsService>().onRecipeCreated();
+        }
         ioc<NavigationService>().goBack();
       },
     );
