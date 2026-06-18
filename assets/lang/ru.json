@@ -109,5 +109,12 @@
   "settings_import_hint": "Вставьте экспортированный JSON сюда",
   "settings_export_description": "Сохраните рецепты в файл JSON",
   "settings_import_description": "Восстановите рецепты из резервной копии JSON",
-  "settings_delete_all_description": "Безвозвратно удалить все рецепты"
+  "settings_delete_all_description": "Безвозвратно удалить все рецепты",
+  "nps_title": "Ваше мнение важно!",
+  "nps_question": "Насколько вероятно, что вы порекомендуете это приложение другу?",
+  "nps_not_likely": "Маловероятно",
+  "nps_very_likely": "Очень вероятно",
+  "nps_submit": "Отправить",
+  "nps_later": "Позже",
+  "nps_thanks": "Спасибо за ваш отзыв!"
 }

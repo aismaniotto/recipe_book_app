@@ -109,5 +109,12 @@
   "settings_import_hint": "Paste the exported JSON here",
   "settings_export_description": "Save your recipes as a JSON file",
   "settings_import_description": "Restore recipes from a JSON backup",
-  "settings_delete_all_description": "Permanently remove all recipes"
+  "settings_delete_all_description": "Permanently remove all recipes",
+  "nps_title": "Your opinion matters!",
+  "nps_question": "How likely are you to recommend this app to a friend?",
+  "nps_not_likely": "Not likely",
+  "nps_very_likely": "Very likely",
+  "nps_submit": "Submit",
+  "nps_later": "Later",
+  "nps_thanks": "Thank you for your feedback!"
 }

@@ -109,5 +109,12 @@
   "settings_import_hint": "Cole o JSON exportado aqui",
   "settings_export_description": "Salve suas receitas como arquivo JSON",
   "settings_import_description": "Restaure receitas de um backup JSON",
-  "settings_delete_all_description": "Remova permanentemente todas as receitas"
+  "settings_delete_all_description": "Remova permanentemente todas as receitas",
+  "nps_title": "Sua opinião importa!",
+  "nps_question": "Qual a probabilidade de você recomendar este app a um amigo?",
+  "nps_not_likely": "Pouco provável",
+  "nps_very_likely": "Muito provável",
+  "nps_submit": "Enviar",
+  "nps_later": "Depois",
+  "nps_thanks": "Obrigado pelo seu feedback!"
 }
