@@ -1,9 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
+import 'package:in_app_review/in_app_review.dart';
+import 'package:recipe_book_app/core/IoC/ioc.dart';
 import 'package:recipe_book_app/core/localization_generated/locale_keys.g.dart';
 import 'package:recipe_book_app/core/services/navigation_service.dart';
+import 'package:recipe_book_app/core/services/nps_service.dart';
+import 'package:recipe_book_app/core/widgets/nps_dialog.dart';
 import 'package:recipe_book_app/core/widgets/snack_bar_helper.dart';
 import 'package:recipe_book_app/features/recipe/domain/entities/recipe.dart';
 import 'package:recipe_book_app/features/recipe/presentation/stores/filtered_recipes_store.dart';
@@ -17,6 +22,26 @@ class ListRecipesPage extends StatelessWidget {
 
   const ListRecipesPage(
       {super.key, required this.store, required this.navigationService});
+
+  Future<void> _checkAndShowNps(BuildContext context) async {
+    final npsService = ioc<NpsService>();
+    if (!await npsService.shouldShowNps()) return;
+    if (!context.mounted) return;
+    final score = await showDialog<int>(
+      context: context,
+      builder: (_) => const NpsDialog(),
+    );
+    if (score == null) return;
+    await npsService.recordNps(score);
+    if (npsService.isPromoter(score)) {
+      final inAppReview = InAppReview.instance;
+      final available = await inAppReview.isAvailable();
+      if (kDebugMode) debugPrint('In-App Review available: $available');
+      if (available) {
+        await inAppReview.requestReview();
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +82,11 @@ class ListRecipesPage extends StatelessWidget {
               onPressed: () {
                 navigationService
                     .navigateTo('/update_recipe', arguments: recipe)
-                    .whenComplete(() => store.getAllRecipes());
+                    .whenComplete(() async {
+                      store.getAllRecipes();
+                      if (!context.mounted) return;
+                      await _checkAndShowNps(context);
+                    });
                 navigationService.pop(false);
               },
               child: Text(LocaleKeys.edit.tr()),
@@ -164,7 +193,12 @@ class ListRecipesPage extends StatelessWidget {
                           recipe,
                           () => navigationService
                               .navigateTo('/show_recipe', arguments: recipe)
-                              .whenComplete(() => store.getAllRecipes()),
+                              .whenComplete(() async {
+                                store.getAllRecipes();
+                                await ioc<NpsService>().onRecipeViewed();
+                                if (!context.mounted) return;
+                                await _checkAndShowNps(context);
+                              }),
                           () => longPressActions(recipe),
                           onFavoriteToggle: () => store.toggleFavorite(recipe));
                     },
@@ -178,7 +212,11 @@ class ListRecipesPage extends StatelessWidget {
           onPressed: () {
             navigationService
                 .navigateTo('/new_recipe')
-                .whenComplete(() => store.getAllRecipes());
+                .whenComplete(() async {
+                  store.getAllRecipes();
+                  if (!context.mounted) return;
+                  await _checkAndShowNps(context);
+                });
           },
           tooltip: LocaleKeys.add_new_recipe.tr(),
           child: Icon(Icons.add),

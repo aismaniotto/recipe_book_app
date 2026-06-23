@@ -125,7 +125,14 @@ class CodegenLoader extends AssetLoader{
   "settings_import_hint": "Fügen Sie den exportierten JSON hier ein",
   "settings_export_description": "Speichern Sie Ihre Rezepte als JSON-Datei",
   "settings_import_description": "Rezepte aus einem JSON-Backup wiederherstellen",
-  "settings_delete_all_description": "Alle Rezepte dauerhaft entfernen"
+  "settings_delete_all_description": "Alle Rezepte dauerhaft entfernen",
+  "nps_title": "Deine Meinung zählt!",
+  "nps_question": "Wie wahrscheinlich ist es, dass du diese App einem Freund empfiehlst?",
+  "nps_not_likely": "Unwahrscheinlich",
+  "nps_very_likely": "Sehr wahrscheinlich",
+  "nps_submit": "Absenden",
+  "nps_later": "Später",
+  "nps_thanks": "Danke für dein Feedback!"
 };
 static const Map<String,dynamic> _ru = {
   "recipe": "Рецепт",
@@ -238,7 +245,14 @@ static const Map<String,dynamic> _ru = {
   "settings_import_hint": "Вставьте экспортированный JSON сюда",
   "settings_export_description": "Сохраните рецепты в файл JSON",
   "settings_import_description": "Восстановите рецепты из резервной копии JSON",
-  "settings_delete_all_description": "Безвозвратно удалить все рецепты"
+  "settings_delete_all_description": "Безвозвратно удалить все рецепты",
+  "nps_title": "Ваше мнение важно!",
+  "nps_question": "Насколько вероятно, что вы порекомендуете это приложение другу?",
+  "nps_not_likely": "Маловероятно",
+  "nps_very_likely": "Очень вероятно",
+  "nps_submit": "Отправить",
+  "nps_later": "Позже",
+  "nps_thanks": "Спасибо за ваш отзыв!"
 };
 static const Map<String,dynamic> _pt = {
   "recipe": "Receita",
@@ -351,7 +365,14 @@ static const Map<String,dynamic> _pt = {
   "settings_import_hint": "Cole o JSON exportado aqui",
   "settings_export_description": "Salve suas receitas como arquivo JSON",
   "settings_import_description": "Restaure receitas de um backup JSON",
-  "settings_delete_all_description": "Remova permanentemente todas as receitas"
+  "settings_delete_all_description": "Remova permanentemente todas as receitas",
+  "nps_title": "Sua opinião importa!",
+  "nps_question": "Qual a probabilidade de você recomendar este app a um amigo?",
+  "nps_not_likely": "Pouco provável",
+  "nps_very_likely": "Muito provável",
+  "nps_submit": "Enviar",
+  "nps_later": "Depois",
+  "nps_thanks": "Obrigado pelo seu feedback!"
 };
 static const Map<String,dynamic> _en = {
   "recipe": "Recipe",
@@ -464,7 +485,14 @@ static const Map<String,dynamic> _en = {
   "settings_import_hint": "Paste the exported JSON here",
   "settings_export_description": "Save your recipes as a JSON file",
   "settings_import_description": "Restore recipes from a JSON backup",
-  "settings_delete_all_description": "Permanently remove all recipes"
+  "settings_delete_all_description": "Permanently remove all recipes",
+  "nps_title": "Your opinion matters!",
+  "nps_question": "How likely are you to recommend this app to a friend?",
+  "nps_not_likely": "Not likely",
+  "nps_very_likely": "Very likely",
+  "nps_submit": "Submit",
+  "nps_later": "Later",
+  "nps_thanks": "Thank you for your feedback!"
 };
 static const Map<String,dynamic> _it = {
   "recipe": "Ricetta",
@@ -577,7 +605,14 @@ static const Map<String,dynamic> _it = {
   "settings_import_hint": "Incolla il JSON esportato qui",
   "settings_export_description": "Salva le tue ricette come file JSON",
   "settings_import_description": "Ripristina le ricette da un backup JSON",
-  "settings_delete_all_description": "Rimuovi permanentemente tutte le ricette"
+  "settings_delete_all_description": "Rimuovi permanentemente tutte le ricette",
+  "nps_title": "La tua opinione conta!",
+  "nps_question": "Quanto è probabile che consigli questa app a un amico?",
+  "nps_not_likely": "Poco probabile",
+  "nps_very_likely": "Molto probabile",
+  "nps_submit": "Invia",
+  "nps_later": "Dopo",
+  "nps_thanks": "Grazie per il tuo feedback!"
 };
 static const Map<String,dynamic> _es = {
   "recipe": "Receta",
@@ -690,7 +725,14 @@ static const Map<String,dynamic> _es = {
   "settings_import_hint": "Pegue el JSON exportado aquí",
   "settings_export_description": "Guarde sus recetas como archivo JSON",
   "settings_import_description": "Restaure recetas de un respaldo JSON",
-  "settings_delete_all_description": "Elimine permanentemente todas las recetas"
+  "settings_delete_all_description": "Elimine permanentemente todas las recetas",
+  "nps_title": "¡Tu opinión importa!",
+  "nps_question": "¿Qué tan probable es que recomiendes esta app a un amigo?",
+  "nps_not_likely": "Poco probable",
+  "nps_very_likely": "Muy probable",
+  "nps_submit": "Enviar",
+  "nps_later": "Después",
+  "nps_thanks": "Gracias por tu comentario!"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"de": _de, "ru": _ru, "pt": _pt, "en": _en, "it": _it, "es": _es};
 }

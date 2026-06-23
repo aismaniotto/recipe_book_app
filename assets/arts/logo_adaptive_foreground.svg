@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Recipe Book adaptive icon foreground</title>
+  <desc id="desc">Transparent foreground for Android adaptive launcher icons.</desc>
+  <defs>
+    <linearGradient id="coverGradient" x1="260" x2="790" y1="86" y2="938" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff2f24"/>
+      <stop offset="1" stop-color="#cf1618"/>
+    </linearGradient>
+    <linearGradient id="spineGradient" x1="142" x2="286" y1="96" y2="928" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#c00006"/>
+      <stop offset="1" stop-color="#98000b"/>
+    </linearGradient>
+    <filter id="markShadow" x="-12%" y="-12%" width="124%" height="124%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#2b1712" flood-opacity=".24"/>
+    </filter>
+  </defs>
+
+  <g transform="translate(114 104) scale(.78)" filter="url(#markShadow)">
+    <path d="M158 70h712c32 0 58 26 58 58v768c0 32-26 58-58 58H158c-32 0-58-26-58-58V128c0-32 26-58 58-58z" fill="#2b1712"/>
+    <path d="M304 100h534c31 0 56 25 56 56v712c0 31-25 56-56 56H304z" fill="url(#coverGradient)"/>
+    <path d="M130 156c0-31 25-56 56-56h118v824H186c-31 0-56-25-56-56z" fill="url(#spineGradient)"/>
+    <path d="M284 100h34v824h-34z" fill="#2b1712"/>
+    <path d="M414 164h338c22 0 40 18 40 40v104c0 22-18 40-40 40H414c-22 0-40-18-40-40V204c0-22 18-40 40-40z" fill="#2b1712"/>
+    <rect x="420" y="216" width="292" height="70" rx="12" fill="#b70005"/>
+    <path d="M580 348c86 0 157 67 164 151 78 10 138 77 138 158 0 88-71 159-159 159h-40v92c0 24-19 43-43 43H428c-24 0-43-19-43-43v-92h-39c-88 0-160-71-160-159 0-80 60-147 138-158 7-84 78-151 164-151 35 0 67 11 94 29 0-10-1-19-2-29z" fill="#2b1712" opacity=".28"/>
+    <path d="M548 323c83 0 151 64 158 146 76 7 136 71 136 149 0 83-68 151-151 151h-42v100H430V769h-42c-83 0-151-68-151-151 0-78 60-142 136-149 7-82 75-146 158-146h17z" fill="#fffdf5"/>
+    <path d="M548 323c83 0 151 64 158 146 76 7 136 71 136 149 0 83-68 151-151 151h-42v100H430V769h-42c-83 0-151-68-151-151 0-78 60-142 136-149 7-82 75-146 158-146h17z" fill="none" stroke="#241714" stroke-width="26" stroke-linejoin="round"/>
+    <path d="M431 770h218v100H431z" fill="#fffdf5"/>
+    <path d="M431 770h218v100H431z" fill="none" stroke="#241714" stroke-width="24" stroke-linejoin="round"/>
+    <path d="M462 794h154" stroke="#eee5d8" stroke-width="18" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -110,5 +110,12 @@ abstract class  LocaleKeys {
   static const settings_export_description = 'settings_export_description';
   static const settings_import_description = 'settings_import_description';
   static const settings_delete_all_description = 'settings_delete_all_description';
+  static const nps_title = 'nps_title';
+  static const nps_question = 'nps_question';
+  static const nps_not_likely = 'nps_not_likely';
+  static const nps_very_likely = 'nps_very_likely';
+  static const nps_submit = 'nps_submit';
+  static const nps_later = 'nps_later';
+  static const nps_thanks = 'nps_thanks';
 
 }
