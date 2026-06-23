@@ -56,11 +56,6 @@ Required for Firebase to function on Android devices.
 
 - [Google Play Services Privacy Policy](https://www.google.com/policies/privacy/)
 
-<<<<<<< HEAD
-### Advertising
-
-The App may display advertisements provided by third-party advertising services. These services may collect and use anonymous data such as your advertising identifier and general usage patterns to display relevant ads. No personal information is shared with advertisers. You can opt out of personalized advertising through your device settings.
-
 ---
 
 ## Information I Do NOT Collect
@@ -73,20 +68,6 @@ The App may display advertisements provided by third-party advertising services.
 
 ---
 
-=======
----
-
-## Information I Do NOT Collect
-
-- Personal information (name, email, address, phone number)
-- Account or login credentials (the App has no account system)
-- Location data
-- Contacts, photos, or files (except JSON files you explicitly select for import)
-- Advertising identifiers
-
----
-
->>>>>>> release/1.3.0
 ## Permissions
 
 The App requests minimal permissions:
